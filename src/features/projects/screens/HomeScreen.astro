@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/card';
 import { type LanguageCode, useTranslations } from '@/i18n/ui';
 import { formatDate } from '@/lib/utils';
-import heroPortrait from '@/assets/user-hero.webp';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { ArrowRight, BookOpen } from 'lucide-react';
@@ -100,7 +99,6 @@ const contactSubtitle = t('contactSubtitle');
 const contactCtaLabel = t('contactCtaLabel');
 const heroPrimaryCta = t('heroPrimaryCta');
 const heroSecondaryCta = t('heroSecondaryCta');
-const heroImageAlt = t('heroImageAlt');
 ---
 
 <section class="relative overflow-hidden rounded-3xl bg-slate-950 text-slate-50">
@@ -109,8 +107,8 @@ const heroImageAlt = t('heroImageAlt');
     <div class="absolute -top-24 -right-16 h-64 w-64 rounded-full bg-amber-500/30 blur-3xl" />
     <div class="absolute -bottom-24 -left-14 h-72 w-72 rounded-full bg-primary/25 blur-3xl" />
   </div>
-  <div class="relative container mx-auto flex flex-col gap-12 px-4 py-16 md:flex-row md:items-center md:py-20">
-    <div class="max-w-xl space-y-6 text-center md:text-left">
+  <div class="relative container mx-auto px-4 py-16 md:py-20">
+    <div class="mx-auto max-w-3xl space-y-6 text-center">
       <p class="text-sm uppercase tracking-[0.3em] text-primary/70">
         AI Strategy & Delivery
       </p>
@@ -120,7 +118,7 @@ const heroImageAlt = t('heroImageAlt');
       <p class="text-lg text-slate-200">
         {heroSubheading}
       </p>
-      <div class="flex flex-col items-center gap-4 sm:flex-row md:justify-start">
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a
           href="/projects"
           class={buttonVariants({ variant: 'default', size: 'lg' })}
@@ -135,20 +133,6 @@ const heroImageAlt = t('heroImageAlt');
           <BookOpen className="h-4 w-4" />
           {heroSecondaryCta}
         </a>
-      </div>
-    </div>
-    <div class="relative mx-auto w-full max-w-sm">
-      <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/50 via-amber-500/25 to-transparent blur-3xl" />
-      <div class="relative overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/10 to-slate-950/60" />
-        <Image
-          src={heroPortrait}
-          alt={heroImageAlt}
-          width={520}
-          height={640}
-          densities={[1, 1.5, 2]}
-          class="relative h-full w-full object-cover"
-        />
       </div>
     </div>
   </div>
