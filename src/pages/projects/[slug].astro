@@ -5,10 +5,14 @@ import {
   getTranslatedProjects,
   type TranslatedProject,
 } from '@/features/projects';
-import { ui, type LanguageCode } from '@/i18n/ui';
+import { ui, type LanguageCode, defaultLanguage, languages } from '@/i18n/ui';
 
 export async function getStaticPaths() {
-  const lang = Astro.currentLocale as LanguageCode;
+  const currentLocale = Astro.currentLocale as LanguageCode | undefined;
+  const lang =
+    currentLocale && Object.hasOwn(languages, currentLocale)
+      ? currentLocale
+      : defaultLanguage;
   const paths = [];
 
   const projects = getTranslatedProjects(lang);
@@ -20,10 +24,14 @@ export async function getStaticPaths() {
   }
   return paths;
 }
-const lang = Astro.currentLocale as LanguageCode;
+const currentLocale = Astro.currentLocale as LanguageCode | undefined;
+const lang =
+  currentLocale && Object.hasOwn(languages, currentLocale)
+    ? currentLocale
+    : defaultLanguage;
 const { project } = Astro.props as { project: TranslatedProject };
 
-const t = ui[lang];
+const t = ui[lang] ?? ui[defaultLanguage];
 
 if (!project) {
   const base = lang === 'fr' ? '' : `/${lang}`;

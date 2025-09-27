@@ -1,13 +1,14 @@
-export const languages: Record<'en', { name: string; flag: string }> = {
+export const languages = {
+  fr: { name: 'Français', flag: 'fr' },
   en: { name: 'English', flag: 'us' },
 } as const;
 
-export const defaultLanguage = 'en';
-
 export type LanguageCode = keyof typeof languages;
 
-export const ui = {
-  en: {
+export const defaultLanguage: LanguageCode = 'fr';
+
+const createInitialTranslations = () => {
+  return {
     projectsContent: {
       sampleProject: {
         title: 'Sample Project',
@@ -214,7 +215,12 @@ export const ui = {
       invalid_string_uuid: 'Invalid UUID.',
       // You can add more specific messages as needed
     },
-  },
+  } as const;
+};
+
+export const ui = {
+  fr: createInitialTranslations(),
+  en: createInitialTranslations(),
 } as const;
 
 export const getLanguageName = (lang: LanguageCode) => languages[lang];

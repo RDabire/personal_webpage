@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { ui, type LanguageCode } from '@/i18n/ui';
+import { ui, type LanguageCode, defaultLanguage, languages } from '@/i18n/ui';
 import {
   ProjectScreen,
   getTranslatedProjects,
@@ -21,9 +21,13 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const lang = Astro.currentLocale as LanguageCode;
+const currentLocale = Astro.currentLocale as LanguageCode | undefined;
+const lang =
+  currentLocale && Object.hasOwn(languages, currentLocale)
+    ? currentLocale
+    : defaultLanguage;
 const { project } = Astro.props as { project: TranslatedProject };
-const t = ui[lang];
+const t = ui[lang] ?? ui[defaultLanguage];
 
 if (!project) {
   return Astro.redirect(`/${lang}/404`);
