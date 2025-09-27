@@ -10,22 +10,24 @@ const createInitialTranslations = () => {
   return {
     projectsContent: {
       sampleProject: {
-        title: 'Sample Project',
-        description: 'This is a sample project for the template.',
-        imageAltText: 'Placeholder image for the sample project',
-        categoryText: 'Web Application',
+        title: 'Predictive Demand Forecasting Platform',
+        description:
+          'Modernised supply chain planning with a demand forecasting engine deployed across markets.',
+        imageAltText: 'Abstract visualization representing the forecasting platform',
+        categoryText: 'AI Platform',
         dateText: 'January 2025',
         detailedDescription:
-          'A more detailed description of this sample project, showing how to structure content for the project detail page.',
+          'Delivered an end-to-end forecasting workflow that ingests multi-market demand signals, generates probabilistic forecasts, and pushes recommendations into the commercial CRM.',
         keyFeatures: {
           responsiveDesign: {
-            title: 'Responsive Design',
-            description: 'The project adapts to all screen sizes.',
+            title: 'Signal Ingestion & Governance',
+            description:
+              'Built resilient pipelines to ingest sales, marketing, and external indicators with lineage tracking.',
           },
           contentManagement: {
-            title: 'Easy Content Management',
+            title: 'Model Operations at Scale',
             description:
-              'Allows for easy content management via Markdown files or a CMS.',
+              'Implemented automated retraining, monitoring, and CI/CD to keep models production ready.',
           },
         },
         galleryImages: {
@@ -35,73 +37,79 @@ const createInitialTranslations = () => {
           // },
         },
         challenges:
-          'Description of challenges encountered while creating this sample project.',
-        learnings: 'Description of learnings from this sample project.',
+          'Navigated disparate tooling and limited historic data quality to establish a unified analytics foundation.',
+        learnings:
+          'Set clear governance around data contracts and aligned forecasting metrics with commercial KPIs.',
       },
     },
     skillsContent: {
       frontendDevelopment: {
-        title: 'Frontend Development',
+        title: 'Machine Learning Strategy',
         description:
-          'Building interactive and high-performance user interfaces.',
+          'Designing measurable AI programmes aligned to business objectives and regulatory constraints.',
       },
       backendDevelopment: {
-        title: 'Backend Development',
-        description: 'Constructing robust server logic and APIs.',
+        title: 'Data Platform Architecture',
+        description:
+          'Building reliable data ecosystems covering ingestion, transformation, governance, and discovery.',
       },
       uiUxDesign: {
-        title: 'UI/UX Design',
-        description: 'Designing intuitive and aesthetic user experiences.',
+        title: 'Applied AI & Analytics',
+        description:
+          'Deploying predictive, prescriptive, and generative solutions that ship to production and stay there.',
       },
       devOps: {
-        title: 'DevOps',
-        description: 'Automating development and deployment processes.',
+        title: 'MLOps & Lifecycle Management',
+        description:
+          'Operationalising models with observability, automation, and cross-functional guardrails.',
       },
     },
     site: {
-      title: 'My Awesome Template',
+      title: 'YOUR_NAME | Data Scientist & AI Consultant',
       description:
-        'A modern and performant Astro template to kickstart your project.',
+        'Evidence-driven data science and AI consulting to help leadership teams ship measurable outcomes.',
     },
     nav: {
       home: 'Home',
-      blog: 'Blog',
-      contact: 'Contact',
       projects: 'Projects',
-      tips: 'Tips',
+      blog: 'Writing',
+      resume: 'Resume',
+      contact: 'Contact',
+      tips: 'Insights',
     },
     footer: {
       rights: 'All rights reserved.',
     },
     homePage: {
-      pageTitle: 'Home | YOUR_NAME - FullStack Developer',
+      pageTitle: 'Home | YOUR_NAME - Data Scientist & AI Consultant',
       pageDescription:
-        'Welcome to the portfolio of YOUR_NAME, a FullStack developer passionate about creating innovative web experiences.',
+        'Discover how YOUR_NAME partners with product and executive teams to deliver AI initiatives that move the numbers.',
       heroGreeting: "Hi, I'm YOUR_NAME",
-      heroSubtitlePart1: 'Full Stack Developer',
-      heroSubtitlePart2: 'UI/UX Enthusiast',
-      heroIntroduction: 'Add an introduction here.',
-      heroViewWorkButton: 'View My Work',
-      heroContactButton: 'Get In Touch',
+      heroSubtitlePart1: 'Senior Data Scientist',
+      heroSubtitlePart2: 'AI Strategy Consultant',
+      heroIntroduction:
+        'I help organisations design, build, and scale data products that deliver measurable business impact.',
+      heroViewWorkButton: 'Explore Projects',
+      heroContactButton: 'Start a Conversation',
       heroImageAlt:
-        'Illustration representing YOUR_NAME or a development concept',
-      featuredProjectsTitle: '3 latest projects',
+        "Abstract data visualisation illustrating YOUR_NAME's consulting practice",
+      featuredProjectsTitle: 'Featured AI Initiatives',
       featuredProjectsDescription:
-        "Here are some of the projects I've recently worked on. Feel free to explore!",
+        'Selected client engagements highlighting the path from opportunity to production-scale impact.',
       projectCardViewProject: 'View Project',
       projectCardViewCode: 'View Code',
       imageNotAvailable: 'Image not available for now',
-      mySkillsTitle: 'My Skills',
+      mySkillsTitle: 'Core Competencies',
       mySkillsDescription:
-        'Explore the expertise and abilities that define my work and passion.',
+        'A snapshot of the strategy, engineering, and leadership capabilities I bring to every engagement.',
     },
     blogPage: {
-      pageTitle: 'My Technical Blog',
+      pageTitle: 'Writing on Data Science & AI Leadership',
       pageDescription:
-        'Articles and thoughts on web development, software architecture, and new technologies.',
-      title: 'My Technical Blog',
+        'Perspectives on building responsible AI, scaling data teams, and translating analytics into business outcomes.',
+      title: 'Writing on Data Science & AI Leadership',
       description:
-        'Articles and thoughts on web development, software architecture, and new technologies.',
+        'Perspectives on building responsible AI, scaling data teams, and translating analytics into business outcomes.',
       comingSoon: 'Blog posts will appear here soon. Check back later!',
       heroImageAlt: 'Hero image for article: ',
       publishedOn: 'Published on: ',
@@ -128,12 +136,12 @@ const createInitialTranslations = () => {
       title: 'Table of Contents',
     },
     contactPage: {
-      pageTitle: 'Contact Me',
+      pageTitle: 'Contact',
       pageDescription:
-        "Let's discuss your project, a potential collaboration, or just chat about tech!",
-      title: 'Contact Me',
+        'Schedule a working session or request advisory support on your next data or AI initiative.',
+      title: 'Partner With Me',
       description:
-        "Let's discuss your project, a potential collaboration, or just chat about tech!",
+        "Whether you need roadmap validation, fractional leadership, or hands-on delivery, I'd love to hear about it.",
       formTitle: 'Send a message',
       firstNameLabel: 'First Name',
       lastNameLabel: 'Last Name',
@@ -143,14 +151,14 @@ const createInitialTranslations = () => {
       firstNamePlaceholder: 'Your first name',
       lastNamePlaceholder: 'Your last name',
       emailPlaceholder: 'Your email address',
-      messagePlaceholder: 'Your message here...',
-      calendarTitle: 'Schedule a Meeting',
+      messagePlaceholder: "Share a bit about the challenge you're tackling...",
+      calendarTitle: 'Schedule a Consultation',
       calendarDescription:
-        'Prefer to talk live? Book a slot directly in my calendar.',
-      calendarButtonLabel: 'See my availability',
-      calendarLinkLabel: 'See my calendar',
+        'Prefer to talk live? Book a time to discuss scope, timelines, and outcomes.',
+      calendarButtonLabel: 'Check availability',
+      calendarLinkLabel: 'Open calendar',
       calendarPlaceHolder:
-        'The integration with Google Calendar will be soon...',
+        'Calendar integration coming soon - use the form in the meantime.',
       orSeparatorText: 'OR',
       toastSuccessMessageSent: 'Message sent successfully!',
       toastErrorFailedToSend: 'Failed to send message.',
@@ -171,9 +179,10 @@ const createInitialTranslations = () => {
       viewCodeButton: 'View Code',
     },
     projectsPage: {
-      title: 'My Projects',
-      metaTitle: "My Projects | YOUR_NAME's Portfolio",
-      metaDescription: "Discover all of YOUR_NAME's projects.",
+      title: 'Client Engagements',
+      metaTitle: "Projects | YOUR_NAME - Data Scientist & AI Consultant",
+      metaDescription:
+        "Explore the transformations YOUR_NAME has delivered across AI, analytics, and data platform engagements.",
       noProjects: 'No projects to display at the moment.',
       noProjectsDescription:
         "It seems that you don't have any projects to display at the moment.",
@@ -186,12 +195,12 @@ const createInitialTranslations = () => {
       homeLink: 'Return to Homepage',
     },
     tipsPage: {
-      metaTitle: 'Development Tips | YOUR_NAME',
+      metaTitle: 'AI Implementation Tips | YOUR_NAME',
       metaDescription:
-        'Browse a collection of quick tips and advice on Web Development and Cloud Computing.',
-      title: 'Latest Tips',
+        'Quick insights on driving adoption, governance, and delivery for machine learning initiatives.',
+      title: 'AI Implementation Tips',
       description:
-        'Browse a collection of quick tips and advice on Web Development and Cloud Computing.',
+        'Quick insights on driving adoption, governance, and delivery for machine learning initiatives.',
       noTips: 'No tips to display at the moment.',
       readTip: 'Read tip',
       backToList: 'Back to list',
