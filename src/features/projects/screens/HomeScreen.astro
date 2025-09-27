@@ -1,150 +1,380 @@
 ---
-import Heading from '@/components/Heading.astro';
-import SkillCard from '@/components/SkillCard.astro';
 import { buttonVariants } from '@/components/ui/button';
-import { Calendar, Dumbbell } from 'lucide-react';
-
-import heroImage from '@/assets/user-hero.webp';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { type LanguageCode, useTranslations } from '@/i18n/ui';
+import { formatDate } from '@/lib/utils';
+import heroPortrait from '@/assets/user-hero.webp';
 import { Image } from 'astro:assets';
-import FeaturedProjectPreview from '../components/FeaturedProjectPreview.astro';
-import type { TranslatedProject, TranslatedSkill } from '../type';
+import type { ImageMetadata } from 'astro';
+import { ArrowRight, BookOpen } from 'lucide-react';
 
-export type Props = {
-  projects: Array<TranslatedProject>;
-  skills: Array<TranslatedSkill>;
-  heroGreeting: string;
-  heroSubtitlePart1: string;
-  heroSubtitlePart2: string;
-  heroIntroduction: string;
-  heroViewWorkButton: string;
-  heroContactButton: string;
-  imageNotAvailable: string;
-  featuredProjectsTitle: string;
-  featuredProjectsDescription: string;
-  mySkillsTitle: string;
-  mySkillsDescription: string;
-  projectPreviewCtaText: string; // Added for specific project CTA
+type WritingPreview = {
+  slug: string;
+  title: string;
+  description?: string;
+  pubDate: Date;
+  heroImage?: ImageMetadata;
+  heroImageAlt?: string;
 };
 
-const {
-  projects,
-  skills,
-  heroGreeting,
-  heroSubtitlePart1,
-  heroSubtitlePart2,
-  heroIntroduction,
-  heroViewWorkButton,
-  heroContactButton,
-  imageNotAvailable,
-  featuredProjectsTitle,
-  featuredProjectsDescription,
-  mySkillsTitle,
-  mySkillsDescription,
-  projectPreviewCtaText,
-} = Astro.props;
+export type Props = {
+  lang: LanguageCode;
+  writingPreviews: Array<WritingPreview>;
+};
+
+const { lang, writingPreviews } = Astro.props;
+const t = useTranslations(lang, 'homePage');
+
+const impactHighlights = [
+  t('impactHighlight1'),
+  t('impactHighlight2'),
+  t('impactHighlight3'),
+  t('impactHighlight4'),
+].filter(Boolean);
+
+const initiatives = [
+  {
+    title: t('initiative1Title'),
+    description: t('initiative1Description'),
+    link: t('initiative1Link'),
+  },
+  {
+    title: t('initiative2Title'),
+    description: t('initiative2Description'),
+    link: t('initiative2Link'),
+  },
+  {
+    title: t('initiative3Title'),
+    description: t('initiative3Description'),
+    link: t('initiative3Link'),
+  },
+  {
+    title: t('initiative4Title'),
+    description: t('initiative4Description'),
+    link: t('initiative4Link'),
+  },
+].filter((item) => item.title && item.description && item.link);
+
+const competencies = [
+  {
+    title: t('competency1Title'),
+    description: t('competency1Description'),
+  },
+  {
+    title: t('competency2Title'),
+    description: t('competency2Description'),
+  },
+  {
+    title: t('competency3Title'),
+    description: t('competency3Description'),
+  },
+  {
+    title: t('competency4Title'),
+    description: t('competency4Description'),
+  },
+];
+
+const heroHeadline = t('heroHeadline');
+const heroSubheading = t('heroSubheading');
+const impactHeading = t('impactHeading');
+const initiativesTitle = t('initiativesTitle');
+const initiativesSubtitle = t('initiativesSubtitle');
+const competenciesTitle = t('competenciesTitle');
+const competenciesSubtitle = t('competenciesSubtitle');
+const aboutTitle = t('aboutTitle');
+const aboutSummary = t('aboutSummary');
+const aboutCtaLabel = t('aboutCtaLabel');
+const writingTitle = t('writingTitle');
+const writingSubtitle = t('writingSubtitle');
+const writingReadMoreLabel = t('writingReadMoreLabel');
+const writingEmptyState = t('writingEmptyState');
+const contactTitle = t('contactTitle');
+const contactSubtitle = t('contactSubtitle');
+const contactCtaLabel = t('contactCtaLabel');
+const heroPrimaryCta = t('heroPrimaryCta');
+const heroSecondaryCta = t('heroSecondaryCta');
+const heroImageAlt = t('heroImageAlt');
 ---
 
-<section class="py-12 md:py-16">
-  <div class="grid md:grid-cols-2 gap-12 items-center justify-between">
-    {/* Hero Text Column */}
-    <div class="text-center md:text-left">
-      <h1
-        class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
-      >
-        {heroGreeting}
+<section class="relative overflow-hidden rounded-3xl bg-slate-950 text-slate-50">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.25),_transparent_55%)]" />
+    <div class="absolute -top-24 -right-16 h-64 w-64 rounded-full bg-amber-500/30 blur-3xl" />
+    <div class="absolute -bottom-24 -left-14 h-72 w-72 rounded-full bg-primary/25 blur-3xl" />
+  </div>
+  <div class="relative container mx-auto flex flex-col gap-12 px-4 py-16 md:flex-row md:items-center md:py-20">
+    <div class="max-w-xl space-y-6 text-center md:text-left">
+      <p class="text-sm uppercase tracking-[0.3em] text-primary/70">
+        AI Strategy & Delivery
+      </p>
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+        {heroHeadline}
       </h1>
-      <p class="text-2xl md:text-3xl font-medium text-muted-foreground mb-2">
-        <span>{heroSubtitlePart1}</span>
-        <span class="text-primary"> | </span>
-        <span>{heroSubtitlePart2}</span>
+      <p class="text-lg text-slate-200">
+        {heroSubheading}
       </p>
-      <p class="text-lg text-muted-foreground mb-8">
-        {heroIntroduction}
-      </p>
-      <div
-        class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-      >
+      <div class="flex flex-col items-center gap-4 sm:flex-row md:justify-start">
         <a
           href="/projects"
           class={buttonVariants({ variant: 'default', size: 'lg' })}
         >
-          <Dumbbell className="mr-2 size-4" />
-          {heroViewWorkButton}
+          <ArrowRight className="h-4 w-4" />
+          {heroPrimaryCta}
         </a>
         <a
-          href="/contact"
-          class={buttonVariants({ variant: 'outline', size: 'lg' })}
+          href="/writing"
+          class={buttonVariants({ variant: 'secondary', size: 'lg' })}
         >
-          <Calendar className="mr-2 size-4" />
-          {heroContactButton}
+          <BookOpen className="h-4 w-4" />
+          {heroSecondaryCta}
         </a>
       </div>
     </div>
-
-    {/* Hero Image (Placeholder for now) */}
-    <div class="md:text-center">
-      <div
-        class="md:w-[600px] w-full h-92 bg-muted rounded-lg shadow-xl overflow-hidden"
-      >
+    <div class="relative mx-auto w-full max-w-sm">
+      <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/50 via-amber-500/25 to-transparent blur-3xl" />
+      <div class="relative overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/10 to-slate-950/60" />
         <Image
-          src={heroImage}
-          alt={'User profile image'}
-          width={600}
-          height={368}
+          src={heroPortrait}
+          alt={heroImageAlt}
+          width={520}
+          height={640}
           densities={[1, 1.5, 2]}
-          quality="high"
-          class="h-full w-full object-cover"
-          style="object-position: center 28%;"
+          class="relative h-full w-full object-cover"
         />
       </div>
     </div>
   </div>
 </section>
 
-{/* Featured Projects Section */}
-<section id="projects" class="py-12 md:py-16 bg-muted/20 dark:bg-muted/10">
-  <Heading
-    title={featuredProjectsTitle}
-    description={featuredProjectsDescription}
-    className="flex flex-col items-center"
-  />
+<section class="container mx-auto px-4 py-12">
+  <div class="rounded-3xl border bg-background/90 shadow-sm">
+    <div class="px-6 pt-8 text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+        {impactHeading}
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-4 px-6 py-8 text-center sm:grid-cols-4">
+      {
+        impactHighlights.map((highlight) => (
+          <div
+            key={highlight}
+            class="rounded-2xl border border-border/60 bg-muted/40 px-4 py-6 text-sm font-medium text-foreground shadow-sm"
+          >
+            {highlight}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section class="container mx-auto px-4 py-12">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="max-w-2xl space-y-3">
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        {initiativesTitle}
+      </h2>
+      <p class="text-lg text-muted-foreground">
+        {initiativesSubtitle}
+      </p>
+    </div>
+    <a
+      href="/projects"
+      class={buttonVariants({ variant: 'outline', size: 'lg' })}
+    >
+      <ArrowRight className="h-4 w-4" />
+      {heroPrimaryCta}
+    </a>
+  </div>
+  <div class="mt-8 grid gap-6 lg:grid-cols-2">
     {
-      projects.slice(0, 3).map((project: TranslatedProject) => {
-        return (
-          <FeaturedProjectPreview
-            slug={project.slug}
-            title={project.title}
-            imageUrl={project.imageUrl}
-            imageAltText={project.imageAltText}
-            ctaText={projectPreviewCtaText}
-          />
-        );
-      })
+      initiatives.map((initiative) => (
+        <Card key={initiative.title} className="h-full border-border/60 bg-card/95">
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold">
+              {initiative.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <CardDescription className="text-base text-muted-foreground">
+              {initiative.description}
+            </CardDescription>
+          </CardContent>
+          <CardFooter className="border-t border-border/60 pt-6">
+            <a
+              href={initiative.link}
+              class="group inline-flex items-center text-sm font-semibold text-primary"
+            >
+              {t('initiativeCtaLabel')}
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </CardFooter>
+        </Card>
+      ))
     }
   </div>
 </section>
 
-{/* Skills Section */}
-<section id="skills" class="py-12 md:py-16">
-  <div class="container mx-auto px-4">
-    <Heading
-      title={mySkillsTitle}
-      description={mySkillsDescription}
-      className="flex flex-col items-center"
-    />
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {
-        skills.map((skill) => (
-          <SkillCard
-            title={skill.title}
-            description={skill.description}
-            iconName={skill.iconName}
-            technologies={skill.technologies}
-          />
-        ))
-      }
+<section class="container mx-auto px-4 py-12">
+  <div class="space-y-3 text-center">
+    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+      {competenciesTitle}
+    </h2>
+    <p class="text-lg text-muted-foreground">
+      {competenciesSubtitle}
+    </p>
+  </div>
+  <div class="mt-8 grid gap-6 md:grid-cols-2">
+    {
+      competencies.map((competency) => (
+        <Card
+          key={competency.title}
+          className="h-full border-border/70 bg-muted/30"
+        >
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold">
+              {competency.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <CardDescription className="text-base text-muted-foreground">
+              {competency.description}
+            </CardDescription>
+          </CardContent>
+        </Card>
+      ))
+    }
+  </div>
+</section>
+
+<section class="container mx-auto px-4 py-12">
+  <div class="grid gap-10 rounded-3xl border bg-gradient-to-br from-muted/60 via-background to-background px-6 py-12 md:grid-cols-[2fr_1fr] md:px-10">
+    <div class="space-y-4">
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        {aboutTitle}
+      </h2>
+      <p class="text-lg leading-relaxed text-muted-foreground">
+        {aboutSummary}
+      </p>
+    </div>
+    <div class="flex items-center md:justify-end">
+      <a
+        href="/resume"
+        class={buttonVariants({ variant: 'default', size: 'lg' })}
+      >
+        <ArrowRight className="h-4 w-4" />
+        {aboutCtaLabel}
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="container mx-auto px-4 py-12">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="max-w-2xl space-y-3">
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        {writingTitle}
+      </h2>
+      <p class="text-lg text-muted-foreground">
+        {writingSubtitle}
+      </p>
+    </div>
+    <a
+      href="/writing"
+      class={buttonVariants({ variant: 'ghost', size: 'lg' })}
+    >
+      <BookOpen className="h-4 w-4" />
+      {heroSecondaryCta}
+    </a>
+  </div>
+  {
+    writingPreviews.length > 0 ? (
+      <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {
+          writingPreviews.map((post) => {
+            const postUrl = `/writing/${post.slug}`;
+            return (
+              <Card key={post.slug} className="h-full border-border/70">
+                {
+                  post.heroImage ? (
+                    <div class="h-48 w-full overflow-hidden rounded-t-xl">
+                      <Image
+                        src={post.heroImage}
+                        alt={post.heroImageAlt ?? post.title}
+                        width={720}
+                        height={400}
+                        densities={[1, 1.5, 2]}
+                        class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+                  ) : null
+                }
+                <CardHeader className={post.heroImage ? 'pt-6' : undefined}>
+                  <CardTitle className="text-xl font-semibold">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {formatDate(post.pubDate, lang)}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {
+                    post.description && (
+                      <p class="text-sm text-muted-foreground line-clamp-3">
+                        {post.description}
+                      </p>
+                    )
+                  }
+                </CardContent>
+                <CardFooter className="border-t border-border/60 pt-6">
+                  <a
+                    href={postUrl}
+                    class="group inline-flex items-center text-sm font-semibold text-primary"
+                  >
+                    {writingReadMoreLabel}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </CardFooter>
+              </Card>
+            );
+          })
+        }
+      </div>
+    ) : (
+      <div class="mt-8 rounded-2xl border border-dashed border-border/70 bg-muted/20 px-6 py-12 text-center text-muted-foreground">
+        {writingEmptyState}
+      </div>
+    )
+  }
+</section>
+
+<section class="container mx-auto px-4 pb-16">
+  <div class="relative overflow-hidden rounded-3xl border bg-slate-950 px-6 py-14 text-slate-50 md:px-12">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.25),_transparent_60%)]" />
+    <div class="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="space-y-3 max-w-2xl">
+        <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+          {contactTitle}
+        </h2>
+        <p class="text-lg text-slate-200">
+          {contactSubtitle}
+        </p>
+      </div>
+      <a
+        href="/contact"
+        class={buttonVariants({ variant: 'default', size: 'lg' })}
+      >
+        <ArrowRight className="h-4 w-4" />
+        {contactCtaLabel}
+      </a>
     </div>
   </div>
 </section>

@@ -80,27 +80,68 @@ const createInitialTranslations = () => {
       rights: 'All rights reserved.',
     },
     homePage: {
-      pageTitle: 'Home | YOUR_NAME - Data Scientist & AI Consultant',
+      pageTitle: 'Home | Roy Dabire - AI & Data Science Professional',
       pageDescription:
-        'Discover how YOUR_NAME partners with product and executive teams to deliver AI initiatives that move the numbers.',
-      heroGreeting: "Hi, I'm YOUR_NAME",
-      heroSubtitlePart1: 'Senior Data Scientist',
-      heroSubtitlePart2: 'AI Strategy Consultant',
-      heroIntroduction:
-        'I help organisations design, build, and scale data products that deliver measurable business impact.',
-      heroViewWorkButton: 'Explore Projects',
-      heroContactButton: 'Start a Conversation',
-      heroImageAlt:
-        "Abstract data visualisation illustrating YOUR_NAME's consulting practice",
-      featuredProjectsTitle: 'Featured AI Initiatives',
-      featuredProjectsDescription:
-        'Selected client engagements highlighting the path from opportunity to production-scale impact.',
-      projectCardViewProject: 'View Project',
-      projectCardViewCode: 'View Code',
-      imageNotAvailable: 'Image not available for now',
-      mySkillsTitle: 'Core Competencies',
-      mySkillsDescription:
-        'A snapshot of the strategy, engineering, and leadership capabilities I bring to every engagement.',
+        'Strategic generative AI and data science for mining and enterprise operations.',
+      heroHeadline:
+        "Hi, I'm Roy Dabire, AI & Data Science Professional | Mining Industry Innovator.",
+      heroSubheading:
+        'Helping mining and enterprise organisations design, build, and scale AI solutions that deliver measurable business impact.',
+      heroPrimaryCta: 'View My Projects',
+      heroSecondaryCta: 'Read My Writing',
+      heroImageAlt: 'Portrait of Roy Dabire',
+      impactHeading: 'Impact Across Mining & Enterprise',
+      impactHighlight1: '80% faster compliance investigations',
+      impactHighlight2: '$3M+ in mining cost savings',
+      impactHighlight3: '10,000+ employees impacted',
+      impactHighlight4: 'Responsible AI governance',
+      initiativesTitle: 'AI in Action',
+      initiativesSubtitle:
+        'Featured initiatives moving from pilot concepts to production-grade impact.',
+      initiative1Title: 'Agentic RAG System',
+      initiative1Description:
+        'Orchestrated a compliant agentic workflow that accelerates investigations by 80%.',
+      initiative1Link: '/projects/agentic-rag-system',
+      initiative2Title: 'Predictive Maintenance',
+      initiative2Description:
+        'Forecasted equipment failures and unlocked more than $3M in cost savings.',
+      initiative2Link: '/projects/predictive-maintenance',
+      initiative3Title: 'AI Job Design Tools',
+      initiative3Description:
+        'Scaled role design processes to 3,000+ positions in weeks instead of months.',
+      initiative3Link: '/projects/ai-job-design-tools',
+      initiative4Title: 'Safety Risk Detection with NLP',
+      initiative4Description:
+        'Surfaced early incident signals from unstructured logs and reports.',
+      initiative4Link: '/projects/safety-risk-detection-nlp',
+      initiativeCtaLabel: 'Learn More',
+      competenciesTitle: 'What I Deliver',
+      competenciesSubtitle:
+        'Core capabilities that unite strategy, delivery, and governance.',
+      competency1Title: 'Generative AI & RAG Systems',
+      competency1Description:
+        'Designing agentic architectures, retrieval pipelines, and safety guardrails.',
+      competency2Title: 'Applied AI in Mining',
+      competency2Description:
+        'Building predictive and prescriptive models rooted in operational realities.',
+      competency3Title: 'Data & Cloud Engineering',
+      competency3Description:
+        'Shipping production data products across Azure, Databricks, and modern stacks.',
+      competency4Title: 'Responsible AI Leadership',
+      competency4Description:
+        'Embedding governance, risk assessments, and ethical frameworks into delivery.',
+      aboutTitle: 'About Me',
+      aboutSummary:
+        'I am a mining-focused AI and data science professional at Newmont, partnering with executives, engineers, and frontline teams to translate machine learning into operational outcomes. From compliance automation to workforce design, I lead cross-functional squads, mentor talent, and embed responsible AI practices that scale globally.',
+      aboutCtaLabel: 'View My Resume',
+      writingTitle: 'Insights & Writing',
+      writingSubtitle: 'Practical guidance for leaders scaling AI and analytics.',
+      writingReadMoreLabel: 'Read More',
+      writingEmptyState: 'Writing updates coming soon.',
+      contactTitle: 'Interested in working together?',
+      contactSubtitle:
+        "Let's design the next wave of AI impact for your organisation.",
+      contactCtaLabel: 'Start a Conversation',
     },
     blogPage: {
       pageTitle: 'Writing on Data Science & AI Leadership',
