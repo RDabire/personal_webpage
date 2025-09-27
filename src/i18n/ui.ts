@@ -13,7 +13,8 @@ const createInitialTranslations = () => {
         title: 'Predictive Demand Forecasting Platform',
         description:
           'Modernised supply chain planning with a demand forecasting engine deployed across markets.',
-        imageAltText: 'Abstract visualization representing the forecasting platform',
+        imageAltText:
+          'Abstract visualization representing the forecasting platform',
         categoryText: 'AI Platform',
         dateText: 'January 2025',
         detailedDescription:
@@ -92,12 +93,13 @@ const createInitialTranslations = () => {
       heroPrimaryCta: 'View My Projects',
       heroSecondaryCta: 'Read My Writing',
       heroImageAlt: 'Portrait of Roy Dabire',
-      impactHeading: 'Impact Through AI & Data Science',
-      impactHighlight1: '80% faster workflows through AI-enabled automation',
-      impactHighlight2: '$3M+ in operational cost savings',
-      impactHighlight3: '10,000+ employees impacted across global projects',
-      impactHighlight4: 'Educating teams on AI through workshops and training',
-      initiativesTitle: 'AI in Action',
+      impactHeading: "Where I've Made an Impact",
+      impactHighlight1:
+        'Reduced manual processes by 80% with AI-driven automation',
+      impactHighlight2: 'Generated $3M+ in efficiency savings',
+      impactHighlight3: 'Impacted 10,000+ employees globally',
+      impactHighlight4: 'Educated teams on AI through workshops and training',
+      initiativesTitle: 'Project Highlights',
       initiativesSubtitle:
         'Featured initiatives moving from pilot concepts to production-grade impact.',
       initiative1Title: 'Agentic RAG System',
@@ -137,7 +139,8 @@ const createInitialTranslations = () => {
         'I am a mining-focused AI and data science professional at Newmont, partnering with executives, engineers, and frontline teams to translate machine learning into operational outcomes. From compliance automation to workforce design, I lead cross-functional squads, mentor talent, and embed responsible AI practices that scale globally.',
       aboutCtaLabel: 'View My Resume',
       writingTitle: 'Insights & Writing',
-      writingSubtitle: 'Practical guidance for leaders scaling AI and analytics.',
+      writingSubtitle:
+        'Practical guidance for leaders scaling AI and analytics.',
       writingReadMoreLabel: 'Read More',
       writingEmptyState: 'Writing updates coming soon.',
       contactTitle: 'Interested in working together?',
@@ -222,9 +225,9 @@ const createInitialTranslations = () => {
     },
     projectsPage: {
       title: 'Client Engagements',
-      metaTitle: "Projects | YOUR_NAME - Data Scientist & AI Consultant",
+      metaTitle: 'Projects | YOUR_NAME - Data Scientist & AI Consultant',
       metaDescription:
-        "Explore the transformations YOUR_NAME has delivered across AI, analytics, and data platform engagements.",
+        'Explore the transformations YOUR_NAME has delivered across AI, analytics, and data platform engagements.',
       noProjects: 'No projects to display at the moment.',
       noProjectsDescription:
         "It seems that you don't have any projects to display at the moment.",
