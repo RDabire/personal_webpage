@@ -104,19 +104,19 @@ const createInitialTranslations = () => {
         'Featured initiatives moving from pilot concepts to production-grade impact.',
       initiative1Title: 'Agentic RAG System',
       initiative1Description:
-        'Orchestrated a compliant agentic workflow that accelerates investigations by 80%.',
+        'Built a retrieval-augmented system that automated manual investigation workflows and enabled faster case reviews for compliance teams.',
       initiative1Link: '/projects/agentic-rag-system',
       initiative2Title: 'Predictive Maintenance',
       initiative2Description:
-        'Forecasted equipment failures and unlocked more than $3M in cost savings.',
+        'Developed machine learning models to forecast equipment failures, helping operational teams act before breakdowns and optimise maintenance schedules.',
       initiative2Link: '/projects/predictive-maintenance',
       initiative3Title: 'AI Job Design Tools',
       initiative3Description:
-        'Scaled role design processes to 3,000+ positions in weeks instead of months.',
+        'Created generative AI tools that streamlined job description drafting, supporting HR teams in designing thousands of roles during a large-scale restructure.',
       initiative3Link: '/projects/ai-job-design-tools',
       initiative4Title: 'Safety Risk Detection with NLP',
       initiative4Description:
-        'Surfaced early incident signals from unstructured logs and reports.',
+        'Applied natural language processing to shift logs and reports, uncovering early risk signals and giving leaders better visibility into safety issues.',
       initiative4Link: '/projects/safety-risk-detection-nlp',
       initiativeCtaLabel: 'Learn More',
       competenciesTitle: 'What I Deliver',
