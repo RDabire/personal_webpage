@@ -1,11 +1,10 @@
 export const languages = {
-  fr: { name: 'Français', flag: 'fr' },
   en: { name: 'English', flag: 'us' },
 } as const;
 
 export type LanguageCode = keyof typeof languages;
 
-export const defaultLanguage: LanguageCode = 'fr';
+export const defaultLanguage: LanguageCode = 'en';
 
 const createInitialTranslations = () => {
   return {
@@ -219,7 +218,6 @@ const createInitialTranslations = () => {
 };
 
 export const ui = {
-  fr: createInitialTranslations(),
   en: createInitialTranslations(),
 } as const;
 

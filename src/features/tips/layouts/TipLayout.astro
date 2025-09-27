@@ -1,11 +1,10 @@
 ---
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
-import { useTranslations } from '@/i18n/ui';
+import { defaultLanguage, useTranslations } from '@/i18n/ui';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { formatDate } from '@/lib/utils';
 import { render, type CollectionEntry } from 'astro:content';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { Pencil } from 'lucide-react';
 
 interface Props {
@@ -15,7 +14,7 @@ interface Props {
 const { tip } = Astro.props;
 const { Content } = await render(tip);
 
-const lang = tip.data.lang || 'fr';
+const lang = tip.data.lang || defaultLanguage;
 const t = useTranslations(lang, 'tipsPage');
 
 const GITHUB_USER = 'YOUR_GITHUB_USERNAME';
@@ -59,10 +58,7 @@ const editUrl = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/edit/${GITHUB_
     <footer
       class="mt-12 pt-8 border-t border-border flex items-center justify-between gap-4"
     >
-      <a
-        href={getRelativeLocaleUrl(lang, `/tips/`)}
-        class={buttonVariants({ variant: 'ghost' }) + ' no-underline'}
-      >
+      <a href="/tips/" class={buttonVariants({ variant: 'ghost' }) + ' no-underline'}>
         &larr; {t('backToList')}
       </a>
       <a

@@ -13,7 +13,6 @@ import { useTranslations } from '@/i18n/ui';
 import { formatDate } from '@/lib/utils';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { Clock } from 'lucide-react';
 
 interface Props {
@@ -23,10 +22,17 @@ interface Props {
 
 const { post, lang } = Astro.props;
 const t = useTranslations(lang, 'blogPost');
+
+const postSlugSegments = post.id.split('/');
+const postSlug =
+  postSlugSegments.length > 1
+    ? postSlugSegments.slice(1).join('/')
+    : postSlugSegments[0];
+const postUrl = `/blog/${postSlug}`;
 ---
 
 <a
-  href={getRelativeLocaleUrl(lang, `/blog/${post.id}`)}
+  href={postUrl}
   class="block group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 >
   <Card

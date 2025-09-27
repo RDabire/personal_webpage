@@ -23,13 +23,18 @@ const initialTag = Astro.url.searchParams.get('tag') || '';
 
 const texts = useTranslations(lang, 'blogPage');
 
+const getSlugWithoutLocale = (id: string) => {
+  const parts = id.split('/');
+  return parts.length > 1 ? parts.slice(1).join('/') : parts[0];
+};
+
 // Helper function to transform BlogEntry to PostDataForFilter
 function transformPostForClientFilter(
   post: AstroCollectionEntry<'blog'>
 ): PostDataForFilter {
   return {
     id: post.id,
-    slug: post.id ?? '',
+    slug: getSlugWithoutLocale(post.id ?? ''),
     title: post.data.title,
     description: post.data.description || '',
     tags: post.data.tags,

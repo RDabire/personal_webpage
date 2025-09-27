@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { defaultLanguage, useTranslations, type LanguageCode } from '@/i18n/ui';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { Image } from 'astro:assets';
 import errorIllustration from '@/assets/error.png';
 import errorIllustrationDark from '@/assets/error-dark.png';
@@ -40,10 +39,7 @@ const pageDescription = t('message');
         titleClassName="md:text-5xl"
       />
 
-      <a
-        href={getRelativeLocaleUrl(lang, '/')}
-        class={buttonVariants({ variant: 'default' })}
-      >
+      <a href="/" class={buttonVariants({ variant: 'default' })}>
         <ArrowLeft className="mr-2 size-4" />
         {t('homeLink')}</a
       >

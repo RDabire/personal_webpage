@@ -34,8 +34,7 @@ const { project } = Astro.props as { project: TranslatedProject };
 const t = ui[lang] ?? ui[defaultLanguage];
 
 if (!project) {
-  const base = lang === 'fr' ? '' : `/${lang}`;
-  return Astro.redirect(`${base}/404`);
+  return Astro.redirect('/404');
 }
 
 const pageTitle = `${project.title} | ${t.site.title}`;
@@ -43,5 +42,5 @@ const pageDescription = project.detailedDescription ?? project.description;
 ---
 
 <BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
-  <ProjectScreen project={project} t={t} lang={lang} />
+  <ProjectScreen project={project} t={t} />
 </BaseLayout>

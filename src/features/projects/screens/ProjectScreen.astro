@@ -2,7 +2,7 @@
 import Heading from '@/components/Heading.astro';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
-import { type LanguageCode, defaultLanguage, type ui } from '@/i18n/ui';
+import { defaultLanguage, type ui } from '@/i18n/ui';
 import { Image } from 'astro:assets';
 import { Code, ExternalLink } from 'lucide-react';
 import ProjectGallery from '../components/ProjectGallery';
@@ -10,17 +10,16 @@ import type { TranslatedProject } from '../type';
 
 export type Props = {
   project: TranslatedProject;
-  t: (typeof ui)[LanguageCode];
-  lang: LanguageCode;
+  t: (typeof ui)[typeof defaultLanguage];
 };
 
-const { project, t, lang } = Astro.props;
+const { project, t } = Astro.props;
 ---
 
 <div class="py-12 md:py-16">
   <article class="prose lg:prose-xl max-w-none dark:prose-invert">
     <a
-      href={`${lang !== defaultLanguage ? `/${lang}` : ''}/projects`}
+      href="/projects"
       class={buttonVariants({ variant: 'ghost' }) + ' mb-6 no-underline'}
     >
       &larr; {t.projectDetailPage?.backToProjects ?? 'Back to Projects'}

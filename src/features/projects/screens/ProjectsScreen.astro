@@ -1,5 +1,5 @@
 ---
-import type { LanguageCode, ui } from '@/i18n/ui';
+import { defaultLanguage, type ui } from '@/i18n/ui';
 import SectionCard from '@/components/section-card.astro';
 import { EmptyState } from '@/components/empty-state';
 import Heading from '@/components/Heading.astro';
@@ -7,11 +7,10 @@ import type { TranslatedProject } from '../type';
 
 export type Props = {
   projects: Array<TranslatedProject>;
-  t: (typeof ui)[LanguageCode];
-  lang: LanguageCode;
+  t: (typeof ui)[typeof defaultLanguage];
 };
 
-const { projects, t, lang } = Astro.props;
+const { projects, t } = Astro.props;
 const projectsPageTranslations = t.projectsPage; // For easier access
 ---
 
@@ -21,7 +20,7 @@ const projectsPageTranslations = t.projectsPage; // For easier access
     projects && projects.length > 0 ? (
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project: TranslatedProject) => {
-          const projectUrl = `${lang === 'fr' ? '' : '/' + lang}/projects/${project.slug}`;
+          const projectUrl = `/projects/${project.slug}`;
           return (
             <a
               href={projectUrl}

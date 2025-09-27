@@ -11,7 +11,6 @@ import { useTranslations, type LanguageCode } from '@/i18n/ui';
 import { formatDate } from '@/lib/utils';
 
 import type { CollectionEntry } from 'astro:content';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { Calendar, ChevronRight } from 'lucide-react';
 
 interface Props {
@@ -21,6 +20,13 @@ interface Props {
 
 const { tip, lang } = Astro.props;
 const t = useTranslations(lang, 'tipsPage');
+
+const tipSlugSegments = tip.id.split('/');
+const tipSlug =
+  tipSlugSegments.length > 1
+    ? tipSlugSegments.slice(1).join('/')
+    : tipSlugSegments[0];
+const tipUrl = `/tips/${tipSlug}/`;
 ---
 
 <Card
@@ -34,10 +40,7 @@ const t = useTranslations(lang, 'tipsPage');
     <CardTitle
       className="text-xl font-semibold group-hover:text-primary transition-colors pr-12"
     >
-      <a
-        href={getRelativeLocaleUrl(lang, `/tips/${tip.id}/`)}
-        class="hover:underline"
-      >
+      <a href={tipUrl} class="hover:underline">
         {tip.data.title}
       </a>
     </CardTitle>
@@ -74,7 +77,7 @@ const t = useTranslations(lang, 'tipsPage');
       class="flex items-center justify-between w-full border-t border-border/50 pt-4"
     >
       <a
-        href={getRelativeLocaleUrl(lang, `/tips/${tip.id}/`)}
+        href={tipUrl}
         class="flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link"
       >
         {t('readTip')}

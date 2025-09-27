@@ -19,11 +19,11 @@ const projectsPageTranslations = t.projectsPage;
 const metaTitle =
   projectsPageTranslations?.metaTitle ??
   projectsPageTranslations?.title ??
-  'Mes Projets';
+  'My Projects';
 const metaDescription =
-  projectsPageTranslations?.metaDescription ?? 'Liste de tous mes projets.';
+  projectsPageTranslations?.metaDescription ?? 'List of all projects.';
 ---
 
 <BaseLayout pageTitle={metaTitle} pageDescription={metaDescription}>
-  <ProjectsScreen projects={projects} t={t} lang={lang} />
+  <ProjectsScreen projects={projects} t={t} />
 </BaseLayout>
