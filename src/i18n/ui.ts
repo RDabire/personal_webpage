@@ -118,19 +118,19 @@ const createInitialTranslations = () => {
       initiative4Description:
         'Applied natural language processing to shift logs and reports, uncovering early risk signals and giving leaders better visibility into safety issues.',
       initiative4Link: '/projects/safety-risk-detection-nlp',
-      initiativeCtaLabel: 'Learn More',
+      initiativeCtaLabel: 'Read More',
       aboutTitle: 'About Me',
       aboutSummary:
         "I'm an AI and Data Science professional with practical experience across the full lifecycle of delivering solutions from framing the right problems to developing, deploying, and maintaining them in production with MLOps. Over the years, I've led projects that blend statistical analysis, machine learning, and generative AI to solve complex challenges and deliver measurable outcomes.\n\nBeyond building systems, I enjoy teaching people about AI and helping teams build confidence in applying it responsibly. While much of my background comes from the mining and resources sector, the foundations of my work apply across industries, and I'm passionate about exploring how AI can create value wherever there are data-driven opportunities.",
       aboutCtaLabel: 'View My Resume',
       writingTitle: 'Insights & Writing',
       writingSubtitle:
-        'Practical guidance for leaders scaling AI and analytics.',
+        'Sharing practical lessons from building and scaling AI solutions.',
       writingReadMoreLabel: 'Read More',
       writingEmptyState: 'Writing updates coming soon.',
-      contactTitle: 'Interested in working together?',
+      contactTitle: "Let's Connect",
       contactSubtitle:
-        "Let's design the next wave of AI impact for your organisation.",
+        "I'm always open to conversations about AI, data science, and building practical solutions that make a difference.",
       contactCtaLabel: 'Start a Conversation',
     },
     blogPage: {
