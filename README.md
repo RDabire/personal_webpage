@@ -53,6 +53,7 @@ Welcome! This is a feature-rich Astro template designed to help you kickstart yo
     ```bash
     bun dev
     ```
+    _This project ships with a Bun alias, so `bun dev` forwards to `bun run dev` and launches Astro's dev server._
     The site will be available at `http://localhost:4321`.
 
 ## ✍️ Adding Your Content
@@ -88,6 +89,7 @@ All commands are run from the root of the project (using `bun` by default):
 | :-------------- | :-------------------------------------------------------------- |
 | `bun install`   | Installs project dependencies.                                  |
 | `bun dev`       | Starts the local development server with hot-reloading.         |
+| `bun run dev`   | Same as above, if you prefer to call the script explicitly.     |
 | `bun build`     | Builds the site for production in the `./dist/` folder.         |
 | `bun preview`   | Allows you to preview the production build locally.             |
 | `bun astro ...` | Executes Astro CLI commands (e.g., `astro add`, `astro check`). |
