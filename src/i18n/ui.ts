@@ -75,7 +75,6 @@ const createInitialTranslations = () => {
       blog: 'Writing',
       resume: 'Resume',
       contact: 'Contact',
-      tips: 'Insights',
     },
     footer: {
       rights: 'All rights reserved.',
@@ -193,22 +192,6 @@ const createInitialTranslations = () => {
       message:
         'Sorry, the page you are looking for does not seem to exist. Check the URL or return to the homepage.',
       homeLink: 'Return to Homepage',
-    },
-    tipsPage: {
-      metaTitle: 'AI Implementation Tips | YOUR_NAME',
-      metaDescription:
-        'Quick insights on driving adoption, governance, and delivery for machine learning initiatives.',
-      title: 'AI Implementation Tips',
-      description:
-        'Quick insights on driving adoption, governance, and delivery for machine learning initiatives.',
-      noTips: 'No tips to display at the moment.',
-      readTip: 'Read tip',
-      backToList: 'Back to list',
-      featuredTips: 'Featured Tips',
-      allTips: 'All Tips',
-      tipsAvailable: 'tips available',
-      tipAvailable: 'tip available',
-      editOnGithub: 'Edit on GitHub',
     },
     zodErrors: {
       // Common errors
