@@ -143,7 +143,7 @@ const createInitialTranslations = () => {
       },
     },
     site: {
-      title: 'YOUR_NAME | Data Scientist & AI Consultant',
+      title: 'Roy Dabire | AI, ML & Data Science',
       description:
         'Evidence-driven data science and AI consulting to help leadership teams ship measurable outcomes.',
     },
@@ -286,9 +286,9 @@ const createInitialTranslations = () => {
     },
     projectsPage: {
       title: 'My Work',
-      metaTitle: 'Projects | YOUR_NAME - Data Scientist & AI Consultant',
+      metaTitle: 'Projects | Roy Dabire - AI, ML & Data Science',
       metaDescription:
-        'Explore the transformations YOUR_NAME has delivered across AI, analytics, and data platform engagements.',
+        'Explore the transformations Roy Dabire has delivered across AI, analytics, and data platform engagements.',
       noProjects: 'No projects to display at the moment.',
       noProjectsDescription:
         "It seems that you don't have any projects to display at the moment.",
