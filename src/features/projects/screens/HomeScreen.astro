@@ -61,25 +61,6 @@ const initiatives = [
   },
 ].filter((item) => item.title && item.description && item.link);
 
-const competencies = [
-  {
-    title: t('competency1Title'),
-    description: t('competency1Description'),
-  },
-  {
-    title: t('competency2Title'),
-    description: t('competency2Description'),
-  },
-  {
-    title: t('competency3Title'),
-    description: t('competency3Description'),
-  },
-  {
-    title: t('competency4Title'),
-    description: t('competency4Description'),
-  },
-];
-
 const heroLabel = t('heroLabel');
 const heroHeadline = t('heroHeadline');
 const heroSubheadline = t('heroSubheadline');
@@ -87,8 +68,6 @@ const heroSupporting = t('heroSupporting');
 const impactHeading = t('impactHeading');
 const initiativesTitle = t('initiativesTitle');
 const initiativesSubtitle = t('initiativesSubtitle');
-const competenciesTitle = t('competenciesTitle');
-const competenciesSubtitle = t('competenciesSubtitle');
 const aboutTitle = t('aboutTitle');
 const aboutSummary = t('aboutSummary');
 const aboutCtaLabel = t('aboutCtaLabel');
@@ -206,38 +185,6 @@ const heroSecondaryCta = t('heroSecondaryCta');
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </CardFooter>
-        </Card>
-      ))
-    }
-  </div>
-</section>
-
-<section class="container mx-auto px-4 py-12">
-  <div class="space-y-3 text-center">
-    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-      {competenciesTitle}
-    </h2>
-    <p class="text-lg text-muted-foreground">
-      {competenciesSubtitle}
-    </p>
-  </div>
-  <div class="mt-8 grid gap-6 md:grid-cols-2">
-    {
-      competencies.map((competency) => (
-        <Card
-          key={competency.title}
-          className="h-full border-border/70 bg-muted/30"
-        >
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold">
-              {competency.title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CardDescription className="text-base text-muted-foreground">
-              {competency.description}
-            </CardDescription>
-          </CardContent>
         </Card>
       ))
     }

@@ -119,21 +119,6 @@ const createInitialTranslations = () => {
         'Applied natural language processing to shift logs and reports, uncovering early risk signals and giving leaders better visibility into safety issues.',
       initiative4Link: '/projects/safety-risk-detection-nlp',
       initiativeCtaLabel: 'Learn More',
-      competenciesTitle: 'What I Deliver',
-      competenciesSubtitle:
-        'Core capabilities that unite strategy, delivery, and governance.',
-      competency1Title: 'Generative AI & RAG Systems',
-      competency1Description:
-        'Designing agentic architectures, retrieval pipelines, and safety guardrails.',
-      competency2Title: 'Applied AI in Mining',
-      competency2Description:
-        'Building predictive and prescriptive models rooted in operational realities.',
-      competency3Title: 'Data & Cloud Engineering',
-      competency3Description:
-        'Shipping production data products across Azure, Databricks, and modern stacks.',
-      competency4Title: 'Responsible AI Leadership',
-      competency4Description:
-        'Embedding governance, risk assessments, and ethical frameworks into delivery.',
       aboutTitle: 'About Me',
       aboutSummary:
         'I am a mining-focused AI and data science professional at Newmont, partnering with executives, engineers, and frontline teams to translate machine learning into operational outcomes. From compliance automation to workforce design, I lead cross-functional squads, mentor talent, and embed responsible AI practices that scale globally.',
