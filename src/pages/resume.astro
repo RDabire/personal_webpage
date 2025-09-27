@@ -1,0 +1,99 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = 'Resume | Roy Dabire - AI & Data Science Professional';
+const pageDescription =
+  'Executive snapshot of experience, domain focus, and core capabilities.';
+---
+
+<BaseLayout {pageTitle} {pageDescription}>
+  <section class="container mx-auto max-w-3xl px-4 py-12 md:py-16 space-y-12">
+    <header class="space-y-4 text-center">
+      <h1 class="text-4xl font-bold tracking-tight">Roy Dabire</h1>
+      <p class="text-lg text-muted-foreground">
+        AI & Data Science Professional specialising in mining and enterprise
+        operations.
+      </p>
+      <a
+        class="inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10"
+        href="/cv/roy_dabire_resume.pdf"
+      >
+        Download PDF
+      </a>
+    </header>
+
+    <section class="space-y-3">
+      <h2 class="text-2xl font-semibold">Executive Summary</h2>
+      <p class="text-muted-foreground leading-relaxed">
+        Roy partners with operational leaders to translate AI concepts into
+        production-grade systems. His work spans generative AI, predictive
+        analytics, and responsible AI governance, with delivery experience
+        across the full lifecycle from discovery to MLOps.
+      </p>
+    </section>
+
+    <section class="grid gap-6 md:grid-cols-2">
+      <div class="space-y-3">
+        <h3 class="text-xl font-semibold">Core Focus Areas</h3>
+        <ul class="space-y-2 text-sm text-muted-foreground">
+          <li>Generative AI, RAG systems, and agentic workflows</li>
+          <li>Predictive and prescriptive analytics for mining operations</li>
+          <li>Data platform engineering and scalable ML deployment</li>
+          <li>Responsible AI governance and capability building</li>
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <h3 class="text-xl font-semibold">Highlights</h3>
+        <ul class="space-y-2 text-sm text-muted-foreground">
+          <li>80% faster compliance reviews with an agentic RAG platform</li>
+          <li>$3M+ in annualised savings through predictive maintenance</li>
+          <li>3,000+ roles redesigned using generative AI authoring tools</li>
+          <li>Safety insights surfaced from thousands of unstructured reports</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-2xl font-semibold">Experience Snapshot</h2>
+      <div class="space-y-4 text-sm text-muted-foreground">
+        <article>
+          <h3 class="font-semibold text-foreground">
+            Data Scientist, Generative AI &mdash; Newmont (2023 &ndash; Present)
+          </h3>
+          <p>
+            Leading delivery of agentic AI systems, NLP pipelines, and workshops
+            that enable responsible adoption across global teams.
+          </p>
+        </article>
+        <article>
+          <h3 class="font-semibold text-foreground">
+            Data Scientist &mdash; Newcrest Mining (2022 &ndash; 2023)
+          </h3>
+          <p>
+            Delivered predictive maintenance and safety analytics products that
+            supported multi-site operations.
+          </p>
+        </article>
+        <article>
+          <h3 class="font-semibold text-foreground">
+            Junior Data Scientist &mdash; CAPS Australia (2021)
+          </h3>
+          <p>
+            Built forecasting and automation initiatives that improved planning
+            and reporting efficiency for leadership teams.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-2xl font-semibold">Get the Full CV</h2>
+      <p class="text-muted-foreground">
+        Need the detailed breakdown of projects, certifications, or technical
+        stack? Download the PDF above or connect with Roy on
+        <a class="underline" href="https://www.linkedin.com/in/roy-dabire" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        to start a conversation.
+      </p>
+    </section>
+  </section>
+</BaseLayout>

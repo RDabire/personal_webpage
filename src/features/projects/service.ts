@@ -37,6 +37,74 @@ const projectsListUnsorted: Array<ProjectData> = [
       { id: 'tailwindcss', name: 'TailwindCSS' },
     ],
   },
+  {
+    id: 'agenticRagSystem',
+    slug: 'agentic-rag-system',
+    imageUrl: placeholderImage,
+    tags: ['AI', 'Compliance', 'Automation'],
+    category: 'AI Automation',
+    date: '2024-04-01',
+    keyFeatures: [
+      { id: 'automatedInvestigations' },
+      { id: 'governanceReady' },
+    ],
+    technologiesUsed: [
+      { id: 'python', name: 'Python' },
+      { id: 'azure', name: 'Azure OpenAI' },
+      { id: 'langchain', name: 'LangChain' },
+    ],
+  },
+  {
+    id: 'predictiveMaintenance',
+    slug: 'predictive-maintenance',
+    imageUrl: placeholderImage,
+    tags: ['AI', 'Mining', 'Operations'],
+    category: 'Applied AI',
+    date: '2023-09-01',
+    keyFeatures: [
+      { id: 'failurePrediction' },
+      { id: 'maintenanceOptimisation' },
+    ],
+    technologiesUsed: [
+      { id: 'python', name: 'Python' },
+      { id: 'pyspark', name: 'PySpark' },
+      { id: 'azureml', name: 'Azure ML' },
+    ],
+  },
+  {
+    id: 'aiJobDesignTools',
+    slug: 'ai-job-design-tools',
+    imageUrl: placeholderImage,
+    tags: ['Generative AI', 'HR'],
+    category: 'Talent Transformation',
+    date: '2023-02-01',
+    keyFeatures: [
+      { id: 'rapidAuthoring' },
+      { id: 'governedTemplates' },
+    ],
+    technologiesUsed: [
+      { id: 'python', name: 'Python' },
+      { id: 'openai', name: 'OpenAI' },
+      { id: 'azure', name: 'Azure' },
+    ],
+  },
+  {
+    id: 'safetyRiskDetectionNlp',
+    slug: 'safety-risk-detection-nlp',
+    imageUrl: placeholderImage,
+    tags: ['NLP', 'Safety', 'Analytics'],
+    category: 'Operational Risk',
+    date: '2022-06-01',
+    keyFeatures: [
+      { id: 'riskSignals' },
+      { id: 'proactiveInsights' },
+    ],
+    technologiesUsed: [
+      { id: 'python', name: 'Python' },
+      { id: 'spacy', name: 'spaCy' },
+      { id: 'powerbi', name: 'Power BI' },
+    ],
+  },
 ];
 
 export const projectsList = [...projectsListUnsorted].sort((a, b) => {

@@ -111,7 +111,7 @@ const heroSecondaryCta = t('heroSecondaryCta');
           {heroPrimaryCta}
         </a>
         <a
-          href="/writing"
+          href="/blog"
           class={buttonVariants({ variant: 'secondary', size: 'lg' })}
         >
           <BookOpen className="h-4 w-4" />
@@ -224,7 +224,7 @@ const heroSecondaryCta = t('heroSecondaryCta');
       </p>
     </div>
     <a
-      href="/writing"
+      href="/blog"
       class={buttonVariants({ variant: 'ghost', size: 'lg' })}
     >
       <BookOpen className="h-4 w-4" />
@@ -236,7 +236,7 @@ const heroSecondaryCta = t('heroSecondaryCta');
       <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {
           writingPreviews.map((post) => {
-            const postUrl = `/writing/${post.slug}`;
+            const postUrl = `/blog/${post.slug}`;
             return (
               <Card key={post.slug} className="h-full border-border/70">
                 {

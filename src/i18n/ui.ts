@@ -42,6 +42,114 @@ const createInitialTranslations = () => {
         learnings:
           'Set clear governance around data contracts and aligned forecasting metrics with commercial KPIs.',
       },
+      agenticRagSystem: {
+        title: 'Agentic RAG System',
+        description:
+          'Automated compliance investigations with retrieval-augmented workflows that respond in minutes, not hours.',
+        imageAltText: 'Diagram of an AI agent retrieving compliance documents',
+        categoryText: 'AI Automation',
+        dateText: 'April 2024',
+        detailedDescription:
+          'Designed and implemented an agentic retrieval-augmented generation platform that assembles case dossiers, drafts responses, and surfaces the highest risk findings for reviewers. The system integrates with compliance tooling, applies policy guardrails, and auditable traces for regulated environments.',
+        keyFeatures: {
+          automatedInvestigations: {
+            title: 'Automated investigations',
+            description:
+              'Multi-agent workflows retrieve policies, summarise evidence, and assemble draft responses to cut review time by 80%.',
+          },
+          governanceReady: {
+            title: 'Governance ready',
+            description:
+              'Applied safety filters, escalation paths, and decision logs to meet compliance and responsible AI requirements.',
+          },
+        },
+        galleryImages: {},
+        challenges:
+          'Balancing automation gains with the need for transparent, auditable outputs that risk teams could trust.',
+        learnings:
+          'Embedding reviewers early in the design loop ensured adoption and shaped the product roadmap.',
+      },
+      predictiveMaintenance: {
+        title: 'Predictive Maintenance',
+        description:
+          'Forecasted equipment failures and optimised maintenance schedules across critical mining assets.',
+        imageAltText: 'Visual of mining equipment with predictive dashboards overlayed',
+        categoryText: 'Applied AI',
+        dateText: 'September 2023',
+        detailedDescription:
+          'Partnered with maintenance and operations teams to build machine learning models that predict failures for haul trucks, crushers, and critical plant assets. Combined time-series sensor data with work order history to anticipate breakdowns and plan interventions with minimal disruption.',
+        keyFeatures: {
+          failurePrediction: {
+            title: 'Failure prediction',
+            description:
+              'Gradient boosted models and survival analysis techniques identified early signals of equipment failure.',
+          },
+          maintenanceOptimisation: {
+            title: 'Maintenance optimisation',
+            description:
+              'Scenario planning dashboards balanced maintenance windows, production targets, and spare parts constraints.',
+          },
+        },
+        galleryImages: {},
+        challenges:
+          'Integrating disparate telemetry sources and aligning predictions with how planners schedule field crews.',
+        learnings:
+          'Co-designing visuals with planners translated complex outputs into actionable recommendations.',
+      },
+      aiJobDesignTools: {
+        title: 'AI Job Design Tools',
+        description:
+          'Scaled job description authoring during a global restructure with responsible generative AI assistants.',
+        imageAltText: 'Illustration of generative AI assisting HR teams',
+        categoryText: 'Talent Transformation',
+        dateText: 'February 2023',
+        detailedDescription:
+          'Built a suite of generative AI aides that translate competency frameworks into tailored job descriptions. Automated boilerplate drafting, highlighted required approvals, and captured feedback to continuously improve guidance for HR partners.',
+        keyFeatures: {
+          rapidAuthoring: {
+            title: 'Rapid authoring',
+            description:
+              'Generated first drafts in seconds so HR could focus on nuance, policy alignment, and stakeholder feedback.',
+          },
+          governedTemplates: {
+            title: 'Governed templates',
+            description:
+              'Embedded guardrails, language guidelines, and approval checkpoints to ensure consistency at scale.',
+          },
+        },
+        galleryImages: {},
+        challenges:
+          'Ensuring every suggestion reflected legal, cultural, and policy nuances across 10+ countries.',
+        learnings:
+          'Feedback capture loops kept the system aligned with rapidly evolving organisational requirements.',
+      },
+      safetyRiskDetectionNlp: {
+        title: 'Safety Risk Detection with NLP',
+        description:
+          'Applied natural language processing to uncover leading indicators of safety incidents from shift logs and reports.',
+        imageAltText: 'Abstract representation of text analytics surfacing safety alerts',
+        categoryText: 'Operational Risk',
+        dateText: 'June 2022',
+        detailedDescription:
+          'Developed NLP pipelines that ingest daily shift notes, incident logs, and maintenance records to surface emerging risk themes. Delivered dashboards and alerts that helped leaders prioritise interventions before incidents escalated.',
+        keyFeatures: {
+          riskSignals: {
+            title: 'Leading risk signals',
+            description:
+              'Topic modelling and entity extraction highlighted hazardous conditions and repeated near-miss patterns.',
+          },
+          proactiveInsights: {
+            title: 'Proactive insights',
+            description:
+              'Integrated alerts into operational rhythms so supervisors could respond before safety thresholds were breached.',
+          },
+        },
+        galleryImages: {},
+        challenges:
+          'Normalising unstructured narratives captured across sites, crews, and formats.',
+        learnings:
+          'Pairing qualitative reviewers with the models improved trust and actionability of AI-generated insights.',
+      },
     },
     skillsContent: {
       frontendDevelopment: {
@@ -93,13 +201,12 @@ const createInitialTranslations = () => {
       heroPrimaryCta: 'View My Projects',
       heroSecondaryCta: 'Read My Writing',
       heroImageAlt: 'Portrait of Roy Dabire',
-      impactHeading: "Where I've Made an Impact",
-      impactHighlight1:
-        'Reduced manual processes by 80% with AI-driven automation',
-      impactHighlight2: 'Generated $3M+ in efficiency savings',
-      impactHighlight3: 'Impacted 10,000+ employees globally',
-      impactHighlight4: 'Educated teams on AI through workshops and training',
-      initiativesTitle: 'Project Highlights',
+      impactHeading: 'Impact Through AI & Data Science',
+      impactHighlight1: '80% faster workflows through AI-enabled automation',
+      impactHighlight2: '$3M+ in operational cost savings',
+      impactHighlight3: '10,000+ employees impacted across global projects',
+      impactHighlight4: 'Educating teams on AI through workshops and training',
+      initiativesTitle: 'AI in Action',
       initiativesSubtitle:
         'Featured initiatives moving from pilot concepts to production-grade impact.',
       initiative1Title: 'Agentic RAG System',
