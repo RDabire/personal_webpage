@@ -12,22 +12,22 @@ const { navItems } = Astro.props as Props;
 <header
   class="py-6 border-b sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 >
-  <nav class="mx-auto px-4 max-w-screen-2xl flex justify-between items-center">
+  <nav class="mx-auto flex max-w-screen-2xl items-center px-4">
     <Logo />
-    <div class="flex items-center gap-x-5">
-      {
-        navItems.map((link) => (
-          <a
-            href={link.href}
-            class="font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
-          >
-            {link.label}
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-          </a>
-        ))
-      }
-    </div>
-    <div class="flex items-center gap-x-3">
+    <div class="ml-auto flex items-center gap-x-6">
+      <div class="flex items-center gap-x-5">
+        {
+          navItems.map((link) => (
+            <a
+              href={link.href}
+              class="font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+            >
+              {link.label}
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))
+        }
+      </div>
       <ThemeToggle />
     </div>
   </nav>
