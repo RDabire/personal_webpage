@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "format": "prettier --write . --ignore-unknown",
+    "predev": "node scripts/ensure-vercel-static.mjs",
     "dev": "astro dev",
     "astro-dev": "astro dev --host",
     "build": "astro build",
