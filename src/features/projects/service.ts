@@ -1,6 +1,10 @@
 // Import i18n utilities
 import { ui, defaultLanguage, type LanguageCode } from '@/i18n/ui';
 import placeholderImage from '@/assets/placeholder.webp';
+import agenticRagImage from '@/assets/projects/agentic_rag_system.jpg';
+import predictiveMaintenanceImage from '@/assets/projects/predictive_maintenance.jpg';
+import aiJobDesignToolsImage from '@/assets/projects/ai_job_design_tools.jpg';
+import safetyRiskDetectionImage from '@/assets/projects/safety_risk_detection_with_nlp.jpg';
 import type {
   ProjectData,
   SkillData,
@@ -10,44 +14,13 @@ import type {
 
 const projectsListUnsorted: Array<ProjectData> = [
   {
-    id: 'sampleProject', // Unique identifier for translations
-    slug: 'sample-project', // Used in the URL
-    imageUrl: placeholderImage, // Use imported ImageMetadata
-    // projectUrl: '#', // Optional: Link to the live project
-    // codeUrl: '#', // Optional: Link to the source code
-    tags: ['Astro', 'TypeScript', 'Template'], // Generic tags
-    category: 'Web Application', // Generic category
-    date: '2025-01-01', // Generic date
-    galleryImages: [
-      // Optional: Gallery images for the project
-      // {
-      //   id: 'sampleGalleryImage1',
-      //   src: placeholderImage, // Placeholder, needs ImageMetadata
-      // },
-    ],
-    keyFeatures: [
-      // Key features (IDs for translation)
-      { id: 'responsiveDesign' },
-      { id: 'contentManagement' },
-    ],
-    technologiesUsed: [
-      // Technologies used (IDs for display)
-      { id: 'astro', name: 'Astro' },
-      { id: 'typescript', name: 'TypeScript' },
-      { id: 'tailwindcss', name: 'TailwindCSS' },
-    ],
-  },
-  {
     id: 'agenticRagSystem',
     slug: 'agentic-rag-system',
-    imageUrl: placeholderImage,
+    imageUrl: agenticRagImage,
     tags: ['AI', 'Compliance', 'Automation'],
     category: 'AI Automation',
     date: '2024-04-01',
-    keyFeatures: [
-      { id: 'automatedInvestigations' },
-      { id: 'governanceReady' },
-    ],
+    keyFeatures: [{ id: 'automatedInvestigations' }, { id: 'governanceReady' }],
     technologiesUsed: [
       { id: 'python', name: 'Python' },
       { id: 'azure', name: 'Azure OpenAI' },
@@ -57,7 +30,7 @@ const projectsListUnsorted: Array<ProjectData> = [
   {
     id: 'predictiveMaintenance',
     slug: 'predictive-maintenance',
-    imageUrl: placeholderImage,
+    imageUrl: predictiveMaintenanceImage,
     tags: ['AI', 'Mining', 'Operations'],
     category: 'Applied AI',
     date: '2023-09-01',
@@ -74,14 +47,11 @@ const projectsListUnsorted: Array<ProjectData> = [
   {
     id: 'aiJobDesignTools',
     slug: 'ai-job-design-tools',
-    imageUrl: placeholderImage,
+    imageUrl: aiJobDesignToolsImage,
     tags: ['Generative AI', 'HR'],
     category: 'Talent Transformation',
     date: '2023-02-01',
-    keyFeatures: [
-      { id: 'rapidAuthoring' },
-      { id: 'governedTemplates' },
-    ],
+    keyFeatures: [{ id: 'rapidAuthoring' }, { id: 'governedTemplates' }],
     technologiesUsed: [
       { id: 'python', name: 'Python' },
       { id: 'openai', name: 'OpenAI' },
@@ -91,14 +61,11 @@ const projectsListUnsorted: Array<ProjectData> = [
   {
     id: 'safetyRiskDetectionNlp',
     slug: 'safety-risk-detection-nlp',
-    imageUrl: placeholderImage,
+    imageUrl: safetyRiskDetectionImage,
     tags: ['NLP', 'Safety', 'Analytics'],
     category: 'Operational Risk',
     date: '2022-06-01',
-    keyFeatures: [
-      { id: 'riskSignals' },
-      { id: 'proactiveInsights' },
-    ],
+    keyFeatures: [{ id: 'riskSignals' }, { id: 'proactiveInsights' }],
     technologiesUsed: [
       { id: 'python', name: 'Python' },
       { id: 'spacy', name: 'spaCy' },

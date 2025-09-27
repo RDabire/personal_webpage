@@ -9,39 +9,6 @@ export const defaultLanguage: LanguageCode = 'en';
 const createInitialTranslations = () => {
   return {
     projectsContent: {
-      sampleProject: {
-        title: 'Predictive Demand Forecasting Platform',
-        description:
-          'Modernised supply chain planning with a demand forecasting engine deployed across markets.',
-        imageAltText:
-          'Abstract visualization representing the forecasting platform',
-        categoryText: 'AI Platform',
-        dateText: 'January 2025',
-        detailedDescription:
-          'Delivered an end-to-end forecasting workflow that ingests multi-market demand signals, generates probabilistic forecasts, and pushes recommendations into the commercial CRM.',
-        keyFeatures: {
-          responsiveDesign: {
-            title: 'Signal Ingestion & Governance',
-            description:
-              'Built resilient pipelines to ingest sales, marketing, and external indicators with lineage tracking.',
-          },
-          contentManagement: {
-            title: 'Model Operations at Scale',
-            description:
-              'Implemented automated retraining, monitoring, and CI/CD to keep models production ready.',
-          },
-        },
-        galleryImages: {
-          // sampleGalleryImage1: { // If you enable gallery for the example
-          //   alt: 'Alt text for gallery image 1',
-          //   caption: 'Caption for gallery image 1',
-          // },
-        },
-        challenges:
-          'Navigated disparate tooling and limited historic data quality to establish a unified analytics foundation.',
-        learnings:
-          'Set clear governance around data contracts and aligned forecasting metrics with commercial KPIs.',
-      },
       agenticRagSystem: {
         title: 'Agentic RAG System',
         description:
@@ -73,7 +40,8 @@ const createInitialTranslations = () => {
         title: 'Predictive Maintenance',
         description:
           'Forecasted equipment failures and optimised maintenance schedules across critical mining assets.',
-        imageAltText: 'Visual of mining equipment with predictive dashboards overlayed',
+        imageAltText:
+          'Visual of mining equipment with predictive dashboards overlayed',
         categoryText: 'Applied AI',
         dateText: 'September 2023',
         detailedDescription:
@@ -127,7 +95,8 @@ const createInitialTranslations = () => {
         title: 'Safety Risk Detection with NLP',
         description:
           'Applied natural language processing to uncover leading indicators of safety incidents from shift logs and reports.',
-        imageAltText: 'Abstract representation of text analytics surfacing safety alerts',
+        imageAltText:
+          'Abstract representation of text analytics surfacing safety alerts',
         categoryText: 'Operational Risk',
         dateText: 'June 2022',
         detailedDescription:
@@ -203,10 +172,10 @@ const createInitialTranslations = () => {
       heroImageAlt: 'Portrait of Roy Dabire',
       impactHeading: 'Impact Through AI & Data Science',
       impactHighlight1: '80% faster workflows through AI-enabled automation',
-      impactHighlight2: '$3M+ in operational cost savings',
+      impactHighlight2: '$3M+ in operational cost savings delivered',
       impactHighlight3: '10,000+ employees impacted across global projects',
       impactHighlight4: 'Educating teams on AI through workshops and training',
-      initiativesTitle: 'AI in Action',
+      initiativesTitle: 'Project Highlights',
       initiativesSubtitle:
         'Featured initiatives moving from pilot concepts to production-grade impact.',
       initiative1Title: 'Agentic RAG System',
@@ -316,7 +285,7 @@ const createInitialTranslations = () => {
       viewCodeButton: 'View Code',
     },
     projectsPage: {
-      title: 'Client Engagements',
+      title: 'My Work',
       metaTitle: 'Projects | YOUR_NAME - Data Scientist & AI Consultant',
       metaDescription:
         'Explore the transformations YOUR_NAME has delivered across AI, analytics, and data platform engagements.',
