@@ -121,7 +121,7 @@ const createInitialTranslations = () => {
       initiativeCtaLabel: 'Learn More',
       aboutTitle: 'About Me',
       aboutSummary:
-        'I am a mining-focused AI and data science professional at Newmont, partnering with executives, engineers, and frontline teams to translate machine learning into operational outcomes. From compliance automation to workforce design, I lead cross-functional squads, mentor talent, and embed responsible AI practices that scale globally.',
+        "I'm an AI and Data Science professional with practical experience across the full lifecycle of delivering solutions from framing the right problems to developing, deploying, and maintaining them in production with MLOps. Over the years, I've led projects that blend statistical analysis, machine learning, and generative AI to solve complex challenges and deliver measurable outcomes.\n\nBeyond building systems, I enjoy teaching people about AI and helping teams build confidence in applying it responsibly. While much of my background comes from the mining and resources sector, the foundations of my work apply across industries, and I'm passionate about exploring how AI can create value wherever there are data-driven opportunities.",
       aboutCtaLabel: 'View My Resume',
       writingTitle: 'Insights & Writing',
       writingSubtitle:
