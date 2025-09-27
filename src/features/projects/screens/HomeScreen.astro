@@ -82,7 +82,8 @@ const competencies = [
 
 const heroLabel = t('heroLabel');
 const heroHeadline = t('heroHeadline');
-const heroSubheading = t('heroSubheading');
+const heroSubheadline = t('heroSubheadline');
+const heroSupporting = t('heroSupporting');
 const impactHeading = t('impactHeading');
 const initiativesTitle = t('initiativesTitle');
 const initiativesSubtitle = t('initiativesSubtitle');
@@ -116,8 +117,11 @@ const heroSecondaryCta = t('heroSecondaryCta');
       <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
         {heroHeadline}
       </h1>
-      <p class="text-lg text-slate-200">
-        {heroSubheading}
+      <p class="text-2xl font-semibold text-slate-100 sm:text-3xl">
+        {heroSubheadline}
+      </p>
+      <p class="text-lg text-slate-300">
+        {heroSupporting}
       </p>
       <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a

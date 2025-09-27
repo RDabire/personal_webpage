@@ -84,9 +84,10 @@ const createInitialTranslations = () => {
       pageDescription:
         'Strategic generative AI and data science for mining and enterprise operations.',
       heroLabel: 'AI, ML & Data Science',
-      heroHeadline:
-        "Hi, I'm Roy Dabire. I turn complex data challenges into practical AI solutions.",
-      heroSubheading:
+      heroHeadline: "Hi, I'm Roy Dabire.",
+      heroSubheadline:
+        'I turn complex data challenges into practical AI solutions.',
+      heroSupporting:
         'My work spans generative AI, predictive analytics, and applied machine learning. I focus on building systems that are reliable, scalable, and easy for people to use.',
       heroPrimaryCta: 'View My Projects',
       heroSecondaryCta: 'Read My Writing',
