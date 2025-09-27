@@ -83,10 +83,11 @@ const createInitialTranslations = () => {
       pageTitle: 'Home | Roy Dabire - AI & Data Science Professional',
       pageDescription:
         'Strategic generative AI and data science for mining and enterprise operations.',
+      heroLabel: 'AI, ML & Data Science',
       heroHeadline:
-        "Hi, I'm Roy Dabire, AI & Data Science Professional | Mining Industry Innovator.",
+        "Hi, I'm Roy Dabire. I turn complex data challenges into practical AI solutions.",
       heroSubheading:
-        'Helping mining and enterprise organisations design, build, and scale AI solutions that deliver measurable business impact.',
+        'My work spans generative AI, predictive analytics, and applied machine learning. I focus on building systems that are reliable, scalable, and easy for people to use.',
       heroPrimaryCta: 'View My Projects',
       heroSecondaryCta: 'Read My Writing',
       heroImageAlt: 'Portrait of Roy Dabire',
