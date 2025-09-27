@@ -1,99 +1,269 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const pageTitle = 'Resume | Roy Dabire - AI & Data Science Professional';
+const pageTitle = 'Resume | Roy Dabire – AI & Data Science Professional';
 const pageDescription =
-  'Executive snapshot of experience, domain focus, and core capabilities.';
+  'Career overview covering executive summary, focus areas, highlights, professional experience, education, and development.';
 ---
 
 <BaseLayout {pageTitle} {pageDescription}>
-  <section class="container mx-auto max-w-3xl px-4 py-12 md:py-16 space-y-12">
-    <header class="space-y-4 text-center">
+  <section class="container mx-auto max-w-4xl px-4 py-12 md:py-16 space-y-12">
+    <header class="space-y-4">
       <h1 class="text-4xl font-bold tracking-tight">Roy Dabire</h1>
       <p class="text-lg text-muted-foreground">
-        AI & Data Science Professional specialising in mining and enterprise
-        operations.
+        AI & Data Science professional translating complex data challenges into
+        production-ready solutions across mining and enterprise operations.
       </p>
-      <a
-        class="inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10"
-        href="/cv/roy_dabire_resume.pdf"
-      >
-        Download PDF
-      </a>
     </header>
 
-    <section class="space-y-3">
+    <section class="space-y-4">
       <h2 class="text-2xl font-semibold">Executive Summary</h2>
-      <p class="text-muted-foreground leading-relaxed">
-        Roy partners with operational leaders to translate AI concepts into
-        production-grade systems. His work spans generative AI, predictive
-        analytics, and responsible AI governance, with delivery experience
-        across the full lifecycle from discovery to MLOps.
-      </p>
+      <div class="space-y-4 text-muted-foreground leading-relaxed">
+        <p>
+          I am an experienced AI and Data Science professional with hands-on
+          expertise across the entire lifecycle of delivering solutions. My
+          background combines programming, applied statistics, and machine
+          learning with practical deployment experience in production
+          environments.
+        </p>
+        <p>
+          I have worked on projects spanning generative AI, predictive
+          analytics, and natural language processing, with a focus on turning
+          ideas into systems that are reliable, scalable, and trusted. My
+          experience extends from problem framing and model development through
+          to deployment, automation, and MLOps. I also enjoy teaching and
+          mentoring others, building AI literacy, and helping organisations adopt
+          AI responsibly.
+        </p>
+        <p>
+          My foundations are in the mining and resources sector, but the
+          principles of my work apply across industries. I bring a blend of
+          technical skill, operational awareness, and leadership capability that
+          enables me to translate AI from experimentation into measurable
+          business outcomes.
+        </p>
+      </div>
     </section>
 
-    <section class="grid gap-6 md:grid-cols-2">
+    <section class="grid gap-8 md:grid-cols-2">
       <div class="space-y-3">
         <h3 class="text-xl font-semibold">Core Focus Areas</h3>
-        <ul class="space-y-2 text-sm text-muted-foreground">
-          <li>Generative AI, RAG systems, and agentic workflows</li>
-          <li>Predictive and prescriptive analytics for mining operations</li>
-          <li>Data platform engineering and scalable ML deployment</li>
-          <li>Responsible AI governance and capability building</li>
+        <ul class="list-disc space-y-2 pl-6 text-muted-foreground text-sm">
+          <li>Generative AI: RAG systems, agentic workflows, conversational AI</li>
+          <li>
+            Full analytics lifecycle: descriptive, diagnostic, predictive, and
+            prescriptive solutions
+          </li>
+          <li>Cloud-based AI/ML platforms within the Azure ecosystem</li>
+          <li>MLOps practices for monitoring, automation, and lifecycle management</li>
+          <li>Responsible AI education to build confidence and safe adoption</li>
         </ul>
       </div>
       <div class="space-y-3">
         <h3 class="text-xl font-semibold">Highlights</h3>
-        <ul class="space-y-2 text-sm text-muted-foreground">
-          <li>80% faster compliance reviews with an agentic RAG platform</li>
-          <li>$3M+ in annualised savings through predictive maintenance</li>
-          <li>3,000+ roles redesigned using generative AI authoring tools</li>
-          <li>Safety insights surfaced from thousands of unstructured reports</li>
+        <ul class="list-disc space-y-2 pl-6 text-muted-foreground text-sm">
+          <li>Automated manual workflows with AI, reducing process time by 80%</li>
+          <li>Identified $3M+ in annualised savings via predictive maintenance</li>
+          <li>
+            Enabled large-scale workforce redesign with AI tools impacting 10,000+
+            employees globally
+          </li>
+          <li>Surfaced safety insights from millions of unstructured logs using NLP</li>
+          <li>Delivered AI training and workshops to build literacy across teams</li>
         </ul>
       </div>
     </section>
 
-    <section class="space-y-3">
-      <h2 class="text-2xl font-semibold">Experience Snapshot</h2>
-      <div class="space-y-4 text-sm text-muted-foreground">
-        <article>
-          <h3 class="font-semibold text-foreground">
-            Data Scientist, Generative AI &mdash; Newmont (2023 &ndash; Present)
-          </h3>
-          <p>
-            Leading delivery of agentic AI systems, NLP pipelines, and workshops
-            that enable responsible adoption across global teams.
-          </p>
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">Professional Experience</h2>
+      <div class="space-y-8 text-muted-foreground text-sm leading-relaxed">
+        <article class="space-y-3">
+          <div>
+            <h3 class="text-lg font-semibold text-foreground">
+              Data Scientist, Generative AI —
+              <a
+                class="underline decoration-primary/40 hover:decoration-primary"
+                href="https://newmont.com/home/default.aspx"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Newmont
+              </a>
+            </h3>
+            <p class="text-xs uppercase tracking-wide text-muted-foreground/80">
+              2023 – Present
+            </p>
+          </div>
+          <ul class="list-disc space-y-2 pl-6">
+            <li>
+              Designed and delivered an agentic RAG system that cut investigation
+              workflows by 80%, enabling faster, higher-confidence compliance
+              reviews.
+            </li>
+            <li>
+              Built AI-driven job design tools used to create 3,000+ roles,
+              reducing preparation time from months to weeks and powering
+              workforce mobilisation.
+            </li>
+            <li>
+              Applied advanced NLP to maintenance and shift logs to uncover
+              safety risks and guide targeted interventions.
+            </li>
+            <li>
+              Automated compliance document processing with AI, reducing
+              turnaround time by 95% and freeing specialists for higher-value
+              work.
+            </li>
+            <li>
+              Partnered with cross-functional teams and consultants to deliver
+              automation solutions impacting 10,000+ employees across multiple
+              countries.
+            </li>
+            <li>
+              Helped establish Responsible AI frameworks to ensure safe, fair,
+              and transparent deployment across enterprise initiatives.
+            </li>
+            <li>
+              Facilitated global workshops on RAG, agentic AI, and Responsible
+              AI while mentoring early-career data scientists and leading
+              distributed contributors.
+            </li>
+          </ul>
         </article>
-        <article>
-          <h3 class="font-semibold text-foreground">
-            Data Scientist &mdash; Newcrest Mining (2022 &ndash; 2023)
-          </h3>
-          <p>
-            Delivered predictive maintenance and safety analytics products that
-            supported multi-site operations.
-          </p>
+
+        <article class="space-y-3">
+          <div>
+            <h3 class="text-lg font-semibold text-foreground">
+              Data Scientist, Digital —
+              <a
+                class="underline decoration-primary/40 hover:decoration-primary"
+                href="https://newmont.com/home/default.aspx"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Newcrest (acquired by Newmont)
+              </a>
+            </h3>
+            <p class="text-xs uppercase tracking-wide text-muted-foreground/80">
+              2022 – 2023
+            </p>
+          </div>
+          <ul class="list-disc space-y-2 pl-6">
+            <li>
+              Developed predictive maintenance models that identified $3M+ in
+              cost savings by optimising schedules and extending asset uptime.
+            </li>
+            <li>
+              Created a Theory of Constraints diagnostic dashboard highlighting
+              bottlenecks and supporting operational resource reallocation.
+            </li>
+            <li>
+              Performed statistical analysis on safety data to surface leading
+              indicators that influenced risk mitigation strategies.
+            </li>
+          </ul>
         </article>
-        <article>
-          <h3 class="font-semibold text-foreground">
-            Junior Data Scientist &mdash; CAPS Australia (2021)
-          </h3>
-          <p>
-            Built forecasting and automation initiatives that improved planning
-            and reporting efficiency for leadership teams.
-          </p>
+
+        <article class="space-y-3">
+          <div>
+            <h3 class="text-lg font-semibold text-foreground">
+              Data Science Intern, Resource Estimation —
+              <a
+                class="underline decoration-primary/40 hover:decoration-primary"
+                href="https://www.fortescue.com/en"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Fortescue
+              </a>
+            </h3>
+            <p class="text-xs uppercase tracking-wide text-muted-foreground/80">
+              2021
+            </p>
+          </div>
+          <ul class="list-disc space-y-2 pl-6">
+            <li>
+              Recovered multi-million-dollar geophysical data sets using
+              statistical techniques in Python, improving downstream analytics.
+            </li>
+            <li>
+              Developed Tableau monitoring dashboards to support geophysics
+              workflows and visibility.
+            </li>
+            <li>
+              Produced QA/QC reporting that increased confidence in geophysical
+              datasets for decision-makers.
+            </li>
+          </ul>
+        </article>
+
+        <article class="space-y-3">
+          <div>
+            <h3 class="text-lg font-semibold text-foreground">
+              Junior Data Scientist —
+              <a
+                class="underline decoration-primary/40 hover:decoration-primary"
+                href="https://www.caps.com.au/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                CAPS Australia
+              </a>
+            </h3>
+            <p class="text-xs uppercase tracking-wide text-muted-foreground/80">
+              2021
+            </p>
+          </div>
+          <ul class="list-disc space-y-2 pl-6">
+            <li>
+              Built predictive models and KPI forecasts informing CEO-level
+              strategic planning and investment decisions.
+            </li>
+            <li>
+              Designed and deployed PowerApps solutions that improved workforce
+              management for 170+ staff nationwide.
+            </li>
+            <li>
+              Automated reporting workflows, saving up to one hour per
+              coordinator per day while improving data accuracy.
+            </li>
+          </ul>
         </article>
       </div>
     </section>
 
     <section class="space-y-3">
-      <h2 class="text-2xl font-semibold">Get the Full CV</h2>
-      <p class="text-muted-foreground">
-        Need the detailed breakdown of projects, certifications, or technical
-        stack? Download the PDF above or connect with Roy on
-        <a class="underline" href="https://www.linkedin.com/in/roy-dabire" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-        to start a conversation.
+      <h2 class="text-2xl font-semibold">Education</h2>
+      <p class="text-muted-foreground text-sm leading-relaxed">
+        <span class="font-medium text-foreground">
+          Bachelor of Advanced Science (Data Science)
+        </span>
+        — Curtin University, Western Australia
       </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-2xl font-semibold">Professional Development</h2>
+      <ul class="list-disc space-y-2 pl-6 text-muted-foreground text-sm">
+        <li>
+          Metcelerate Program (2023) — advanced program for resources
+          professionals combining geoscience, mining engineering, and data-driven
+          problem solving.
+        </li>
+        <li>DeepLearning.AI — Multi AI Agent Systems with CrewAI</li>
+        <li>DeepLearning.AI — Intro to Federated Learning</li>
+        <li>Udemy — ML in Production: From Data Scientist to ML Engineer</li>
+        <li>Microsoft Certified: Azure AI Engineer Associate (in progress)</li>
+      </ul>
+    </section>
+
+    <section class="space-y-3 pb-4">
+      <h2 class="text-2xl font-semibold">Achievements</h2>
+      <ul class="list-disc space-y-2 pl-6 text-muted-foreground text-sm">
+        <li>Completed two half-marathons</li>
+        <li>Silver medalist in Athletics WA 4×400m relay, representing WA</li>
+        <li>Scholarship recipient for a charity immersion program in Kenya</li>
+      </ul>
     </section>
   </section>
 </BaseLayout>
