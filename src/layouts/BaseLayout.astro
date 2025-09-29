@@ -4,7 +4,7 @@ import { defaultLanguage, useTranslations, type LanguageCode } from '@/i18n/ui';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 import BottomAppBar from '@/components/BottomAppBar.astro';
-import { Home, Briefcase, FileText, FileUser } from 'lucide-react';
+import { Home, FileText, FileUser } from 'lucide-react';
 import { ClientRouter } from 'astro:transitions';
 
 import { Toaster } from 'sonner';
@@ -29,7 +29,6 @@ const tNav = useTranslations(lang, 'nav');
 const navItems: Array<NavItem> = [
   { href: '/', label: tNav('home'), icon: Home },
   { href: '/resume', label: tNav('resume'), icon: FileUser },
-  { href: '/projects', label: tNav('projects'), icon: Briefcase },
   { href: '/blog', label: tNav('blog'), icon: FileText },
 ];
 

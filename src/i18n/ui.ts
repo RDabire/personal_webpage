@@ -8,140 +8,6 @@ export const defaultLanguage: LanguageCode = 'en';
 
 const createInitialTranslations = () => {
   return {
-    projectsContent: {
-      agenticRagSystem: {
-        title: 'Agentic RAG System',
-        description:
-          'Automated compliance investigations with retrieval-augmented workflows that respond in minutes, not hours.',
-        imageAltText: 'Diagram of an AI agent retrieving compliance documents',
-        categoryText: 'AI Automation',
-        dateText: 'April 2024',
-        detailedDescription:
-          'Designed and implemented an agentic retrieval-augmented generation platform that assembles case dossiers, drafts responses, and surfaces the highest risk findings for reviewers. The system integrates with compliance tooling, applies policy guardrails, and auditable traces for regulated environments.',
-        keyFeatures: {
-          automatedInvestigations: {
-            title: 'Automated investigations',
-            description:
-              'Multi-agent workflows retrieve policies, summarise evidence, and assemble draft responses to cut review time by 80%.',
-          },
-          governanceReady: {
-            title: 'Governance ready',
-            description:
-              'Applied safety filters, escalation paths, and decision logs to meet compliance and responsible AI requirements.',
-          },
-        },
-        galleryImages: {},
-        challenges:
-          'Balancing automation gains with the need for transparent, auditable outputs that risk teams could trust.',
-        learnings:
-          'Embedding reviewers early in the design loop ensured adoption and shaped the product roadmap.',
-      },
-      predictiveMaintenance: {
-        title: 'Predictive Maintenance',
-        description:
-          'Forecasted equipment failures and optimised maintenance schedules across critical mining assets.',
-        imageAltText:
-          'Visual of mining equipment with predictive dashboards overlayed',
-        categoryText: 'Applied AI',
-        dateText: 'September 2023',
-        detailedDescription:
-          'Partnered with maintenance and operations teams to build machine learning models that predict failures for haul trucks, crushers, and critical plant assets. Combined time-series sensor data with work order history to anticipate breakdowns and plan interventions with minimal disruption.',
-        keyFeatures: {
-          failurePrediction: {
-            title: 'Failure prediction',
-            description:
-              'Gradient boosted models and survival analysis techniques identified early signals of equipment failure.',
-          },
-          maintenanceOptimisation: {
-            title: 'Maintenance optimisation',
-            description:
-              'Scenario planning dashboards balanced maintenance windows, production targets, and spare parts constraints.',
-          },
-        },
-        galleryImages: {},
-        challenges:
-          'Integrating disparate telemetry sources and aligning predictions with how planners schedule field crews.',
-        learnings:
-          'Co-designing visuals with planners translated complex outputs into actionable recommendations.',
-      },
-      aiJobDesignTools: {
-        title: 'AI Job Design Tools',
-        description:
-          'Scaled job description authoring during a global restructure with responsible generative AI assistants.',
-        imageAltText: 'Illustration of generative AI assisting HR teams',
-        categoryText: 'Talent Transformation',
-        dateText: 'February 2023',
-        detailedDescription:
-          'Built a suite of generative AI aides that translate competency frameworks into tailored job descriptions. Automated boilerplate drafting, highlighted required approvals, and captured feedback to continuously improve guidance for HR partners.',
-        keyFeatures: {
-          rapidAuthoring: {
-            title: 'Rapid authoring',
-            description:
-              'Generated first drafts in seconds so HR could focus on nuance, policy alignment, and stakeholder feedback.',
-          },
-          governedTemplates: {
-            title: 'Governed templates',
-            description:
-              'Embedded guardrails, language guidelines, and approval checkpoints to ensure consistency at scale.',
-          },
-        },
-        galleryImages: {},
-        challenges:
-          'Ensuring every suggestion reflected legal, cultural, and policy nuances across 10+ countries.',
-        learnings:
-          'Feedback capture loops kept the system aligned with rapidly evolving organisational requirements.',
-      },
-      safetyRiskDetectionNlp: {
-        title: 'Safety Risk Detection with NLP',
-        description:
-          'Applied natural language processing to uncover leading indicators of safety incidents from shift logs and reports.',
-        imageAltText:
-          'Abstract representation of text analytics surfacing safety alerts',
-        categoryText: 'Operational Risk',
-        dateText: 'June 2022',
-        detailedDescription:
-          'Developed NLP pipelines that ingest daily shift notes, incident logs, and maintenance records to surface emerging risk themes. Delivered dashboards and alerts that helped leaders prioritise interventions before incidents escalated.',
-        keyFeatures: {
-          riskSignals: {
-            title: 'Leading risk signals',
-            description:
-              'Topic modelling and entity extraction highlighted hazardous conditions and repeated near-miss patterns.',
-          },
-          proactiveInsights: {
-            title: 'Proactive insights',
-            description:
-              'Integrated alerts into operational rhythms so supervisors could respond before safety thresholds were breached.',
-          },
-        },
-        galleryImages: {},
-        challenges:
-          'Normalising unstructured narratives captured across sites, crews, and formats.',
-        learnings:
-          'Pairing qualitative reviewers with the models improved trust and actionability of AI-generated insights.',
-      },
-    },
-    skillsContent: {
-      frontendDevelopment: {
-        title: 'Machine Learning Strategy',
-        description:
-          'Designing measurable AI programmes aligned to business objectives and regulatory constraints.',
-      },
-      backendDevelopment: {
-        title: 'Data Platform Architecture',
-        description:
-          'Building reliable data ecosystems covering ingestion, transformation, governance, and discovery.',
-      },
-      uiUxDesign: {
-        title: 'Applied AI & Analytics',
-        description:
-          'Deploying predictive, prescriptive, and generative solutions that ship to production and stay there.',
-      },
-      devOps: {
-        title: 'MLOps & Lifecycle Management',
-        description:
-          'Operationalising models with observability, automation, and cross-functional guardrails.',
-      },
-    },
     site: {
       title: 'Roy Dabire | AI, ML & Data Science',
       description:
@@ -149,7 +15,6 @@ const createInitialTranslations = () => {
     },
     nav: {
       home: 'Home',
-      projects: 'Projects',
       blog: 'Writing',
       resume: 'Resume',
       contact: 'Contact',
@@ -167,7 +32,7 @@ const createInitialTranslations = () => {
         'I help teams take ideas for AI and data science and turn them into working systems.',
       heroSupporting:
         'My best work happens when operators, engineers, and domain experts are in the same room. I connect the dots, try things out, and make sure what we build holds up in practice.',
-      heroPrimaryCta: 'See my work',
+      heroPrimaryCta: 'See my writing',
       heroSecondaryCta: 'See my resume',
       heroImageAlt: 'Portrait of Roy Dabire',
       aboutTitle: 'A little about me',
@@ -194,7 +59,7 @@ const createInitialTranslations = () => {
       contactTitle: "Let's chat",
       contactSubtitle:
         "Say hello if you're spinning up an AI project, want a second set of eyes on strategy, or just feel like swapping stories.",
-      contactCtaLabel: 'Drop me a line',
+      contactCtaLabel: 'Drop me a message',
     },
     blogPage: {
       pageTitle: 'Notes in Practice',
@@ -258,27 +123,6 @@ const createInitialTranslations = () => {
       toastErrorUnexpected: 'An unexpected error occurred.',
       toastErrorDetails: 'Error details:',
       toastErrorValidationFailed: 'Form validation failed.',
-    },
-    projectDetailPage: {
-      backToProjects: 'Back to Projects',
-      categoryLabel: 'Category:',
-      dateLabel: 'Date:',
-      aboutTitle: 'About this project',
-      keyFeaturesTitle: 'Key Features',
-      galleryTitle: 'Gallery',
-      challengesTitle: 'Challenges',
-      learningsTitle: 'Learnings',
-      visitProjectButton: 'Visit Project',
-      viewCodeButton: 'View Code',
-    },
-    projectsPage: {
-      title: 'My Work',
-      metaTitle: 'Projects | Roy Dabire - AI, ML & Data Science',
-      metaDescription:
-        'Explore the transformations Roy Dabire has delivered across AI, analytics, and data platform engagements.',
-      noProjects: 'No projects to display at the moment.',
-      noProjectsDescription:
-        "It seems that you don't have any projects to display at the moment.",
     },
     notFoundPage: {
       pageTitle: 'Page Not Found',

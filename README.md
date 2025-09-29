@@ -66,13 +66,6 @@ Welcome! This is a feature-rich Astro template designed to help you kickstart yo
 3.  Edit the frontmatter of each post (title, description, pubDate, tags, heroImage, etc.). See `example-post.mdx` for a reference.
 4.  Place your blog post images in `src/assets/blog/` or `public/` and update the `heroImage.url` path accordingly.
 
-### Portfolio Projects
-
-- The template includes a sample project. To add your own projects or modify the sample:
-  - Define your project data in `src/features/projects/service.ts` (see the `projectsData` array).
-  - Add corresponding translations (title, description, details, etc.) in `src/i18n/ui.ts` under the `projectsContent` section for each language.
-  - Ensure project images (like `imageUrl`) are correctly imported as `ImageMetadata` objects in `service.ts` if using Astro's optimized images, or place them in `public/` and use string paths.
-
 ### Customization
 
 - **Tailwind CSS**: Modify `tailwind.config.mjs` and `src/styles/global.css` (or other style files) to change the look and feel.
@@ -103,14 +96,13 @@ All commands are run from the root of the project (using `bun` by default):
 │   ├── assets/               # Astro-managed assets (e.g., blog post images if optimized by Astro)
 │   ├── components/           # Reusable Astro/React components for the whole site
 │   ├── features/             # Main feature modules
+│   │   ├── home/
+│   │   │   └── screens/      # Home page layout and supporting UI
 │   │   └── blog/
 │   │       ├── components/   # Blog-specific components (e.g., InfoAlert)
 │   │       └── content/      # YOUR BLOG ARTICLES GO HERE (en/ subfolder)
 │   │       ├── layouts/      # Layouts for blog pages
 │   │       └── ...           # Other blog-related files (types, screens)
-│   │
-│   │   └── projects/         # (Example) Portfolio projects feature - CUSTOMIZE THIS
-│   │       └── ...
 │   │
 │   ├── i18n/                 # Internationalization configuration
 │   │   └── ui.ts             # UI string translations

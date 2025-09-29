@@ -1,5 +1,5 @@
 ---
-import { PortfolioScreen } from '@/features/projects';
+import { HomeScreen } from '@/features/home';
 import { defaultLanguage, useTranslations, type LanguageCode } from '@/i18n/ui';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -39,5 +39,5 @@ const writingPreviews = blogEntries.slice(0, 3).map((entry) => {
 ---
 
 <BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
-  <PortfolioScreen lang={lang} writingPreviews={writingPreviews} />
+  <HomeScreen lang={lang} writingPreviews={writingPreviews} />
 </BaseLayout>
