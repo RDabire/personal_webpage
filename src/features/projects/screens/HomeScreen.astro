@@ -31,46 +31,12 @@ export type Props = {
 const { lang, writingPreviews } = Astro.props;
 const t = useTranslations(lang, 'homePage');
 
-const impactHighlights = [
-  t('impactHighlight1'),
-  t('impactHighlight2'),
-  t('impactHighlight3'),
-  t('impactHighlight4'),
-].filter(Boolean);
-
-const initiatives = [
-  {
-    title: t('initiative1Title'),
-    description: t('initiative1Description'),
-    link: t('initiative1Link'),
-  },
-  {
-    title: t('initiative2Title'),
-    description: t('initiative2Description'),
-    link: t('initiative2Link'),
-  },
-  {
-    title: t('initiative3Title'),
-    description: t('initiative3Description'),
-    link: t('initiative3Link'),
-  },
-  {
-    title: t('initiative4Title'),
-    description: t('initiative4Description'),
-    link: t('initiative4Link'),
-  },
-].filter((item) => item.title && item.description && item.link);
-
 const heroLabel = t('heroLabel');
 const heroHeadline = t('heroHeadline');
 const heroSubheadline = t('heroSubheadline');
 const heroSupporting = t('heroSupporting');
-const impactHeading = t('impactHeading');
-const initiativesTitle = t('initiativesTitle');
-const initiativesSubtitle = t('initiativesSubtitle');
 const aboutTitle = t('aboutTitle');
 const aboutSummary = t('aboutSummary');
-const aboutCtaLabel = t('aboutCtaLabel');
 const writingTitle = t('writingTitle');
 const writingSubtitle = t('writingSubtitle');
 const writingReadMoreLabel = t('writingReadMoreLabel');
@@ -80,227 +46,195 @@ const contactSubtitle = t('contactSubtitle');
 const contactCtaLabel = t('contactCtaLabel');
 const heroPrimaryCta = t('heroPrimaryCta');
 const heroSecondaryCta = t('heroSecondaryCta');
+const aboutParagraphs = aboutSummary.split('\n\n').filter(Boolean);
+const quickFactsTitle = t('quickFactsTitle');
+const quickFacts = [
+  {
+    label: t('quickFact1Label'),
+    value: t('quickFact1Value'),
+  },
+  {
+    label: t('quickFact2Label'),
+    value: t('quickFact2Value'),
+  },
+  {
+    label: t('quickFact3Label'),
+    value: t('quickFact3Value'),
+  },
+  {
+    label: t('quickFact4Label'),
+    value: t('quickFact4Value'),
+  },
+].filter((fact) => fact.label && fact.value);
+const writingCtaLabel = t('writingCtaLabel');
 ---
 
-<section class="relative overflow-hidden rounded-3xl bg-slate-950 text-slate-50">
-  <div class="absolute inset-0">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.25),_transparent_55%)]" />
-    <div class="absolute -top-24 -right-16 h-64 w-64 rounded-full bg-amber-500/30 blur-3xl" />
-    <div class="absolute -bottom-24 -left-14 h-72 w-72 rounded-full bg-primary/25 blur-3xl" />
-  </div>
-  <div class="relative container mx-auto px-4 py-16 md:py-20">
-    <div class="mx-auto max-w-3xl space-y-6 text-center">
-      <p class="text-sm uppercase tracking-[0.3em] text-primary/70">
+<section class="px-4 pb-16 pt-20">
+  <div class="mx-auto max-w-5xl space-y-8">
+    <div class="space-y-6">
+      <span class="inline-flex w-fit items-center rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
         {heroLabel}
-      </p>
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+      </span>
+      <h1 class="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
         {heroHeadline}
       </h1>
-      <p class="text-2xl font-semibold text-slate-100 sm:text-3xl">
+      <p class="text-lg font-medium text-muted-foreground sm:text-xl">
         {heroSubheadline}
       </p>
-      <p class="text-lg text-slate-300">
+      <p class="text-base leading-relaxed text-muted-foreground">
         {heroSupporting}
       </p>
-      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a
-          href="/projects"
-          class={buttonVariants({ variant: 'default', size: 'lg' })}
-        >
-          <ArrowRight className="h-4 w-4" />
-          {heroPrimaryCta}
-        </a>
-        <a
-          href="/blog"
-          class={buttonVariants({ variant: 'secondary', size: 'lg' })}
-        >
-          <BookOpen className="h-4 w-4" />
-          {heroSecondaryCta}
-        </a>
-      </div>
     </div>
-  </div>
-</section>
-
-<section class="container mx-auto px-4 py-12">
-  <div class="rounded-3xl border bg-background/90 shadow-sm">
-    <div class="px-6 pt-8 text-center">
-      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-        {impactHeading}
-      </p>
-    </div>
-    <div class="grid grid-cols-2 gap-4 px-6 py-8 text-center sm:grid-cols-4">
-      {
-        impactHighlights.map((highlight) => (
-          <div
-            key={highlight}
-            class="rounded-2xl border border-border/60 bg-muted/40 px-4 py-6 text-sm font-medium text-foreground shadow-sm"
-          >
-            {highlight}
-          </div>
-        ))
-      }
-    </div>
-  </div>
-</section>
-
-<section class="container mx-auto px-4 py-12">
-  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-    <div class="max-w-2xl space-y-3">
-      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-        {initiativesTitle}
-      </h2>
-      <p class="text-lg text-muted-foreground">
-        {initiativesSubtitle}
-      </p>
-    </div>
-    <a
-      href="/projects"
-      class={buttonVariants({ variant: 'outline', size: 'lg' })}
-    >
-      <ArrowRight className="h-4 w-4" />
-      {heroPrimaryCta}
-    </a>
-  </div>
-  <div class="mt-8 grid gap-6 lg:grid-cols-2">
-    {
-      initiatives.map((initiative) => (
-        <Card key={initiative.title} className="h-full border-border/60 bg-card/95">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold">
-              {initiative.title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CardDescription className="text-base text-muted-foreground">
-              {initiative.description}
-            </CardDescription>
-          </CardContent>
-          <CardFooter className="border-t border-border/60 pt-6">
-            <a
-              href={initiative.link}
-              class="group inline-flex items-center text-sm font-semibold text-primary"
-            >
-              {t('initiativeCtaLabel')}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </CardFooter>
-        </Card>
-      ))
-    }
-  </div>
-</section>
-
-<section class="container mx-auto px-4 py-12">
-  <div class="grid gap-10 rounded-3xl border bg-gradient-to-br from-muted/60 via-background to-background px-6 py-12 md:grid-cols-[2fr_1fr] md:px-10">
-    <div class="space-y-4">
-      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-        {aboutTitle}
-      </h2>
-      <p class="text-lg leading-relaxed text-muted-foreground">
-        {aboutSummary}
-      </p>
-    </div>
-    <div class="flex items-center md:justify-end">
+    <div class="flex flex-col items-start gap-4 sm:flex-row">
       <a
-        href="/resume"
+        href="/projects"
         class={buttonVariants({ variant: 'default', size: 'lg' })}
       >
-        <ArrowRight className="h-4 w-4" />
-        {aboutCtaLabel}
+        <ArrowRight className="mr-2 h-4 w-4" />
+        {heroPrimaryCta}
+      </a>
+      <a
+        href="/resume"
+        class={buttonVariants({ variant: 'secondary', size: 'lg' })}
+      >
+        <ArrowRight className="mr-2 h-4 w-4" />
+        {heroSecondaryCta}
       </a>
     </div>
   </div>
 </section>
 
-<section class="container mx-auto px-4 py-12">
-  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-    <div class="max-w-2xl space-y-3">
-      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-        {writingTitle}
-      </h2>
-      <p class="text-lg text-muted-foreground">
-        {writingSubtitle}
-      </p>
-    </div>
-    <a
-      href="/blog"
-      class={buttonVariants({ variant: 'ghost', size: 'lg' })}
-    >
-      <BookOpen className="h-4 w-4" />
-      {heroSecondaryCta}
-    </a>
-  </div>
-  {
-    writingPreviews.length > 0 ? (
-      <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+<section class="px-4 pb-16">
+  <div class="mx-auto flex max-w-5xl flex-col gap-10 md:flex-row">
+    <div class="flex-1 space-y-6 md:max-w-3xl">
+      <div class="space-y-4">
+        <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          {aboutTitle}
+        </h2>
         {
-          writingPreviews.map((post) => {
-            const postUrl = `/blog/${post.slug}`;
-            return (
-              <Card key={post.slug} className="h-full border-border/70">
-                {
-                  post.heroImage ? (
-                    <div class="h-48 w-full overflow-hidden rounded-t-xl">
-                      <Image
-                        src={post.heroImage}
-                        alt={post.heroImageAlt ?? post.title}
-                        width={720}
-                        height={400}
-                        densities={[1, 1.5, 2]}
-                        class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                    </div>
-                  ) : null
-                }
-                <CardHeader className={post.heroImage ? 'pt-6' : undefined}>
-                  <CardTitle className="text-xl font-semibold">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm text-muted-foreground">
-                    {formatDate(post.pubDate, lang)}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {
-                    post.description && (
-                      <p class="text-sm text-muted-foreground line-clamp-3">
-                        {post.description}
-                      </p>
-                    )
-                  }
-                </CardContent>
-                <CardFooter className="border-t border-border/60 pt-6">
-                  <a
-                    href={postUrl}
-                    class="group inline-flex items-center text-sm font-semibold text-primary"
-                  >
-                    {writingReadMoreLabel}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </CardFooter>
-              </Card>
-            );
-          })
+          aboutParagraphs.map((paragraph) => (
+            <p class="text-base leading-relaxed text-muted-foreground">
+              {paragraph}
+            </p>
+          ))
         }
       </div>
-    ) : (
-      <div class="mt-8 rounded-2xl border border-dashed border-border/70 bg-muted/20 px-6 py-12 text-center text-muted-foreground">
-        {writingEmptyState}
-      </div>
-    )
-  }
+    </div>
+    {
+      quickFacts.length > 0 && (
+        <div class="flex w-full max-w-md flex-col gap-4 border-t border-border/40 pt-6 text-sm md:max-w-sm md:border-l md:border-t-0 md:pl-6 md:pt-0">
+          <h3 class="text-base font-semibold text-foreground">
+            {quickFactsTitle}
+          </h3>
+          <dl class="space-y-4">
+            {
+              quickFacts.map((fact) => (
+                <div class="space-y-1">
+                  <dt class="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                    {fact.label}
+                  </dt>
+                  <dd class="text-sm leading-relaxed text-muted-foreground">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      )
+    }
+  </div>
 </section>
 
-<section class="container mx-auto px-4 pb-16">
-  <div class="relative overflow-hidden rounded-3xl border bg-slate-950 px-6 py-14 text-slate-50 md:px-12">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.25),_transparent_60%)]" />
-    <div class="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-      <div class="space-y-3 max-w-2xl">
-        <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+<section class="px-4 py-12">
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl space-y-4">
+        <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          {writingTitle}
+        </h2>
+        <p class="text-base leading-relaxed text-muted-foreground">
+          {writingSubtitle}
+        </p>
+      </div>
+      <a
+        href="/blog"
+        class={buttonVariants({ variant: 'outline', size: 'lg' })}
+      >
+        <BookOpen className="mr-2 h-4 w-4" />
+        {writingCtaLabel}
+      </a>
+    </div>
+    {
+      writingPreviews.length > 0 ? (
+        <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {
+            writingPreviews.map((post) => {
+              const postUrl = `/blog/${post.slug}`;
+              return (
+                <Card key={post.slug} className="h-full border-border/70">
+                  {
+                    post.heroImage ? (
+                      <div class="h-48 w-full overflow-hidden rounded-t-xl">
+                        <Image
+                          src={post.heroImage}
+                          alt={post.heroImageAlt ?? post.title}
+                          width={720}
+                          height={400}
+                          densities={[1, 1.5, 2]}
+                          class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                      </div>
+                    ) : null
+                  }
+                  <CardHeader className={post.heroImage ? 'pt-6' : undefined}>
+                    <CardTitle className="text-xl font-semibold">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm text-muted-foreground">
+                      {formatDate(post.pubDate, lang)}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    {
+                      post.description && (
+                        <p class="text-sm text-muted-foreground line-clamp-3">
+                          {post.description}
+                        </p>
+                      )
+                    }
+                  </CardContent>
+                  <CardFooter className="border-t border-border/60 pt-6">
+                    <a
+                      href={postUrl}
+                      class="group inline-flex items-center text-sm font-semibold text-primary"
+                    >
+                      {writingReadMoreLabel}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </CardFooter>
+                </Card>
+              );
+            })
+          }
+        </div>
+      ) : (
+        <div class="mt-8 rounded-2xl border border-dashed border-border/70 bg-muted/20 px-6 py-12 text-center text-muted-foreground">
+          {writingEmptyState}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<section class="px-4 pb-20">
+  <div class="mx-auto max-w-5xl rounded-3xl border border-border/70 bg-primary/10 px-6 py-14 md:px-12">
+    <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-2xl space-y-4">
+        <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
           {contactTitle}
         </h2>
-        <p class="text-lg text-slate-200">
+        <p class="text-base leading-relaxed text-foreground/80">
           {contactSubtitle}
         </p>
       </div>
@@ -310,7 +244,7 @@ const heroSecondaryCta = t('heroSecondaryCta');
         rel="noreferrer noopener"
         class={buttonVariants({ variant: 'default', size: 'lg' })}
       >
-        <ArrowRight className="h-4 w-4" />
+        <ArrowRight className="mr-2 h-4 w-4" />
         {contactCtaLabel}
       </a>
     </div>
