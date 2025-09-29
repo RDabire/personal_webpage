@@ -238,15 +238,24 @@ const writingCtaLabel = t('writingCtaLabel');
           {contactSubtitle}
         </p>
       </div>
-      <a
-        href="https://www.linkedin.com/in/roy-dabire"
-        target="_blank"
-        rel="noreferrer noopener"
-        class={buttonVariants({ variant: 'default', size: 'lg' })}
-      >
-        <ArrowRight className="mr-2 h-4 w-4" />
-        {contactCtaLabel}
-      </a>
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <a
+          href="https://www.linkedin.com/in/roy-dabire"
+          target="_blank"
+          rel="noreferrer noopener"
+          class={buttonVariants({ variant: 'default', size: 'lg' })}
+        >
+          <ArrowRight className="mr-2 h-4 w-4" />
+          {contactCtaLabel}
+        </a>
+        <a
+          href="mailto:roy.dabire@gmail.com"
+          class={buttonVariants({ variant: 'secondary', size: 'lg' })}
+        >
+          <ArrowRight className="mr-2 h-4 w-4" />
+          Email me
+        </a>
+      </div>
     </div>
   </div>
 </section>

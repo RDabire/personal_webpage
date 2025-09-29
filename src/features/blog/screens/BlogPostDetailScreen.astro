@@ -21,10 +21,13 @@ type Props = {
 const { post, lang, relatedPosts, filePath } = Astro.props;
 
 // Construct the GitHub edit URL
+const showEditLink = import.meta.env.DEV;
 const GITHUB_USER = 'YOUR_GITHUB_USERNAME';
 const GITHUB_REPO = 'YOUR_GITHUB_REPO';
 const GITHUB_BRANCH = 'YOUR_GITHUB_BRANCH';
-const editUrl = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/edit/${GITHUB_BRANCH}/${filePath}`;
+const editUrl = showEditLink
+  ? `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/edit/${GITHUB_BRANCH}/${filePath}`
+  : undefined;
 
 const pubDate = new Date(post.pubDate);
 const updatedDate = post.updatedDate ? new Date(post.updatedDate) : null;
@@ -98,17 +101,21 @@ const pageDescription = post.description;
     <div class="prose prose-lg dark:prose-invert max-w-none mx-auto">
       <slot />
 
-      <div class="flex justify-end">
-        <a
-          href={editUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class={buttonVariants({ variant: 'ghost' }) + ' hover:underline'}
-        >
-          <Pencil className=" size-4" />
-          {t('editOnGithub') || 'Proposer une modification sur GitHub'}
-        </a>
-      </div>
+      {
+        showEditLink && editUrl ? (
+          <div class="flex justify-end">
+            <a
+              href={editUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={buttonVariants({ variant: 'ghost' }) + ' hover:underline'}
+            >
+              <Pencil className=" size-4" />
+              {t('editOnGithub') || 'Proposer une modification sur GitHub'}
+            </a>
+          </div>
+        ) : null
+      }
     </div>
 
     <!-- Related Posts Section -->
