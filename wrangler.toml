@@ -8,4 +8,14 @@ command = "bun run build"
 
 [assets]
 binding = "ASSETS"
-directory = "dist/client"
+directory = "dist"
+include = [
+  "_astro/**",
+  "blog/**",
+  "cv/**",
+  "favicons/**"
+]
+exclude = [
+  "_worker.js",
+  "_routes.json"
+]
