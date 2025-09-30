@@ -5,6 +5,8 @@ import { getCollection, getEntries, render } from 'astro:content';
 
 let lang = defaultLanguage as LanguageCode;
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog', ({ data }) => {
     return data.isDraft !== true && data.lang === defaultLanguage;

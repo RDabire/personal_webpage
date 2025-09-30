@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { remarkReadingTime } from './src/lib/remark-reading-time.mjs';
 import rehypeMermaid from 'rehype-mermaid';
 
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 
 // Use different strategies based on environment
 const isProduction = process.env.NODE_ENV === 'production';
@@ -56,5 +56,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  adapter: vercel(),
+  output: 'server',
+
+  adapter: cloudflare(),
 });
