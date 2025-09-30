@@ -1,4 +1,4 @@
-name = "personal-webpage"
+name = "personalpage"
 main = "dist/_worker.js"
 compatibility_date = "2025-09-30"
 compatibility_flags = ["nodejs_compat"]
@@ -9,13 +9,3 @@ command = "bun run build"
 [assets]
 binding = "ASSETS"
 directory = "dist"
-include = [
-  "_astro/**",
-  "blog/**",
-  "cv/**",
-  "favicons/**"
-]
-exclude = [
-  "_worker.js",
-  "_routes.json"
-]

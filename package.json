@@ -7,7 +7,7 @@
     "predev": "node scripts/ensure-vercel-static.mjs",
     "dev": "astro dev",
     "astro-dev": "astro dev --host",
-    "build": "astro build",
+    "build": "astro build && node scripts/post-build-cloudflare.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
