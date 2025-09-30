@@ -13,15 +13,17 @@
     "--cap-add=NET_RAW"
   ],
   
-  // Allow reuse of Claude Code persistent storage
+  // Allow reuse of Claude Code and Codex persistent storage
   "mounts": [
     "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
-    "source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume"
+    "source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume",
+    "source=codex-config-${devcontainerId},target=/home/node/.codex,type=volume"
   ],
   
   // Environment configuration
   "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/node/.claude"
+    "CLAUDE_CONFIG_DIR": "/home/node/.claude",
+    "CODEX_CONFIG_DIR": "/home/node/.codex"
   },
 
   "customizations": {
@@ -33,7 +35,8 @@
         "ms-playwright.playwright",
         "formulahendry.auto-rename-tag",
         "christian-kohler.path-intellisense",
-        "ms-vscode.vscode-typescript-next"
+        "ms-vscode.vscode-typescript-next",
+        "openai.chatgpt"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
@@ -54,7 +57,7 @@
     }
   },
 
-  "postCreateCommand": "cd /workspaces/personal_webpage && npm install -g pnpm && bun install",
+  "postCreateCommand": "cd /workspaces/personal_webpage && npm install -g pnpm && bun install && sudo mkdir -p /home/node/.codex && sudo chown -R node:node /home/node/.codex",
   
   "workspaceFolder": "/workspaces/personal_webpage",
 

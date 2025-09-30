@@ -9,9 +9,9 @@ export const defaultLanguage: LanguageCode = 'en';
 const createInitialTranslations = () => {
   return {
     site: {
-      title: 'Roy Dabire | AI, ML & Data Science',
+      title: 'Roy Dabire',
       description:
-        'Evidence-driven data science and AI consulting to help leadership teams ship measurable outcomes.',
+        'Evidence-driven data science and AI leadership focused on turning enterprise operations into reliable, real-world systems.',
     },
     nav: {
       home: 'Home',
@@ -58,7 +58,7 @@ const createInitialTranslations = () => {
       writingEmptyState: 'Drafts are in progress. Check back soon!',
       contactTitle: "Let's chat",
       contactSubtitle:
-        "Say hello if you're spinning up an AI project, want a second set of eyes on strategy, or just feel like swapping stories.",
+        'Whether you’re building something new, troubleshooting an AI workflow, or just curious about applied AI, I’d love to connect.',
       contactCtaLabel: 'Drop me a message',
     },
     blogPage: {
@@ -84,7 +84,7 @@ const createInitialTranslations = () => {
       publishedOn: 'Published on: ',
       updatedOn: 'Updated on: ',
       heroImageAlt: 'Hero image for article: ',
-      backToList: 'Back to blog list',
+      backToList: 'Back to archive',
       readingTimeSuffix: 'min read',
       relatedPostsTitle: 'Continue Reading',
       readMore: 'Read more',
@@ -96,7 +96,7 @@ const createInitialTranslations = () => {
     contactPage: {
       pageTitle: 'Contact',
       pageDescription:
-        'Schedule a working session or request advisory support on your next data or AI initiative.',
+        'Schedule a working session or start the conversation about applied AI delivery inside your organisation.',
       title: 'Partner With Me',
       description:
         "Whether you need roadmap validation, fractional leadership, or hands-on delivery, I'd love to hear about it.",
