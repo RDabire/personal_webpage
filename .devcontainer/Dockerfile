@@ -68,6 +68,9 @@ ENV VISUAL=nano
 # Install Claude Code as node user
 RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
 
+# Install Gemini CLI as node user
+RUN npm install -g @google/gemini-cli
+
 # Set working directory
 WORKDIR /workspaces/personal_webpage
 

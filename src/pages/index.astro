@@ -17,15 +17,14 @@ const blogEntries: Array<CollectionEntry<'blog'>> = await getCollection(
 );
 
 blogEntries.sort(
-  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  (a, b) =>
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 
 const writingPreviews = blogEntries.slice(0, 3).map((entry) => {
   const slugSegments = entry.id.split('/');
   const slug =
-    slugSegments.length > 1
-      ? slugSegments.slice(1).join('/')
-      : slugSegments[0];
+    slugSegments.length > 1 ? slugSegments.slice(1).join('/') : slugSegments[0];
 
   return {
     slug,

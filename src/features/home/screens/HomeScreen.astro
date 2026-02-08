@@ -72,10 +72,14 @@ const writingCtaLabel = t('writingCtaLabel');
 <section class="pb-16 pt-14 md:pt-16">
   <div class="content-shell space-y-8">
     <div class="space-y-6">
-      <span class="inline-flex w-fit items-center rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+      <span
+        class="inline-flex w-fit items-center rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary"
+      >
         {heroLabel}
       </span>
-      <h1 class="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+      <h1
+        class="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+      >
         {heroHeadline}
       </h1>
       <p class="text-lg font-medium text-muted-foreground sm:text-xl">
@@ -108,7 +112,9 @@ const writingCtaLabel = t('writingCtaLabel');
   <div class="content-shell flex flex-col gap-10 md:flex-row">
     <div class="flex-1 space-y-6 md:max-w-3xl">
       <div class="space-y-4">
-        <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <h2
+          class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+        >
           {aboutTitle}
         </h2>
         {
@@ -127,18 +133,16 @@ const writingCtaLabel = t('writingCtaLabel');
             {quickFactsTitle}
           </h3>
           <dl class="space-y-4">
-            {
-              quickFacts.map((fact) => (
-                <div class="space-y-1">
-                  <dt class="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                    {fact.label}
-                  </dt>
-                  <dd class="text-sm leading-relaxed text-muted-foreground">
-                    {fact.value}
-                  </dd>
-                </div>
-              ))
-            }
+            {quickFacts.map((fact) => (
+              <div class="space-y-1">
+                <dt class="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  {fact.label}
+                </dt>
+                <dd class="text-sm leading-relaxed text-muted-foreground">
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
           </dl>
         </div>
       )
@@ -148,9 +152,13 @@ const writingCtaLabel = t('writingCtaLabel');
 
 <section class="py-12">
   <div class="content-shell">
-    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div
+      class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+    >
       <div class="max-w-2xl space-y-4">
-        <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <h2
+          class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+        >
           {writingTitle}
         </h2>
         <p class="text-base leading-relaxed text-muted-foreground">
@@ -168,55 +176,49 @@ const writingCtaLabel = t('writingCtaLabel');
     {
       writingPreviews.length > 0 ? (
         <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {
-            writingPreviews.map((post) => {
-              const postUrl = `/blog/${post.slug}`;
-              return (
-                <Card key={post.slug} className="h-full border-border/70">
-                  {
-                    post.heroImage ? (
-                      <div class="h-48 w-full overflow-hidden rounded-t-xl">
-                        <Image
-                          src={post.heroImage}
-                          alt={post.heroImageAlt ?? post.title}
-                          width={720}
-                          height={400}
-                          densities={[1, 1.5, 2]}
-                          class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                        />
-                      </div>
-                    ) : null
-                  }
-                  <CardHeader className={post.heroImage ? 'pt-6' : undefined}>
-                    <CardTitle className="text-xl font-semibold">
-                      {post.title}
-                    </CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground">
-                      {formatDate(post.pubDate, lang)}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    {
-                      post.description && (
-                        <p class="text-sm text-muted-foreground line-clamp-3">
-                          {post.description}
-                        </p>
-                      )
-                    }
-                  </CardContent>
-                  <CardFooter className="border-t border-border/60 pt-6">
-                    <a
-                      href={postUrl}
-                      class="group inline-flex items-center text-sm font-semibold text-primary"
-                    >
-                      {writingReadMoreLabel}
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </CardFooter>
-                </Card>
-              );
-            })
-          }
+          {writingPreviews.map((post) => {
+            const postUrl = `/blog/${post.slug}`;
+            return (
+              <Card key={post.slug} className="h-full border-border/70">
+                {post.heroImage ? (
+                  <div class="h-48 w-full overflow-hidden rounded-t-xl">
+                    <Image
+                      src={post.heroImage}
+                      alt={post.heroImageAlt ?? post.title}
+                      width={720}
+                      height={400}
+                      densities={[1, 1.5, 2]}
+                      class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                ) : null}
+                <CardHeader className={post.heroImage ? 'pt-6' : undefined}>
+                  <CardTitle className="text-xl font-semibold">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {formatDate(post.pubDate, lang)}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {post.description && (
+                    <p class="text-sm text-muted-foreground line-clamp-3">
+                      {post.description}
+                    </p>
+                  )}
+                </CardContent>
+                <CardFooter className="border-t border-border/60 pt-6">
+                  <a
+                    href={postUrl}
+                    class="group inline-flex items-center text-sm font-semibold text-primary"
+                  >
+                    {writingReadMoreLabel}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </CardFooter>
+              </Card>
+            );
+          })}
         </div>
       ) : (
         <div class="mt-8 rounded-2xl border border-dashed border-border/70 bg-muted/20 px-6 py-12 text-center text-muted-foreground">
@@ -228,10 +230,16 @@ const writingCtaLabel = t('writingCtaLabel');
 </section>
 
 <section class="pb-20">
-  <div class="content-shell rounded-3xl border border-border/70 bg-primary/10 px-6 py-14 md:px-12">
-    <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+  <div
+    class="content-shell rounded-3xl border border-border/70 bg-primary/10 px-6 py-14 md:px-12"
+  >
+    <div
+      class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+    >
       <div class="max-w-2xl space-y-4">
-        <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <h2
+          class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+        >
           {contactTitle}
         </h2>
         <p class="text-base leading-relaxed text-foreground/80">
