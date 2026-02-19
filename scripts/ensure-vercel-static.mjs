@@ -9,7 +9,9 @@ async function main() {
   const faviconsDestination = join(staticOutputDir, 'favicons');
 
   if (!existsSync(faviconsSource)) {
-    console.warn('[ensure-vercel-static] Skipping copy; public/favicons not found.');
+    console.warn(
+      '[ensure-vercel-static] Skipping copy; public/favicons not found.'
+    );
     return;
   }
 
@@ -22,6 +24,9 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error('[ensure-vercel-static] Failed to prepare favicons directory.', error);
+  console.error(
+    '[ensure-vercel-static] Failed to prepare favicons directory.',
+    error
+  );
   process.exit(1);
 });

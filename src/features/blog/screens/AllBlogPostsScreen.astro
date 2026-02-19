@@ -1,5 +1,4 @@
 ---
-import Heading from '@/components/Heading.astro';
 import {
   FilteredPostsList,
   type PostDataForFilter,
@@ -28,7 +27,6 @@ const getSlugWithoutLocale = (id: string) => {
   return parts.length > 1 ? parts.slice(1).join('/') : parts[0];
 };
 
-// Helper function to transform BlogEntry to PostDataForFilter
 function transformPostForClientFilter(
   post: AstroCollectionEntry<'blog'>
 ): PostDataForFilter {
@@ -40,9 +38,9 @@ function transformPostForClientFilter(
     tags: post.data.tags,
     body: post.body ?? '',
     pubDate: post.data.pubDate,
-    // heroImage and readingTimeMinutes are optional in PostDataForFilter
   };
 }
+
 const componentTexts = {
   searchPlaceholder: texts('searchPlaceholder'),
   filterByTagButtonLabel: texts('filterByTagButtonLabel'),
@@ -56,24 +54,57 @@ const t = useTranslations(lang, 'blogPage');
 
 const pageTitle = t('pageTitle');
 const pageDescription = t('pageDescription');
+
+const featuredTags = [
+  ...new Set(
+    posts
+      .flatMap((post) => post.data.tags || [])
+      .map((tag) => tag.trim())
+      .filter(Boolean)
+  ),
+].slice(0, 6);
 ---
 
 <BaseLayout {pageTitle} {pageDescription}>
-  <div class="content-shell py-8 md:py-12">
-    <Heading title={t('title')} description={t('description')} />
+  <section class="content-shell page-intro">
+    <h1 class="headline-display max-w-3xl">{t('description')}</h1>
+    <p class="lede">
+      Practical ML notes from projects, experiments, and production lessons.
+    </p>
+
+    {
+      featuredTags.length > 0 && (
+        <div class="mt-6 flex flex-wrap gap-2">
+          {featuredTags.map((tag) => (
+            <a
+              href={`/blog?tag=${encodeURIComponent(tag)}`}
+              class:list={[
+                'rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.12em] transition-colors',
+                initialTag === tag
+                  ? 'border-primary/80 bg-primary/15 text-primary'
+                  : 'border-border bg-card/50 text-muted-foreground hover:border-primary/60 hover:text-foreground',
+              ]}
+            >
+              {tag}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </section>
+
+  <section class="content-shell reveal">
     <FilteredPostsList
       client:load
       allPosts={posts.map(transformPostForClientFilter)}
       texts={componentTexts}
-      lang={lang}
       initialSearchQuery={initialSearchQuery}
       initialTag={initialTag}
     />
 
-    {/* Container for posts and "no posts found" message */}
     <div
       id="blog-posts-container"
-      class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+      class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
     >
       {
         posts.length > 0 ? (
@@ -86,15 +117,16 @@ const pageDescription = t('pageDescription');
           <EmptyState
             title={texts('noPostsFound')}
             id="no-posts-initial-message"
-            className="hidden"
+            className="hidden panel"
           />
         )
       }
     </div>
+
     <EmptyState
       title={texts('noPostsFound')}
       id="no-posts-filtered-message"
-      className="hidden"
+      className="hidden panel"
     />
 
     <script>
@@ -124,7 +156,6 @@ const pageDescription = t('pageDescription');
         allPostCardWrappers.forEach((wrapper) => {
           const postIdAttribute = wrapper.getAttribute('data-post-id');
           if (postIdAttribute !== null) {
-            // Now postIdAttribute is definitely a string
             if (currentFilteredIds.includes(postIdAttribute)) {
               wrapper.classList.remove('hidden');
               visibleCount++;
@@ -132,13 +163,12 @@ const pageDescription = t('pageDescription');
               wrapper.classList.add('hidden');
             }
           } else {
-            // If postIdAttribute is null (e.g., element doesn't have the attribute), ensure it's hidden.
             wrapper.classList.add('hidden');
           }
         });
 
         if (noPostsInitialMessage) {
-          noPostsInitialMessage.classList.add('hidden'); // Hide initial message when posts are filtered
+          noPostsInitialMessage.classList.add('hidden');
         }
 
         if (isFiltersInitialized) {
@@ -152,34 +182,17 @@ const pageDescription = t('pageDescription');
         }
       }
 
-      // Listen for changes to the filtered post IDs
-      const unsubscribePostIds =
-        filteredPostIdsAtom.subscribe(updateVisiblePosts);
+      filteredPostIdsAtom.subscribe(updateVisiblePosts);
 
-      // Listen for initialization to perform the first update
-      const unsubscribeInitialized = filtersInitializedAtom.subscribe(
-        (isInitialized: boolean) => {
-          if (isInitialized) {
-            updateVisiblePosts();
-            // We can unsubscribe from filtersInitializedAtom after the first initialization if we don't expect it to change again
-            // unsubscribeInitialized();
-          }
+      filtersInitializedAtom.subscribe((isInitialized: boolean) => {
+        if (isInitialized) {
+          updateVisiblePosts();
         }
-      );
+      });
 
-      // Clean up subscriptions when the component is destroyed (navigation)
-      // Astro doesn't automatically handle this for scripts like frameworks UI do for components.
-      // For a simple app, it's not critical, but it's a good practice.
-      // window.addEventListener('astro:page-load', () => { /* re-attach if necessary */ });
-      // window.addEventListener('astro:before-preparation', () => {
-      //   unsubscribePostIds();
-      //   unsubscribeInitialized();
-      // });
-
-      // Run once at initialization in case the store is already initialized (e.g., if the script loads after the React component)
       if (filtersInitializedAtom.get()) {
         updateVisiblePosts();
       }
     </script>
-  </div>
+  </section>
 </BaseLayout>

@@ -1,82 +1,48 @@
 ---
-import Heading from '@/components/Heading.astro';
-import { buttonVariants } from '@/components/ui/button';
-import type { LanguageCode } from '@/i18n/ui';
-import { cn } from '@/lib/utils';
-import { Calendar } from 'lucide-react';
-
-import { ContactForm } from '../components/ContactForm.tsx';
-import type { ContactFormTranslations } from '../type';
+import { CalendarDays, ArrowUpRight } from 'lucide-react';
 
 interface Props {
-  lang: LanguageCode;
   mainHeadingTitle: string;
   mainHeadingDescription: string;
-  formTitle: string;
-  formTranslations: ContactFormTranslations;
-  orSeparatorText: string;
   calendarTitle: string;
   calendarDescription: string;
-  calendarLinkLabel: string;
-  calendarUrl: string;
+  calendarBookingUrl: string;
 }
 
 const {
-  lang,
   mainHeadingTitle,
   mainHeadingDescription,
-  formTitle,
-  formTranslations,
-  orSeparatorText,
   calendarTitle,
   calendarDescription,
-  calendarLinkLabel,
-  calendarUrl,
+  calendarBookingUrl,
 } = Astro.props;
 ---
 
-<section class="py-12 md:py-16">
-  <Heading
-    title={mainHeadingTitle}
-    description={mainHeadingDescription}
-    showDivider={true}
-    className="flex flex-col items-center justify-center"
-    titleClassName="md:text-5xl"
-  />
+<section class="content-shell page-intro">
+  <h1 class="headline-display max-w-4xl">{mainHeadingTitle}</h1>
+  <p class="lede">{mainHeadingDescription}</p>
+</section>
 
-  <div class="flex justify-center mt-12">
-    <div class="w-full max-w-xl space-y-6 bg-card p-6 md:p-8 rounded-lg shadow">
-      {/* Section Formulaire */}
-      <Heading title={formTitle} className="text-center" />
-      <ContactForm client:load {lang} {formTranslations} />
-
-      {/* Séparateur OU */}
-      <div class="my-8 flex items-center">
-        <hr class="flex-grow border-border" />
-        <span class="mx-4 text-muted-foreground font-medium"
-          >{orSeparatorText}</span
-        >
-        <hr class="flex-grow border-border" />
-      </div>
-
-      {/* Section Google Calendar */}
-      <Heading
-        title={calendarTitle}
-        className="text-center"
-        description={calendarDescription}
-      />
-      <a
-        href={calendarUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class={cn(
-          'w-full mt-4',
-          buttonVariants({ variant: 'default', size: 'lg' })
-        )}
-      >
-        <Calendar className="mr-2 size-4" />
-        {calendarLinkLabel}
-      </a>
+<section class="content-shell reveal">
+  <article class="panel mx-auto max-w-3xl space-y-4">
+    <div
+      class="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs uppercase tracking-[0.14em] text-muted-foreground"
+    >
+      <CalendarDays class="size-3.5" />
+      Google Calendar
     </div>
-  </div>
+    <h2 class="section-title text-xl">{calendarTitle}</h2>
+    <p class="text-sm leading-relaxed text-muted-foreground">
+      {calendarDescription}
+    </p>
+    <a
+      href={calendarBookingUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+    >
+      Book on Google Calendar
+      <ArrowUpRight class="size-4" />
+    </a>
+  </article>
 </section>

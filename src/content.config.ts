@@ -17,7 +17,7 @@ const blogCollection = defineCollection({
         alt: z.string(),
       }),
       tags: z.array(z.string()).optional(),
-      relatedPosts: z.array(reference('blog')),
+      relatedPosts: z.array(reference('blog')).optional(),
       readingTimeMinutes: z.number().optional(), // Added by remark plugin
       isDraft: z.boolean(),
       lang: z.enum(['en']).optional().default('en'),

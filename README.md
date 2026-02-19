@@ -68,7 +68,7 @@ Welcome! This is a feature-rich Astro template designed to help you kickstart yo
 
 ### Customization
 
-- **Tailwind CSS**: Modify `tailwind.config.mjs` and `src/styles/global.css` (or other style files) to change the look and feel.
+- **Tailwind CSS**: Modify `src/styles/global.css` (or other style files) to change the look and feel.
 - **Astro Components**: Edit or create new components in `src/components/` and `src/features/**/components/`.
 - **Layouts**: Modify page layouts in `src/layouts/`.
 - **Internationalization (UI Texts)**: Update `src/i18n/ui.ts` with your translations.
@@ -112,8 +112,6 @@ All commands are run from the root of the project (using `bun` by default):
 │   └── styles/               # Global styles
 │
 ├── astro.config.mjs          # Astro configuration
-├── content.config.mjs        # Content configuration
-├── tailwind.config.mjs       # Tailwind CSS configuration
 └── package.json              # Project dependencies and scripts
 ```
 

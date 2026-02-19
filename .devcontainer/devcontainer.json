@@ -6,20 +6,17 @@
       "CLAUDE_CODE_VERSION": "latest"
     }
   },
-  
+
   // Network capabilities for Claude Code
-  "runArgs": [
-    "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW"
-  ],
-  
+  "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"],
+
   // Allow reuse of Claude Code and Codex persistent storage
   "mounts": [
     "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
     "source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume",
     "source=codex-config-${devcontainerId},target=/home/node/.codex,type=volume"
   ],
-  
+
   // Environment configuration
   "containerEnv": {
     "CLAUDE_CONFIG_DIR": "/home/node/.claude",
@@ -36,7 +33,8 @@
         "formulahendry.auto-rename-tag",
         "christian-kohler.path-intellisense",
         "ms-vscode.vscode-typescript-next",
-        "openai.chatgpt"
+        "openai.chatgpt",
+        "openai.codex"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
@@ -58,7 +56,7 @@
   },
 
   "postCreateCommand": "cd /workspaces/personal_webpage && npm install -g pnpm && bun install && sudo mkdir -p /home/node/.codex && sudo chown -R node:node /home/node/.codex",
-  
+
   "workspaceFolder": "/workspaces/personal_webpage",
 
   "remoteUser": "node"

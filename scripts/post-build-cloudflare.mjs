@@ -7,7 +7,9 @@ const ignoreFileContents = `_worker.js\n_routes.json\n`;
 
 async function main() {
   if (!existsSync(distDir)) {
-    console.warn('[post-build-cloudflare] dist directory not found; skipping .assetsignore creation.');
+    console.warn(
+      '[post-build-cloudflare] dist directory not found; skipping .assetsignore creation.'
+    );
     return;
   }
 
@@ -17,6 +19,9 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error('[post-build-cloudflare] Failed to write .assetsignore file.', error);
+  console.error(
+    '[post-build-cloudflare] Failed to write .assetsignore file.',
+    error
+  );
   process.exit(1);
 });

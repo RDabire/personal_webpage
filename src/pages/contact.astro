@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { ContactScreen } from '@/features/contact';
+import { defaultLanguage, useTranslations, type LanguageCode } from '@/i18n/ui';
+
+const lang =
+  (Astro.currentLocale as LanguageCode | undefined) ?? defaultLanguage;
+const t = useTranslations(lang, 'contactPage');
+
+const pageTitle = t('pageTitle');
+const pageDescription = t('pageDescription');
+
+const calendarBookingUrl = 'https://calendar.app.google/M1Xy5ykVhjXVQaw19';
+---
+
+<BaseLayout {pageTitle} {pageDescription}>
+  <ContactScreen
+    mainHeadingTitle={t('title')}
+    mainHeadingDescription={t('description')}
+    calendarTitle={t('calendarTitle')}
+    calendarDescription={t('calendarDescription')}
+    calendarBookingUrl={calendarBookingUrl}
+  />
+</BaseLayout>
