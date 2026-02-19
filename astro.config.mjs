@@ -11,7 +11,6 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yourname.ai', // Update with the production domain for the consultancy site
   integrations: [
     react(),
     mdx({

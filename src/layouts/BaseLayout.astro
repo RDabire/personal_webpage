@@ -141,6 +141,7 @@ const isLinkActive = (href: string) => {
               fetchpriority="high"
               decoding="async"
               unoptimized
+              onerror="this.onerror=null;this.src='/profile.jpg'"
             />
             <div>
               <p class="profile-name">Roy Dabire</p>
@@ -209,13 +210,23 @@ const isLinkActive = (href: string) => {
               fetchpriority="high"
               decoding="async"
               unoptimized
+              onerror="this.onerror=null;this.src='/profile.jpg'"
             />
             <div>
               <p>Roy Dabire</p>
-              <p>ML engineer notes</p>
             </div>
           </a>
-          <a href="/contact" class="mobile-pill">Contact</a>
+          <div class="mobile-actions" aria-label="Connect links">
+            <a href="/contact" class="mobile-pill">Contact</a>
+            <a
+              href="https://www.linkedin.com/in/roy-dabire"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="mobile-pill"
+            >
+              LinkedIn
+            </a>
+          </div>
         </header>
 
         <main id="main-content" class="site-main">

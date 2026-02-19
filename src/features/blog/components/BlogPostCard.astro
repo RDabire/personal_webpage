@@ -38,6 +38,7 @@ const postUrl = `/blog/${postSlug}`;
           loading="lazy"
           decoding="async"
           unoptimized
+          onerror="this.onerror=null;this.src='/welcom-blog-post.png'"
         />
       </div>
     ) : null
