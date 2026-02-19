@@ -326,12 +326,16 @@
     @apply rounded-full border border-border/80 bg-card/70 px-3.5 py-1.5 text-xs font-medium text-foreground;
   }
 
+  .mobile-actions {
+    @apply flex items-center gap-2;
+  }
+
   .mobile-bottom-nav {
     @apply fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 border-t border-border/80 bg-sidebar/94 px-1 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur;
   }
 
   .mobile-nav-link {
-    @apply flex flex-col items-center gap-1 rounded-lg px-1 py-2 text-[0.64rem] text-muted-foreground;
+    @apply flex flex-col items-center justify-center gap-1 rounded-lg px-1 py-2 text-center text-[0.64rem] text-muted-foreground;
   }
 
   .mobile-nav-link.is-active {
