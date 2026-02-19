@@ -1,17 +1,11 @@
 {
-  "name": "Astro Theme Starter",
-  "short_name": "AstroTheme",
+  "name": "Roy Dabire",
+  "short_name": "Roy",
   "icons": [
     {
-      "src": "/favicons/light-mode/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/favicons/light-mode/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/profile.jpg",
+      "sizes": "2736x3648",
+      "type": "image/jpeg",
       "purpose": "maskable"
     }
   ],

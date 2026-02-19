@@ -1,5 +1,5 @@
 # Base image for Node.js development using Debian Bookworm
-FROM node:20-bookworm
+FROM node:22-bookworm
 
 # Build args for versioning
 ARG CLAUDE_CODE_VERSION=latest
@@ -70,6 +70,9 @@ RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
 
 # Install Gemini CLI as node user
 RUN npm install -g @google/gemini-cli
+
+# Install OpenAI Codex CLI as node user
+RUN npm install -g @openai/codex
 
 # Set working directory
 WORKDIR /workspaces/personal_webpage

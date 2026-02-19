@@ -112,13 +112,13 @@ export function BlogFilters({
   const displayTags = [{ value: '', label: texts.allTagsLabel }, ...allTags];
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+    <div className="mb-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
       <Input
         type="search"
         placeholder={texts.searchPlaceholder}
         value={internalSearchQuery}
         onChange={handleInternalSearchChange}
-        className="w-full sm:max-w-xs"
+        className="h-11 w-full rounded-xl border-border bg-card/65 sm:max-w-sm"
       />
       <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
         <PopoverTrigger asChild>
@@ -126,7 +126,7 @@ export function BlogFilters({
             variant="outline"
             role="combobox"
             aria-expanded={popoverOpen}
-            className="w-full sm:w-[200px] justify-between"
+            className="h-11 w-full justify-between rounded-xl border-border bg-card/65 text-left sm:w-[220px]"
           >
             {internalSelectedTag &&
             allTags.find((tag) => tag.value === internalSelectedTag)
@@ -135,7 +135,7 @@ export function BlogFilters({
             <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-full sm:w-[200px] p-0">
+        <PopoverContent className="w-full rounded-xl border-border bg-popover p-0 sm:w-[220px]">
           <Command>
             <CommandInput placeholder={texts.selectTagCommandPlaceholder} />
             <CommandList>

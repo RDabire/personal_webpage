@@ -1,22 +1,32 @@
 ---
 import '../styles/global.css';
 import { defaultLanguage, useTranslations, type LanguageCode } from '@/i18n/ui';
-import Footer from '@/components/Footer.astro';
-import Header from '@/components/Header.astro';
-import BottomAppBar from '@/components/BottomAppBar.astro';
-import { Home, FileText, FileUser } from 'lucide-react';
 import { ClientRouter } from 'astro:transitions';
-
-import { Toaster } from 'sonner';
+import { Image } from 'astro:assets';
+import profileImage from '@/assets/profile.jpg';
+import {
+  Home,
+  BookOpen,
+  UserRound,
+  CalendarDays,
+  Linkedin,
+} from 'lucide-react';
 
 type Props = {
   pageTitle: string;
   pageDescription?: string;
 };
 
-export type NavItem = {
+type NavItem = {
   href: string;
   label: string;
+  icon: any;
+};
+
+type SocialItem = {
+  href: string;
+  label: string;
+  handle: string;
   icon: any;
 };
 
@@ -28,9 +38,37 @@ const tNav = useTranslations(lang, 'nav');
 
 const navItems: Array<NavItem> = [
   { href: '/', label: tNav('home'), icon: Home },
-  { href: '/resume', label: tNav('resume'), icon: FileUser },
-  { href: '/blog', label: tNav('blog'), icon: FileText },
+  { href: '/blog', label: tNav('blog'), icon: BookOpen },
+  { href: '/resume', label: tNav('resume'), icon: UserRound },
 ];
+
+const socialItems: Array<SocialItem> = [
+  {
+    href: '/contact',
+    label: tNav('contact'),
+    handle: 'Book a call',
+    icon: CalendarDays,
+  },
+  {
+    href: 'https://www.linkedin.com/in/roy-dabire',
+    label: 'LinkedIn',
+    handle: '@roy-dabire',
+    icon: Linkedin,
+  },
+];
+
+const normalizedPathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isLinkActive = (href: string) => {
+  const normalizedHref = href.replace(/\/$/, '') || '/';
+  if (normalizedHref === '/') {
+    return normalizedPathname === '/';
+  }
+
+  return (
+    normalizedPathname === normalizedHref ||
+    normalizedPathname.startsWith(`${normalizedHref}/`)
+  );
+};
 ---
 
 <!doctype html>
@@ -38,110 +76,171 @@ const navItems: Array<NavItem> = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <meta
       name="description"
       content={pageDescription || tSite('description')}
     />
 
-    <link
-      rel="icon"
-      type="image/png"
-      href="/favicons/light-mode/favicon-96x96.png"
-      sizes="96x96"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/favicons/dark-mode/favicon-96x96.png"
-      sizes="96x96"
-      media="(prefers-color-scheme: dark)"
-    />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicons/light-mode/favicon.svg"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicons/dark-mode/favicon.svg"
-      media="(prefers-color-scheme: dark)"
-    />
+    <link rel="icon" type="image/jpeg" href="/profile.jpg" />
+    <link rel="shortcut icon" href="/profile.jpg" />
+    <link rel="apple-touch-icon" href="/profile.jpg" />
 
-    <link
-      rel="shortcut icon"
-      href="/favicons/light-mode/favicon.ico"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="shortcut icon"
-      href="/favicons/dark-mode/favicon.ico"
-      media="(prefers-color-scheme: dark)"
-    />
-
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicons/light-mode/apple-touch-icon.png"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicons/dark-mode/apple-touch-icon.png"
-      media="(prefers-color-scheme: dark)"
-    />
-
-    <link
-      rel="manifest"
-      href="/favicons/light-mode/site.webmanifest"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="manifest"
-      href="/favicons/dark-mode/site.webmanifest"
-      media="(prefers-color-scheme: dark)"
-    />
-
-    <script is:inline>
-      const getInitialTheme = () => {
-        if (
-          typeof localStorage !== 'undefined' &&
-          localStorage.getItem('theme')
-        ) {
-          return localStorage.getItem('theme');
-        }
-        if (
-          window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches
-        ) {
-          return 'dark';
-        }
-        return 'light';
-      };
-      const theme = getInitialTheme();
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-      // Ensure localStorage is consistent if theme was derived from prefers-color-scheme
-      // or if localStorage was empty.
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem('theme', theme);
-      }
-    </script>
     <title>{pageTitle || tSite('title')}</title>
 
-    {/* Font, for example Google Fonts - to adapt according to your choices */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,500;10..48,700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script is:inline>
+      (() => {
+        const MEDIA_QUERY = '(prefers-color-scheme: dark)';
+        const root = document.documentElement;
+        const applySystemTheme = () => {
+          root.classList.toggle('dark', window.matchMedia(MEDIA_QUERY).matches);
+        };
+
+        applySystemTheme();
+
+        if (!window.__themeSyncInitialized) {
+          window.__themeSyncInitialized = true;
+          const media = window.matchMedia(MEDIA_QUERY);
+          const onChange = () => applySystemTheme();
+
+          if (typeof media.addEventListener === 'function') {
+            media.addEventListener('change', onChange);
+          } else if (typeof media.addListener === 'function') {
+            media.addListener(onChange);
+          }
+
+          document.addEventListener('astro:after-swap', applySystemTheme);
+          document.addEventListener('astro:page-load', applySystemTheme);
+        }
+      })();
+    </script>
+
+    <ClientRouter />
     <script
       src="https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js"
       defer></script>
   </head>
+  <body class="site-body">
+    <div class="site-layout">
+      <aside class="sidebar hidden lg:flex">
+        <div class="sidebar-inner">
+          <a href="/" class="profile-block">
+            <Image
+              src={profileImage}
+              alt="Portrait of Roy Dabire"
+              width={56}
+              height={56}
+              class="profile-avatar"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div>
+              <p class="profile-name">Roy Dabire</p>
+              <p class="profile-subtitle">Machine Learning Engineer</p>
+            </div>
+          </a>
+
+          <nav class="sidebar-nav" aria-label="Main navigation">
+            {
+              navItems.map((item) => {
+                const Icon = item.icon;
+                const active = isLinkActive(item.href);
+                return (
+                  <a
+                    href={item.href}
+                    aria-current={active ? 'page' : undefined}
+                    class:list={['sidebar-nav-link', active && 'is-active']}
+                  >
+                    <Icon class="size-4" />
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })
+            }
+          </nav>
+
+          <div class="sidebar-section-title">Connect</div>
+          <div class="sidebar-socials">
+            {
+              socialItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={
+                      item.href.startsWith('http')
+                        ? 'noreferrer noopener'
+                        : undefined
+                    }
+                    class="sidebar-social-link"
+                  >
+                    <Icon class="size-4" />
+                    <div>
+                      <p>{item.label}</p>
+                      <p>{item.handle}</p>
+                    </div>
+                  </a>
+                );
+              })
+            }
+          </div>
+        </div>
+      </aside>
+
+      <div class="main-column">
+        <header class="mobile-header lg:hidden">
+          <a href="/" class="mobile-brand">
+            <Image
+              src={profileImage}
+              alt="Portrait of Roy Dabire"
+              width={42}
+              height={42}
+              class="profile-avatar"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div>
+              <p>Roy Dabire</p>
+              <p>ML engineer notes</p>
+            </div>
+          </a>
+          <a href="/contact" class="mobile-pill">Contact</a>
+        </header>
+
+        <main id="main-content" class="site-main">
+          <slot />
+        </main>
+
+        <footer class="site-footer">
+          <p>{tSite('title')}</p>
+        </footer>
+      </div>
+    </div>
+
+    <nav class="mobile-bottom-nav lg:hidden" aria-label="Main navigation">
+      {
+        navItems.map((item) => {
+          const Icon = item.icon;
+          const active = isLinkActive(item.href);
+          return (
+            <a
+              href={item.href}
+              aria-current={active ? 'page' : undefined}
+              class:list={['mobile-nav-link', active && 'is-active']}
+            >
+              <Icon class="size-4" />
+              <span>{item.label}</span>
+            </a>
+          );
+        })
+      }
+    </nav>
+  </body>
 </html>

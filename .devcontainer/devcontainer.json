@@ -33,7 +33,8 @@
         "formulahendry.auto-rename-tag",
         "christian-kohler.path-intellisense",
         "ms-vscode.vscode-typescript-next",
-        "openai.chatgpt"
+        "openai.chatgpt",
+        "openai.codex"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
