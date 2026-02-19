@@ -62,8 +62,10 @@ const { pubDate, updatedDate } = post;
           class="w-full h-auto rounded-lg mb-8 shadow-lg"
           width={768}
           height={432}
-          densities={[1, 1.5, 2]}
-          quality="mid"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          unoptimized
         />
       )
     }
