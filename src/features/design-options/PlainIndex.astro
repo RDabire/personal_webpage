@@ -1,0 +1,44 @@
+---
+import '@/styles/global.css';
+import '@/styles/plain.css';
+import HomeScreen from '@/features/home/screens/HomeScreen.astro';
+import { getCollection } from 'astro:content';
+import { siteFeatures } from '@/config/site';
+const posts = siteFeatures.blog
+  ? await getCollection(
+      'blog',
+      ({ data }) => !data.isDraft && data.lang === 'en'
+    )
+  : [];
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const writingPreviews = posts.slice(0, 3).map((post) => ({
+  slug: post.id.includes('/') ? post.id.split('/').slice(1).join('/') : post.id,
+  title: post.data.title,
+  description: post.data.description,
+  pubDate: post.data.pubDate,
+}));
+---
+
+<div class="plain-site">
+  <div class="plain-shell">
+    <header class="plain-header">
+      <a class="plain-name" href="/">roy dabire</a><nav
+        aria-label="Site navigation"
+      >
+        {
+          siteFeatures.blog && (
+            <>
+              <a href="/blog">writing</a> /{' '}
+            </>
+          )
+        }<a href="/resume">about</a> / <a href="/contact">contact</a>
+      </nav>
+    </header>
+    <main id="main">
+      <HomeScreen lang="en" writingPreviews={writingPreviews} />
+    </main>
+    <footer class="plain-footer">
+      <span>Roy Dabire / Australia</span><a href="#main">Back to top ↑</a>
+    </footer>
+  </div>
+</div>

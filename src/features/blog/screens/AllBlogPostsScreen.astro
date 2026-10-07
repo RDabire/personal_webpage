@@ -1,198 +1,136 @@
 ---
-import {
-  FilteredPostsList,
-  type PostDataForFilter,
-} from '@/features/blog/components/FilteredPostsList';
-import { BlogPostCard } from '@/features/blog';
-import type { LanguageCode } from '@/i18n/ui';
-import { useTranslations } from '@/i18n/ui';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { type CollectionEntry as AstroCollectionEntry } from 'astro:content';
-import { EmptyState } from '@/components/empty-state';
-
-type Props = {
-  posts: AstroCollectionEntry<'blog'>[];
+import type { CollectionEntry } from 'astro:content';
+import type { LanguageCode } from '@/i18n/ui';
+interface Props {
+  posts: Array<CollectionEntry<'blog'>>;
   lang: LanguageCode;
-};
-
-const { posts, lang } = Astro.props;
-
-const initialSearchQuery = Astro.url.searchParams.get('q') || '';
-const initialTag = Astro.url.searchParams.get('tag') || '';
-
-const texts = useTranslations(lang, 'blogPage');
-
-const getSlugWithoutLocale = (id: string) => {
-  const parts = id.split('/');
-  return parts.length > 1 ? parts.slice(1).join('/') : parts[0];
-};
-
-function transformPostForClientFilter(
-  post: AstroCollectionEntry<'blog'>
-): PostDataForFilter {
-  return {
-    id: post.id,
-    slug: getSlugWithoutLocale(post.id ?? ''),
-    title: post.data.title,
-    description: post.data.description || '',
-    tags: post.data.tags,
-    body: post.body ?? '',
-    pubDate: post.data.pubDate,
-  };
 }
-
-const componentTexts = {
-  searchPlaceholder: texts('searchPlaceholder'),
-  filterByTagButtonLabel: texts('filterByTagButtonLabel'),
-  noTagFound: texts('noTagFound'),
-  selectTagCommandPlaceholder: texts('selectTagCommandPlaceholder'),
-  allTagsLabel: texts('allTagsLabel'),
-  noPostsFound: texts('noPostsFound'),
-};
-
-const t = useTranslations(lang, 'blogPage');
-
-const pageTitle = t('pageTitle');
-const pageDescription = t('pageDescription');
-
-const featuredTags = [
-  ...new Set(
-    posts
-      .flatMap((post) => post.data.tags || [])
-      .map((tag) => tag.trim())
-      .filter(Boolean)
-  ),
-].slice(0, 6);
+const { posts } = Astro.props;
+const query = Astro.url.searchParams.get('q')?.trim() || '';
+const tag = Astro.url.searchParams.get('tag') || '';
+const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort();
+const visiblePosts = posts.filter((post) => {
+  const searchable = [
+    post.data.title,
+    post.data.description || '',
+    post.body || '',
+  ]
+    .join(' ')
+    .toLowerCase();
+  return (
+    (!query || searchable.includes(query.toLowerCase())) &&
+    (!tag || post.data.tags?.includes(tag))
+  );
+});
+const slug = (id: string) =>
+  id.includes('/') ? id.split('/').slice(1).join('/') : id;
 ---
 
-<BaseLayout {pageTitle} {pageDescription}>
-  <section class="content-shell page-intro">
-    <h1 class="headline-display max-w-3xl">{t('description')}</h1>
-    <p class="lede">
-      Practical ML notes from projects, experiments, and production lessons.
+<BaseLayout
+  pageTitle="Writing | Roy Dabire"
+  pageDescription="Notes on data, analytics, machine learning, and things I’m learning."
+>
+  <section class="plain-intro">
+    <p class="plain-label">WRITING / 003</p>
+    <h1>Notes & writing.</h1>
+    <p>
+      Things I’ve learned at work, things I’m trying, and the occasional detour.
     </p>
-
-    {
-      featuredTags.length > 0 && (
-        <div class="mt-6 flex flex-wrap gap-2">
-          {featuredTags.map((tag) => (
-            <a
-              href={`/blog?tag=${encodeURIComponent(tag)}`}
-              class:list={[
-                'rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.12em] transition-colors',
-                initialTag === tag
-                  ? 'border-primary/80 bg-primary/15 text-primary'
-                  : 'border-border bg-card/50 text-muted-foreground hover:border-primary/60 hover:text-foreground',
-              ]}
-            >
-              {tag}
-            </a>
-          ))}
-        </div>
-      )
-    }
   </section>
-
-  <section class="content-shell reveal">
-    <FilteredPostsList
-      client:load
-      allPosts={posts.map(transformPostForClientFilter)}
-      texts={componentTexts}
-      initialSearchQuery={initialSearchQuery}
-      initialTag={initialTag}
-    />
-
-    <div
-      id="blog-posts-container"
-      class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-    >
+  <section class="plain-section">
+    <form class="archive-search" action="/blog" method="get" role="search">
+      <label for="post-search"
+        >Search posts<input
+          id="post-search"
+          name="q"
+          type="search"
+          value={query}
+          placeholder="A word or topic"
+        /></label
+      >
       {
-        posts.length > 0 ? (
-          posts.map((postEntry) => (
-            <div class="blog-post-card-wrapper" data-post-id={postEntry.id}>
-              <BlogPostCard post={postEntry} lang={lang} />
+        tags.length > 0 && (
+          <label for="post-tag">
+            Tag
+            <select id="post-tag" name="tag">
+              <option value="">All tags</option>
+              {tags.map((item) => (
+                <option value={item} selected={tag === item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </label>
+        )
+      }
+      <button type="submit">Search →</button>
+      {(query || tag) && <a href="/blog">Clear</a>}
+    </form>
+    <div id="blog-posts-container">
+      {
+        visiblePosts.map((post) => (
+          <div class="blog-post-card-wrapper">
+            <div class="plain-post">
+              <>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toISOString().slice(0, 10)}
+                </time>
+                <a href={'/blog/' + slug(post.id)}>{post.data.title}</a>
+                <span>{post.data.description}</span>
+              </>
             </div>
-          ))
-        ) : (
-          <EmptyState
-            title={texts('noPostsFound')}
-            id="no-posts-initial-message"
-            className="hidden panel"
-          />
+          </div>
+        ))
+      }
+      {
+        !visiblePosts.length && (
+          <p role="status" class="plain-small">
+            No posts found.
+            {query || tag ? ' Try another search, or clear the filters.' : ''}
+          </p>
         )
       }
     </div>
-
-    <EmptyState
-      title={texts('noPostsFound')}
-      id="no-posts-filtered-message"
-      className="hidden panel"
-    />
-
-    <script>
-      import {
-        filteredPostIdsAtom,
-        filtersInitializedAtom,
-      } from '../../../stores/blogFilterStore';
-
-      const postsContainer = document.getElementById('blog-posts-container');
-      const noPostsInitialMessage = document.getElementById(
-        'no-posts-initial-message'
-      );
-      const noPostsFilteredMessage = document.getElementById(
-        'no-posts-filtered-message'
-      );
-      const allPostCardWrappers = document.querySelectorAll(
-        '.blog-post-card-wrapper'
-      );
-
-      function updateVisiblePosts() {
-        if (!postsContainer || !noPostsFilteredMessage) return;
-
-        const currentFilteredIds = filteredPostIdsAtom.get();
-        const isFiltersInitialized = filtersInitializedAtom.get();
-        let visibleCount = 0;
-
-        allPostCardWrappers.forEach((wrapper) => {
-          const postIdAttribute = wrapper.getAttribute('data-post-id');
-          if (postIdAttribute !== null) {
-            if (currentFilteredIds.includes(postIdAttribute)) {
-              wrapper.classList.remove('hidden');
-              visibleCount++;
-            } else {
-              wrapper.classList.add('hidden');
-            }
-          } else {
-            wrapper.classList.add('hidden');
-          }
-        });
-
-        if (noPostsInitialMessage) {
-          noPostsInitialMessage.classList.add('hidden');
-        }
-
-        if (isFiltersInitialized) {
-          if (visibleCount === 0) {
-            postsContainer.style.display = 'none';
-            noPostsFilteredMessage.classList.remove('hidden');
-          } else {
-            postsContainer.style.display = 'grid';
-            noPostsFilteredMessage.classList.add('hidden');
-          }
-        }
-      }
-
-      filteredPostIdsAtom.subscribe(updateVisiblePosts);
-
-      filtersInitializedAtom.subscribe((isInitialized: boolean) => {
-        if (isInitialized) {
-          updateVisiblePosts();
-        }
-      });
-
-      if (filtersInitializedAtom.get()) {
-        updateVisiblePosts();
-      }
-    </script>
   </section>
 </BaseLayout>
+<style>
+  .archive-search {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: end;
+    padding-bottom: 25px;
+    font-size: 11px;
+  }
+  label {
+    flex: 1;
+    min-width: 150px;
+  }
+  input,
+  select {
+    display: block;
+    width: 100%;
+    margin-top: 7px;
+    padding: 9px 11px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 0;
+    font: inherit;
+  }
+  button {
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--link);
+    padding: 9px 15px;
+    font: inherit;
+    cursor: pointer;
+  }
+  button:hover {
+    border-color: var(--link);
+  }
+  .archive-search > a {
+    padding-bottom: 9px;
+  }
+</style>

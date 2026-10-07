@@ -1,0 +1,24 @@
+---
+import OptionLayout from '@/features/design-options/OptionLayout.astro';
+import { options } from '@/features/design-options/options';
+import Letter from '@/features/design-options/Letter.astro';
+import Swiss from '@/features/design-options/Swiss.astro';
+import FieldNotes from '@/features/design-options/FieldNotes.astro';
+import PlainIndex from '@/features/design-options/PlainIndex.astro';
+import Portrait from '@/features/design-options/Portrait.astro';
+export const prerender = true;
+export function getStaticPaths() {
+  return options.map((option) => ({ params: { slug: option.slug } }));
+}
+const { slug } = Astro.params;
+const components = {
+  letter: Letter,
+  swiss: Swiss,
+  'field-notes': FieldNotes,
+  index: PlainIndex,
+  portrait: Portrait,
+};
+const Page = components[slug as keyof typeof components];
+---
+
+<OptionLayout current={slug!}><Page /></OptionLayout>

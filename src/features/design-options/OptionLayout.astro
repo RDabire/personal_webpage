@@ -1,0 +1,130 @@
+---
+import { options } from './options';
+interface Props {
+  current: string;
+}
+const { current } = Astro.props;
+const option = options.find((item) => item.slug === current)!;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="description"
+      content={`Roy Dabire's personal page — ${option.name} design option.`}
+    />
+    <title>{option.name} — Roy Dabire</title>
+    <link rel="icon" href="/profile.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <nav class="chooser" aria-label="Homepage design options">
+      <a class="all" href="/designs">← All designs</a>
+      <span class="option-name">{option.name}</span>
+      <div class="numbers">
+        {
+          options.map((item, index) => (
+            <a
+              href={`/designs/${item.slug}`}
+              aria-label={`Option ${index + 1}: ${item.name}`}
+              aria-current={item.slug === current ? 'page' : undefined}
+            >
+              {index + 1}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
+  a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 5px;
+  }
+  .chooser {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 8px 24px;
+    background: #fff;
+    color: #252525;
+    border-bottom: 1px solid #dedede;
+    font:
+      12px 'DM Sans',
+      sans-serif;
+  }
+  .chooser a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .chooser .all:hover {
+    text-decoration: underline;
+  }
+  .option-name {
+    color: #666;
+  }
+  .numbers {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;
+  }
+  .numbers a {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+  }
+  .numbers a[aria-current] {
+    color: #fff;
+    background: #252525;
+    border-color: #252525;
+  }
+  .skip {
+    position: absolute;
+    top: -100px;
+    background: white;
+    color: black;
+    padding: 10px;
+    z-index: 10;
+  }
+  .skip:focus {
+    top: 0;
+  }
+  @media (max-width: 540px) {
+    .chooser {
+      padding: 8px 12px;
+      gap: 8px;
+    }
+    .option-name {
+      display: none;
+    }
+  }
+</style>
