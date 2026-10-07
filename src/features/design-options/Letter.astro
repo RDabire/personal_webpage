@@ -1,0 +1,222 @@
+---
+import { siteFeatures } from '@/config/site';
+---
+
+<div class="letter">
+  <header>
+    <a href="/designs/letter">Roy Dabire</a><nav aria-label="Site navigation">
+      {siteFeatures.blog && <a href="/blog">Writing</a>}<a href="/resume"
+        >About</a
+      ><a href="/contact">Say hello</a>
+    </nav>
+  </header>
+  <main id="main">
+    <div class="introduction">
+      <img src="/profile.jpg" alt="Roy Dabire" width="76" height="76" /><p>
+        A small corner of the internet.
+      </p>
+    </div>
+    <h1>Hello, I’m Roy.</h1>
+    <p class="lead">
+      I work in fraud and scam analytics at CBA. I’m a builder at heart.
+    </p>
+    <p>
+      These days I investigate fraud and scam patterns at CBA. Before banking, I
+      worked in machine learning and data science at Fortescue, Newmont, and
+      Newcrest.
+    </p>
+    <p>
+      I’m interested in how analysis becomes something useful: a detection rule,
+      a better decision, or a way to protect a customer.
+    </p>
+    <p>Away from work, I like long runs and strategy games.</p>
+    <div class="signature">Glad you’re here,<br /><span>Roy</span></div>
+    {
+      siteFeatures.blog && (
+        <section aria-labelledby="writing-title">
+          <>
+            <div class="section-heading">
+              <>
+                <h2 id="writing-title">A little writing</h2>
+                <a href="/blog">All posts →</a>
+              </>
+            </div>
+            <a class="post" href="/blog/welcome-post">
+              <>
+                <span>
+                  <>
+                    <strong>Welcome</strong>
+                    <span>What I hope to share here.</span>
+                  </>
+                </span>
+                <time datetime="2026-02-01">Feb 2026</time>
+              </>
+            </a>
+          </>
+        </section>
+      )
+    }
+    <footer>
+      <a href="https://www.linkedin.com/in/roy-dabire">Find me on LinkedIn ↗</a
+      ><span>Or <a href="/contact">book a conversation</a>.</span>
+    </footer>
+  </main>
+</div>
+<style>
+  .letter {
+    min-height: calc(100vh - 56px);
+    background: #f7f3eb;
+    color: #37332b;
+    font:
+      19px/1.75 Georgia,
+      serif;
+  }
+  header {
+    max-width: 980px;
+    margin: auto;
+    padding: 36px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    font:
+      13px 'DM Sans',
+      sans-serif;
+  }
+  a {
+    color: inherit;
+  }
+  header a {
+    text-decoration: none;
+  }
+  header > a {
+    font:
+      24px 'Instrument Serif',
+      Georgia,
+      serif;
+  }
+  nav {
+    display: flex;
+    gap: 27px;
+  }
+  main {
+    max-width: 680px;
+    padding: 40px 28px 45px;
+    margin: auto;
+  }
+  .introduction {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font:
+      12px 'DM Sans',
+      sans-serif;
+    color: #787266;
+  }
+  .introduction img {
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  h1 {
+    font:
+      400 clamp(58px, 8vw, 86px) / 1.1 'Instrument Serif',
+      Georgia,
+      serif;
+    letter-spacing: -2px;
+    margin: 36px 0 22px;
+  }
+  .lead {
+    font-size: 25px;
+    line-height: 1.5;
+  }
+  main > p {
+    margin: 24px 0;
+  }
+  .signature {
+    margin: 32px 0 52px;
+    font-size: 16px;
+  }
+  .signature span {
+    font:
+      italic 35px 'Instrument Serif',
+      serif;
+  }
+  section {
+    border-top: 1px solid #d7cfc0;
+    padding-top: 24px;
+  }
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  h2 {
+    font:
+      400 28px 'Instrument Serif',
+      serif;
+    margin: 0;
+  }
+  .section-heading a {
+    font:
+      12px 'DM Sans',
+      sans-serif;
+  }
+  .post {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 25px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #d7cfc0;
+    text-decoration: none;
+  }
+  .post strong {
+    font-weight: 400;
+    font-size: 22px;
+  }
+  .post span span {
+    display: block;
+    color: #777062;
+    font-size: 15px;
+  }
+  time {
+    font:
+      11px 'DM Sans',
+      sans-serif;
+    white-space: nowrap;
+    color: #777062;
+  }
+  .post:hover strong {
+    text-decoration: underline;
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 35px;
+    font:
+      12px 'DM Sans',
+      sans-serif;
+    color: #777062;
+  }
+  @media (max-width: 600px) {
+    header {
+      padding: 26px 24px;
+    }
+    nav {
+      gap: 17px;
+    }
+    main {
+      padding-top: 25px;
+    }
+    .letter {
+      font-size: 17px;
+    }
+    .lead {
+      font-size: 22px;
+    }
+  }
+</style>

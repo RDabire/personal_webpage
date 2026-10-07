@@ -1,261 +1,76 @@
 ---
 import '../styles/global.css';
-import { defaultLanguage, useTranslations, type LanguageCode } from '@/i18n/ui';
-import { ClientRouter } from 'astro:transitions';
-import { Image } from 'astro:assets';
-import profileImage from '@/assets/profile.jpg';
-import {
-  Home,
-  BookOpen,
-  UserRound,
-  CalendarDays,
-  Linkedin,
-} from 'lucide-react';
-
-type Props = {
+import '../styles/plain.css';
+import { profile } from '@/data/profile';
+import { siteFeatures } from '@/config/site';
+interface Props {
   pageTitle: string;
   pageDescription?: string;
-};
-
-type NavItem = {
-  href: string;
-  label: string;
-  icon: any;
-};
-
-type SocialItem = {
-  href: string;
-  label: string;
-  handle: string;
-  icon: any;
-};
-
-const { pageTitle, pageDescription } = Astro.props;
-const lang =
-  (Astro.currentLocale as LanguageCode | undefined) ?? defaultLanguage;
-const tSite = useTranslations(lang, 'site');
-const tNav = useTranslations(lang, 'nav');
-
-const navItems: Array<NavItem> = [
-  { href: '/', label: tNav('home'), icon: Home },
-  { href: '/blog', label: tNav('blog'), icon: BookOpen },
-  { href: '/resume', label: tNav('resume'), icon: UserRound },
+}
+const { pageTitle, pageDescription = profile.description } = Astro.props;
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  ...(siteFeatures.blog ? [{ href: '/blog', label: 'writing' }] : []),
+  { href: '/resume', label: 'about' },
+  { href: '/contact', label: 'contact' },
 ];
-
-const socialItems: Array<SocialItem> = [
-  {
-    href: '/contact',
-    label: tNav('contact'),
-    handle: 'Book a call',
-    icon: CalendarDays,
-  },
-  {
-    href: 'https://www.linkedin.com/in/roy-dabire',
-    label: 'LinkedIn',
-    handle: '@roy-dabire',
-    icon: Linkedin,
-  },
-];
-
-const normalizedPathname = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isLinkActive = (href: string) => {
-  const normalizedHref = href.replace(/\/$/, '') || '/';
-  if (normalizedHref === '/') {
-    return normalizedPathname === '/';
-  }
-
-  return (
-    normalizedPathname === normalizedHref ||
-    normalizedPathname.startsWith(`${normalizedHref}/`)
-  );
-};
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <meta
-      name="description"
-      content={pageDescription || tSite('description')}
-    />
-
-    <link rel="icon" type="image/jpeg" href="/profile.jpg" />
-    <link rel="shortcut icon" href="/profile.jpg" />
+    <meta name="description" content={pageDescription} />
+    <title>{pageTitle}</title>
+    <link rel="icon" href="/profile.jpg" />
     <link rel="apple-touch-icon" href="/profile.jpg" />
-
-    <title>{pageTitle || tSite('title')}</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,500;10..48,700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script is:inline>
-      (() => {
-        const MEDIA_QUERY = '(prefers-color-scheme: dark)';
-        const root = document.documentElement;
-        const applySystemTheme = () => {
-          root.classList.toggle('dark', window.matchMedia(MEDIA_QUERY).matches);
-        };
-
-        applySystemTheme();
-
-        if (!window.__themeSyncInitialized) {
-          window.__themeSyncInitialized = true;
-          const media = window.matchMedia(MEDIA_QUERY);
-          const onChange = () => applySystemTheme();
-
-          if (typeof media.addEventListener === 'function') {
-            media.addEventListener('change', onChange);
-          } else if (typeof media.addListener === 'function') {
-            media.addListener(onChange);
-          }
-
-          document.addEventListener('astro:after-swap', applySystemTheme);
-          document.addEventListener('astro:page-load', applySystemTheme);
-        }
-      })();
-    </script>
-
-    <ClientRouter />
-    <script
-      src="https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js"
-      defer></script>
   </head>
-  <body class="site-body">
-    <div class="site-layout">
-      <aside class="sidebar hidden lg:flex">
-        <div class="sidebar-inner">
-          <a href="/" class="profile-block">
-            <Image
-              src={profileImage}
-              alt="Portrait of Roy Dabire"
-              width={56}
-              height={56}
-              class="profile-avatar"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              unoptimized
-              onerror="this.onerror=null;this.src='/profile.jpg'"
-            />
-            <div>
-              <p class="profile-name">Roy Dabire</p>
-              <p class="profile-subtitle">Machine Learning Engineer</p>
-            </div>
-          </a>
-
-          <nav class="sidebar-nav" aria-label="Main navigation">
-            {
-              navItems.map((item) => {
-                const Icon = item.icon;
-                const active = isLinkActive(item.href);
-                return (
+  <body class="plain-site">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="plain-shell">
+      <header class="plain-header">
+        <a
+          class="plain-name"
+          href="/"
+          aria-current={pathname === '/' ? 'page' : undefined}>roy dabire</a
+        >
+        <nav aria-label="Main navigation">
+          {
+            links.map((link, index) => (
+              <>
+                <>
+                  <span aria-hidden="true">{index > 0 ? ' / ' : ''}</span>
                   <a
-                    href={item.href}
-                    aria-current={active ? 'page' : undefined}
-                    class:list={['sidebar-nav-link', active && 'is-active']}
-                  >
-                    <Icon class="size-4" />
-                    <span>{item.label}</span>
-                  </a>
-                );
-              })
-            }
-          </nav>
-
-          <div class="sidebar-section-title">Connect</div>
-          <div class="sidebar-socials">
-            {
-              socialItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : undefined}
-                    rel={
-                      item.href.startsWith('http')
-                        ? 'noreferrer noopener'
+                    href={link.href}
+                    aria-current={
+                      pathname === link.href ||
+                      pathname.startsWith(link.href + '/')
+                        ? 'page'
                         : undefined
                     }
-                    class="sidebar-social-link"
                   >
-                    <Icon class="size-4" />
-                    <div>
-                      <p>{item.label}</p>
-                      <p>{item.handle}</p>
-                    </div>
+                    {link.label}
                   </a>
-                );
-              })
-            }
-          </div>
-        </div>
-      </aside>
-
-      <div class="main-column">
-        <header class="mobile-header lg:hidden">
-          <a href="/" class="mobile-brand">
-            <Image
-              src={profileImage}
-              alt="Portrait of Roy Dabire"
-              width={42}
-              height={42}
-              class="profile-avatar"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              unoptimized
-              onerror="this.onerror=null;this.src='/profile.jpg'"
-            />
-            <div>
-              <p>Roy Dabire</p>
-            </div>
-          </a>
-          <div class="mobile-actions" aria-label="Connect links">
-            <a href="/contact" class="mobile-pill">Contact</a>
-            <a
-              href="https://www.linkedin.com/in/roy-dabire"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="mobile-pill"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </header>
-
-        <main id="main-content" class="site-main">
-          <slot />
-        </main>
-
-        <footer class="site-footer">
-          <p>{tSite('title')}</p>
-        </footer>
-      </div>
+                </>
+              </>
+            ))
+          }
+        </nav>
+      </header>
+      <main id="main-content"><slot /></main>
+      <footer class="plain-footer">
+        <span>Roy Dabire / Australia</span><a href="#main-content"
+          >Back to top ↑</a
+        >
+      </footer>
     </div>
-
-    <nav class="mobile-bottom-nav lg:hidden" aria-label="Main navigation">
-      {
-        navItems.map((item) => {
-          const Icon = item.icon;
-          const active = isLinkActive(item.href);
-          return (
-            <a
-              href={item.href}
-              aria-current={active ? 'page' : undefined}
-              class:list={['mobile-nav-link', active && 'is-active']}
-            >
-              <Icon class="size-4" />
-              <span>{item.label}</span>
-            </a>
-          );
-        })
-      }
-    </nav>
   </body>
 </html>

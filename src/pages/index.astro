@@ -3,6 +3,7 @@ import { HomeScreen } from '@/features/home';
 import { defaultLanguage, useTranslations, type LanguageCode } from '@/i18n/ui';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { siteFeatures } from '@/config/site';
 
 const lang =
   (Astro.currentLocale as LanguageCode | undefined) ?? defaultLanguage;
@@ -11,10 +12,12 @@ const t = useTranslations(lang, 'homePage');
 const pageTitle = t('pageTitle');
 const pageDescription = t('pageDescription');
 
-const blogEntries: Array<CollectionEntry<'blog'>> = await getCollection(
-  'blog',
-  ({ data }) => data.isDraft !== true && data.lang === defaultLanguage
-);
+const blogEntries: Array<CollectionEntry<'blog'>> = siteFeatures.blog
+  ? await getCollection(
+      'blog',
+      ({ data }) => data.isDraft !== true && data.lang === defaultLanguage
+    )
+  : [];
 
 blogEntries.sort(
   (a, b) =>

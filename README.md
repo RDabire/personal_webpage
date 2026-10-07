@@ -56,9 +56,35 @@ Welcome! This is a feature-rich Astro template designed to help you kickstart yo
     _This project ships with a Bun alias, so `bun dev` forwards to `bun run dev` and launches Astro's dev server._
     The site will be available at `http://localhost:4321`.
 
+### Windows ARM64
+
+Cloudflare's `workerd` dependency does not provide a Windows ARM64 binary.
+Installing with native ARM64 Bun fails with
+`Unsupported platform: win32 arm64 LE`.
+
+`bun run dev` uses `scripts/dev.mjs` to select a compatible runtime automatically.
+On Windows, it checks for x64 Node on `PATH`, then portable Node installations
+under `~/.bun-x64/node-v*-win-x64/`. You can also set `ASTRO_NODE_BINARY` to the
+full path of an x64 `node.exe`. Native ARM64 Bun can launch this script.
+
+For dependency installation and production builds, ensure x64 Bun and Node
+come first on your terminal's `PATH`. Verify their architecture with:
+
+```powershell
+bun -p "process.arch"
+node -p "process.arch"
+```
+
+Both commands should print `x64`. The included Linux dev container is another
+option for development.
+
 ## ✍️ Adding Your Content
 
 ### Blog Posts
+
+The blog is currently hidden. To restore blog navigation, homepage previews,
+and article routes, set `siteFeatures.blog` to `true` in `src/config/site.ts`
+and rebuild. Blog posts and components are retained while it is disabled.
 
 1.  Navigate to `src/features/blog/content/`.
 2.  Add your articles in Markdown (`.md`) or MDX (`.mdx`) format:

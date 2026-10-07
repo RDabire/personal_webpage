@@ -1,3 +1,5 @@
+import { profile } from '@/data/profile';
+
 export const languages = {
   en: { name: 'English', flag: 'us' },
 } as const;
@@ -10,8 +12,7 @@ const createInitialTranslations = () => {
   return {
     site: {
       title: 'Roy Dabire',
-      description:
-        'Personal website of Roy Dabire, sharing lessons from shipping machine learning systems in production.',
+      description: profile.description,
     },
     nav: {
       home: 'Home',
@@ -24,20 +25,16 @@ const createInitialTranslations = () => {
     },
     homePage: {
       pageTitle: 'Home | Roy Dabire',
-      pageDescription:
-        'Notes from building ML systems in the real world, shared by Roy Dabire.',
-      heroLabel: 'Machine learning in practice',
-      heroHeadline: "Hi - I'm Roy, a machine learning engineer.",
-      heroSubheadline:
-        'I work where ML hits real operations, fuzzy problems and imperfect data.',
-      heroSupporting:
-        "This is my working notebook on the internet. I share what I'm building, what breaks, and what I'd do differently next time.",
+      pageDescription: profile.description,
+      heroLabel: 'Data & analytics',
+      heroHeadline: 'Hi, I’m Roy.',
+      heroSubheadline: profile.introduction,
+      heroSupporting: profile.work,
       heroPrimaryCta: 'Read latest posts',
       heroSecondaryCta: 'About my work',
       heroImageAlt: 'Portrait of Roy Dabire',
       aboutTitle: 'What I care about',
-      aboutSummary:
-        'I build ML systems end-to-end, from framing the problem and prototyping models through to production delivery and MLOps.\n\nMost of my experience has been in mining and heavy industry where reliability matters, so I focus on solutions that survive real-world constraints.\n\nI love translating technical complexity into practical decisions for operators, engineers, and business teams.',
+      aboutSummary: profile.work + '\n\n' + profile.background,
       aboutCtaLabel: 'Grab the resume',
       quickFactsTitle: 'Quick snapshot',
       quickFact1Label: 'Based',
@@ -46,8 +43,7 @@ const createInitialTranslations = () => {
       quickFact2Value:
         'Python, SQL, PyTorch, scikit-learn, Databricks, MLflow, Docker, Azure, LangChain, and fast product iteration.',
       quickFact3Label: 'Currently',
-      quickFact3Value:
-        'Machine Learning Engineer at Fortescue (since December 2025), building and running ML systems in production.',
+      quickFact3Value: profile.role + ' at CBA (since June 2026).',
       quickFact4Label: 'Outside work',
       quickFact4Value: 'Long runs, strategy games, and learning in public.',
       writingTitle: 'Selected writing',
@@ -58,15 +54,15 @@ const createInitialTranslations = () => {
       writingEmptyState: 'Drafts are in progress. Check back soon!',
       contactTitle: 'Want to collaborate?',
       contactSubtitle:
-        "Happy to chat about practical ML architecture, delivery strategy, or whatever you're trying to ship right now.",
+        'Happy to talk about data, analytics, or something you’re working on.',
       contactCtaLabel: 'Send me a message',
     },
     blogPage: {
       pageTitle: 'Blog | Roy Dabire',
       pageDescription:
-        'Practical notes on machine learning, MLOps, and getting things into production.',
+        'Notes on data, analytics, machine learning, and things I’m learning.',
       title: 'Blog',
-      description: 'ML notes from real projects.',
+      description: 'Notes & writing.',
       comingSoon: 'Blog posts will appear here soon. Check back later!',
       heroImageAlt: 'Hero image for article: ',
       publishedOn: 'Published on: ',
@@ -94,11 +90,10 @@ const createInitialTranslations = () => {
     },
     contactPage: {
       pageTitle: 'Contact | Roy Dabire',
-      pageDescription:
-        'Start a conversation with Roy Dabire about ML systems, architecture, and delivery.',
+      pageDescription: 'Get in touch with Roy Dabire.',
       title: "Let's chat",
       description:
-        "If you're building something in ML and want a pragmatic sounding board, I'd be glad to connect.",
+        'Happy to talk about data, analytics, or something you’ve read here. The easiest way to reach me is on LinkedIn.',
       formTitle: 'Send a message',
       firstNameLabel: 'First Name',
       lastNameLabel: 'Last Name',

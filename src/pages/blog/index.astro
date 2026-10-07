@@ -20,6 +20,7 @@ const enrichedPosts = await Promise.all(
       id: postEntry.id,
       slug: postEntry.id,
       collection: postEntry.collection,
+      body: postEntry.body,
       data: {
         ...postEntry.data,
         readingTimeMinutes: remarkPluginFrontmatter.readingTimeMinutes,

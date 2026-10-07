@@ -1,114 +1,66 @@
 ---
-import type { LanguageCode } from '@/i18n/ui';
-import { useTranslations } from '@/i18n/ui';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { formatDate } from '@/lib/utils';
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { ArrowLeft, Clock } from 'lucide-react';
-import BlogPostCard from '../components/BlogPostCard.astro';
-
-type Props = {
+import type { LanguageCode } from '@/i18n/ui';
+interface Props {
   post: CollectionEntry<'blog'>['data'];
   lang: LanguageCode;
   relatedPosts: Array<CollectionEntry<'blog'>>;
-};
-
+}
 const { post, lang, relatedPosts } = Astro.props;
-
-const pubDate = new Date(post.pubDate);
-const updatedDate = post.updatedDate ? new Date(post.updatedDate) : null;
-
-const t = useTranslations(lang, 'blogPost');
-
-const pageTitle = post.title;
-const pageDescription = post.description;
+const slug = (id: string) =>
+  id.includes('/') ? id.split('/').slice(1).join('/') : id;
 ---
 
-<BaseLayout {pageTitle} {pageDescription}>
-  <article class="content-shell">
-    <header class="page-intro max-w-3xl">
-      <a
-        href="/blog"
-        class="mb-7 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground"
-      >
-        <ArrowLeft class="size-4" />
-        {t('backToList')}
-      </a>
-
-      <h1 class="headline-display max-w-3xl">
-        {post.title}
-      </h1>
-
-      <div
-        class="mt-6 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.12em] text-muted-foreground"
-      >
-        <span>{t('publishedOn')} {formatDate(pubDate, lang)}</span>
-        {
-          updatedDate && (
-            <span>
-              {t('updatedOn')} {formatDate(updatedDate, lang)}
-            </span>
+<BaseLayout
+  pageTitle={post.title + ' | Roy Dabire'}
+  pageDescription={post.description}
+>
+  <article>
+    <header class="plain-intro">
+      <p class="plain-small"><a href="/blog">← All writing</a></p>
+      <h1>{post.title}</h1>
+      <div class="post-meta">
+        <time datetime={post.pubDate.toISOString()}
+          >{formatDate(post.pubDate, lang)}</time
+        >{
+          post.readingTimeMinutes && (
+            <span>{post.readingTimeMinutes} min read</span>
+          )
+        }{
+          post.updatedDate && (
+            <span>Updated {formatDate(post.updatedDate, lang)}</span>
           )
         }
-        <span class="inline-flex items-center gap-1">
-          <Clock class="size-3.5" />
-          {post.readingTimeMinutes}
-          {t('readingTimeSuffix')}
-        </span>
       </div>
-
       {
-        post.tags && post.tags.length > 0 && (
-          <div class="mt-6 flex flex-wrap gap-2">
-            {post.tags.map((tag: string) => (
-              <span class="rounded-full border border-border bg-muted/65 px-3 py-1 text-[0.68rem] uppercase tracking-[0.12em] text-muted-foreground">
-                {tag}
-              </span>
+        post.tags?.length ? (
+          <p class="plain-small">
+            {post.tags.map((tag) => (
+              <a
+                href={'/blog?tag=' + encodeURIComponent(tag)}
+                style="margin-right: 15px"
+              >
+                #{tag}
+              </a>
             ))}
-          </div>
-        )
-      }
-
-      {
-        post.heroImage && (
-          <div class="mt-8 max-w-3xl overflow-hidden rounded-2xl border border-border/80 bg-muted/40">
-            <Image
-              src={post.heroImage.url}
-              alt={post.heroImage.alt}
-              width={1080}
-              height={620}
-              class="max-h-[360px] w-full object-contain"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              unoptimized
-              onerror="this.onerror=null;this.src='/welcom-blog-post.png'"
-            />
-          </div>
-        )
+          </p>
+        ) : null
       }
     </header>
-
-    <div class="panel max-w-3xl">
-      <div class="prose max-w-none">
-        <slot />
-      </div>
-    </div>
-
+    <div class="plain-prose"><slot /></div>
     {
-      relatedPosts.length > 0 ? (
-        <section class="mt-14 reveal">
-          <div class="mb-5">
-            <span class="pill">{t('relatedPostsTitle')}</span>
-          </div>
-          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {relatedPosts.map((relatedPost) => (
-              <BlogPostCard post={relatedPost} lang={lang} />
-            ))}
-          </div>
+      relatedPosts.length > 0 && (
+        <section class="plain-section">
+          <h2>More writing</h2>
+          {relatedPosts.map((entry) => (
+            <p>
+              <a href={'/blog/' + slug(entry.id)}>{entry.data.title}</a>
+            </p>
+          ))}
         </section>
-      ) : null
+      )
     }
   </article>
 </BaseLayout>

@@ -1,167 +1,80 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { ArrowUpRight } from 'lucide-react';
-
-const pageTitle = 'About Me | Roy Dabire';
-const pageDescription =
-  'A personal overview of how I work as a machine learning engineer, what I have built, and what I care about.';
-
-const timeline = [
-  {
-    period: 'Dec 2025 - Present',
-    role: 'Machine Learning Engineer',
-    company: 'Fortescue',
-    link: 'https://www.fortescue.com/en',
-    notes: [
-      'Designing, experimenting, building, and deploying production-ready machine learning models in Python using Amazon SageMaker.',
-      'Engineering and maintaining data pipelines for ingestion, preprocessing, and feature engineering with AWS services including S3 and Lambda.',
-      'Working with domain experts and product owners to translate mining and processing needs into clear ML problem statements with measurable success criteria.',
-      'Applying MLOps practices including CI/CD workflows, automated retraining, and monitoring for model performance drift.',
-      'Running analysis and experimentation to validate hypotheses and improve recommendation and predictive models for operational efficiency.',
-      'Supporting live models in mineral processing environments with engineers and analysts, troubleshooting issues and continuously improving performance.',
-    ],
-  },
-  {
-    period: '2023 - Nov 2025',
-    role: 'Data Scientist, Generative AI',
-    company: 'Newmont',
-    link: 'https://newmont.com/home/default.aspx',
-    notes: [
-      'Built agentic RAG workflows that reduced investigation effort by ~80% in real operational settings.',
-      'Delivered AI tooling for role design and workforce planning used at global scale.',
-      'Led practical enablement sessions on production GenAI, MLOps, and responsible adoption.',
-    ],
-  },
-  {
-    period: '2022 - 2023',
-    role: 'Data Scientist, Digital',
-    company: 'Newcrest (now Newmont)',
-    link: 'https://newmont.com/home/default.aspx',
-    notes: [
-      'Developed predictive maintenance models that surfaced multi-million-dollar improvement opportunities.',
-      'Translated messy operations data into decision-ready dashboards and interventions.',
-      'Partnered with engineers and superintendents to ensure models actually changed behavior on site.',
-    ],
-  },
-  {
-    period: '2021 - 2022',
-    role: 'Early Career Roles & Internships',
-    company: 'Fortescue + CAPS Australia',
-    link: 'https://www.fortescue.com/en',
-    notes: [
-      'Worked across geophysics, process analytics, and forecasting projects.',
-      'Learned how much domain context matters when building reliable ML systems.',
-      'Built a foundation in stakeholder communication, automation, and delivery discipline.',
-    ],
-  },
-];
-
-const principles = [
-  'Models are only useful when users trust and use them.',
-  'Fast iteration beats perfect planning at the start of a project.',
-  'Good MLOps is a product decision, not only an engineering concern.',
-  'Responsible AI means clear boundaries, not just policy docs.',
-];
-
-const toolkit = [
-  'Python, SQL, PyTorch, scikit-learn',
-  'Databricks, MLflow, Azure & AWS AI stack',
-  'LangChain, RAG architecture, agentic workflows',
-  'Docker, CI/CD, monitoring and observability patterns',
-  'Facilitation, workshops, and technical mentorship',
-];
+import { workHistory } from '@/data/profile';
 ---
 
-<BaseLayout {pageTitle} {pageDescription}>
-  <section class="content-shell page-intro">
-    <h1 class="headline-display max-w-4xl">
-      ML engineer focused on practical, production-ready systems.
-    </h1>
-    <p class="lede">
-      I spend most days turning messy ML ideas into tools people can actually
-      use, not just demo once and forget.
+<BaseLayout
+  pageTitle="About | Roy Dabire"
+  pageDescription="Roy Dabire on building useful tools, understanding the bigger picture, and working across analytics and machine learning."
+>
+  <section class="plain-intro">
+    <p class="plain-label">ABOUT / 002</p>
+    <h1>Background & approach.</h1>
+    <p>
+      My career began in customer-facing sales and banking before moving into
+      applied data science, industrial analytics, enterprise AI, and production
+      machine learning. I now work on fraud and scams at CBA.
+    </p>
+    <p>
+      Across these roles, I’ve worked with domain specialists to understand
+      operational problems and deliver systems people use in their day-to-day
+      work.
     </p>
   </section>
-
-  <section class="content-shell grid gap-6 lg:grid-cols-[1.45fr_1fr] reveal">
-    <article class="panel space-y-4">
-      <h2 class="section-title">How I like to work</h2>
-      <p class="leading-relaxed text-muted-foreground">
-        I usually sit in the middle of product, data, and engineering. The best
-        projects for me start a little messy, get shaped with the team, and end
-        up as something useful in day-to-day work.
-      </p>
-      <p class="leading-relaxed text-muted-foreground">
-        A lot of my work has been in mining and heavy industry, but the same
-        rules keep showing up everywhere: understand the workflow, build with
-        constraints, ship fast, and keep listening to users.
-      </p>
-      <p class="leading-relaxed text-muted-foreground">
-        Outside project delivery, I like writing practical ML notes and helping
-        teams get better at modern AI without the hype spiral.
-      </p>
-    </article>
-
-    <aside class="panel space-y-4">
-      <h2 class="section-title text-xl">Core toolkit</h2>
-      <ul class="space-y-2 text-sm text-muted-foreground">
-        {
-          toolkit.map((item) => (
-            <li class="rounded-xl border border-border/70 bg-muted/40 px-3 py-2">
-              {item}
-            </li>
-          ))
-        }
-      </ul>
-    </aside>
-  </section>
-
-  <section class="content-shell mt-12 reveal">
-    <div class="mb-5">
-      <span class="pill">Journey</span>
-    </div>
-    <div class="space-y-4">
-      {
-        timeline.map((entry) => (
-          <article class="panel space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <p class="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                {entry.period}
-              </p>
-              <a
-                href={entry.link}
-                target="_blank"
-                rel="noreferrer noopener"
-                class="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary"
-              >
-                {entry.company}
-                <ArrowUpRight class="size-3.5" />
-              </a>
+  <section class="plain-section">
+    <h2>Work history</h2>
+    {
+      workHistory.map((entry) => (
+        <article
+          class="plain-job"
+          id={entry.id}
+          aria-labelledby={entry.id + '-title'}
+        >
+          <p class="job-period">{entry.period}</p>
+          <div class="job-content">
+            <header>
+              <h3 id={entry.id + '-title'}>{entry.role}</h3>
+              <p class="company">{entry.company}</p>
+              {entry.context && <p class="job-context">{entry.context}</p>}
+            </header>
+            <p class="job-summary">{entry.summary}</p>
+            <section
+              class="job-contributions"
+              aria-labelledby={entry.id + '-contributions'}
+            >
+              <h4 id={entry.id + '-contributions'}>Work & outcomes</h4>
+              <ul>
+                {entry.highlights.map((highlight) => (
+                  <li>
+                    <strong>{highlight.title}</strong>
+                    <p>{highlight.detail}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <div class="job-capabilities">
+              <section aria-labelledby={entry.id + '-skills'}>
+                <h4 id={entry.id + '-skills'}>Skills</h4>
+                <ul>
+                  {entry.skills.map((skill) => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
+              </section>
+              <section aria-labelledby={entry.id + '-stack'}>
+                <h4 id={entry.id + '-stack'}>
+                  {entry.stackLabel || 'Tech stack'}
+                </h4>
+                <ul>
+                  {entry.techStack.map((technology) => (
+                    <li>{technology}</li>
+                  ))}
+                </ul>
+              </section>
             </div>
-            <h3 class="text-xl font-semibold">{entry.role}</h3>
-            <ul class="space-y-2 text-sm text-muted-foreground">
-              {entry.notes.map((note) => (
-                <li class="leading-relaxed">• {note}</li>
-              ))}
-            </ul>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="content-shell mt-12 pb-8 reveal">
-    <div class="panel">
-      <h2 class="section-title">Operating principles</h2>
-      <ul class="mt-4 grid gap-3 md:grid-cols-2">
-        {
-          principles.map((principle) => (
-            <li class="rounded-xl border border-border/70 bg-muted/45 px-4 py-3 text-sm text-foreground/90">
-              {principle}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+          </div>
+        </article>
+      ))
+    }
   </section>
 </BaseLayout>
